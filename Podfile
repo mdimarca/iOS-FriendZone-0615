@@ -12,6 +12,7 @@ pod 'MJRefresh'
 pod 'ChameleonFramework'
 pod 'AFNetworking'
 pod 'JGProgressHUD'
+pod "MDCSwipeToChoose"
 
 end
 

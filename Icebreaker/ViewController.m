@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "friendSwiperViewController.h"
 
 @interface ViewController () <FBSDKLoginButtonDelegate>
 
@@ -31,6 +32,7 @@
     
     if ([FBSDKAccessToken currentAccessToken]) {
         // segue to next view
+        [self performSegueWithIdentifier:@"loginSegue" sender:self];
     }
 }
 
@@ -43,12 +45,20 @@
 #pragma mark - FB Login Button delegate method
 - (void)loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result error:(NSError *)error
 {
-    
+    [self performSegueWithIdentifier:@"loginSegue" sender:self];
 }
 
 - (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton
 {
     
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:@"loginSegue"]) {
+        UINavigationController *navController = [segue destinationViewController];
+        friendSwiperViewController *friendSwiperViewContollerThing = navController.viewControllers.firstObject;
+    }
 }
 
 @end

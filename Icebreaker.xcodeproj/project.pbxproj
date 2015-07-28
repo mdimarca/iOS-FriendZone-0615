@@ -15,6 +15,7 @@
 		0774D1241B6806B600F3BCF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0774D1231B6806B600F3BCF5 /* Images.xcassets */; };
 		0774D1271B6806B600F3BCF5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0774D1251B6806B600F3BCF5 /* LaunchScreen.xib */; };
 		0774D1331B6806B600F3BCF5 /* IcebreakerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774D1321B6806B600F3BCF5 /* IcebreakerTests.m */; };
+		BD8CF8D81B682452003CCC1F /* friendSwiperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8CF8D71B682452003CCC1F /* friendSwiperViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		0774D1321B6806B600F3BCF5 /* IcebreakerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IcebreakerTests.m; sourceTree = "<group>"; };
 		0B7A84EEE3036B26319BDB8F /* Pods-Icebreaker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Icebreaker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Icebreaker/Pods-Icebreaker.release.xcconfig"; sourceTree = "<group>"; };
 		4E1AE44FEE25BC5F99A90406 /* libPods-Icebreaker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Icebreaker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD8CF8D61B682452003CCC1F /* friendSwiperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = friendSwiperViewController.h; sourceTree = "<group>"; };
+		BD8CF8D71B682452003CCC1F /* friendSwiperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = friendSwiperViewController.m; sourceTree = "<group>"; };
 		C1B50C505EC89CE12AE138C8 /* Pods-Icebreaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Icebreaker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Icebreaker/Pods-Icebreaker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,6 +95,8 @@
 				0774D11B1B6806B600F3BCF5 /* AppDelegate.m */,
 				0774D11D1B6806B600F3BCF5 /* ViewController.h */,
 				0774D11E1B6806B600F3BCF5 /* ViewController.m */,
+				BD8CF8D61B682452003CCC1F /* friendSwiperViewController.h */,
+				BD8CF8D71B682452003CCC1F /* friendSwiperViewController.m */,
 				0774D1201B6806B600F3BCF5 /* Main.storyboard */,
 				0774D1231B6806B600F3BCF5 /* Images.xcassets */,
 				0774D1251B6806B600F3BCF5 /* LaunchScreen.xib */,
@@ -278,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD8CF8D81B682452003CCC1F /* friendSwiperViewController.m in Sources */,
 				0774D11F1B6806B600F3BCF5 /* ViewController.m in Sources */,
 				0774D11C1B6806B600F3BCF5 /* AppDelegate.m in Sources */,
 				0774D1191B6806B600F3BCF5 /* main.m in Sources */,
