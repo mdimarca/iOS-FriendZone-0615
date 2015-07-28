@@ -15,7 +15,6 @@
 		0774D1241B6806B600F3BCF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0774D1231B6806B600F3BCF5 /* Images.xcassets */; };
 		0774D1271B6806B600F3BCF5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0774D1251B6806B600F3BCF5 /* LaunchScreen.xib */; };
 		0774D1331B6806B600F3BCF5 /* IcebreakerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774D1321B6806B600F3BCF5 /* IcebreakerTests.m */; };
-		0774D13D1B681B2C00F3BCF5 /* Sinch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0774D13C1B681B2C00F3BCF5 /* Sinch.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +41,6 @@
 		0774D12C1B6806B600F3BCF5 /* IcebreakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IcebreakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0774D1311B6806B600F3BCF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0774D1321B6806B600F3BCF5 /* IcebreakerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IcebreakerTests.m; sourceTree = "<group>"; };
-		0774D13C1B681B2C00F3BCF5 /* Sinch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sinch.framework; sourceTree = "<group>"; };
 		0B7A84EEE3036B26319BDB8F /* Pods-Icebreaker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Icebreaker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Icebreaker/Pods-Icebreaker.release.xcconfig"; sourceTree = "<group>"; };
 		4E1AE44FEE25BC5F99A90406 /* libPods-Icebreaker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Icebreaker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1B50C505EC89CE12AE138C8 /* Pods-Icebreaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Icebreaker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Icebreaker/Pods-Icebreaker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -53,7 +51,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0774D13D1B681B2C00F3BCF5 /* Sinch.framework in Frameworks */,
 				05E9DC6D61D82DABBB004BB6 /* libPods-Icebreaker.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,7 +138,6 @@
 		FC7124A7E25275EC3E72BE8B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0774D13C1B681B2C00F3BCF5 /* Sinch.framework */,
 				4E1AE44FEE25BC5F99A90406 /* libPods-Icebreaker.a */,
 			);
 			name = Frameworks;
