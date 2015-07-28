@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2B2575AE-594A-4224-96B4-2843BD528BAD</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Icebreaker</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2BF5BA6D57BF0B8D3B11CF868A9E63053F994FE9</key>
+		<string>https://github.com/learn-co-students/iOS-FriendZone-0615.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Icebreaker.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2BF5BA6D57BF0B8D3B11CF868A9E63053F994FE9</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/learn-co-students/iOS-FriendZone-0615.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2BF5BA6D57BF0B8D3B11CF868A9E63053F994FE9</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2BF5BA6D57BF0B8D3B11CF868A9E63053F994FE9</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iOS-FriendZone-0615</string>
+		</dict>
+	</array>
+</dict>
+</plist>
