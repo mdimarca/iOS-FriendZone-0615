@@ -13,6 +13,7 @@ pod 'CWStatusBarNotification'
 pod 'MJRefresh'
 pod 'ChameleonFramework'
 pod 'JGProgressHUD'
+pod 'JSQMessagesViewController'
 
 # Networking Pods
 pod 'SSKeychain'

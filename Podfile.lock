@@ -45,6 +45,9 @@ PODS:
     - FBSDKCoreKit
   - Firebase (2.3.3)
   - JGProgressHUD (1.2.7)
+  - JSQMessagesViewController (7.1.0):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
   - MJRefresh (2.3.2)
   - SSKeychain (1.2.3)
 
@@ -57,6 +60,7 @@ DEPENDENCIES:
   - FBSDKShareKit
   - Firebase
   - JGProgressHUD
+  - JSQMessagesViewController
   - MJRefresh
   - SSKeychain
 
@@ -70,6 +74,8 @@ SPEC CHECKSUMS:
   FBSDKShareKit: a42865f20ba2d1cc548c4d0f73ad22cff6377ddb
   Firebase: 2db60272f68ce40c7d47e5ae6eddc16977c65d4c
   JGProgressHUD: a45c1d16adddf7e38092ce3f0d71d3955d2de2ec
+  JSQMessagesViewController: ca11f86fa68ca70835f05e169df9244147c1dc40
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   MJRefresh: 0f6f5e8387970607c26080b44058b229a23065d7
   SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d
 
