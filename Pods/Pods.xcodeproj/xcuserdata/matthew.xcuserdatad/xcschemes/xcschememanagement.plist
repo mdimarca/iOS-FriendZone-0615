@@ -60,6 +60,11 @@
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
+		<key>Pods-Icebreaker-MDCSwipeToChoose.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
 		<key>Pods-Icebreaker-MJRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -99,7 +104,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>1DD8823F027B96BD32DC43C9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1E596206FB7C3AD74430BE27</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>38F6C853F827FE2C24C181B9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>421444BF4E2FB951ABF09423</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -109,7 +129,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>5D8E1AE9211C1F28EAC05310</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5E07749A255398CE8D2CFB2F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6B5993317B6F4BC05F5A1189</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6FB917AC24950BCD57A97512</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -124,7 +159,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>8360F6B4E353D8F8582B2B52</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>941D1655A0241A8B0944F194</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B8F9C304C99F2A854E01347A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -135,6 +180,26 @@
 			<true/>
 		</dict>
 		<key>D1693E418C727FF290CAB204</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D564ADDD62967C2D34167620</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F16CB71F08F91FBA43106221</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F5AC0D6F547A56D3F9361EE4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FF9F0F6E2F761E3EE2B5F2F1</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -15,6 +15,11 @@
 		0774D1241B6806B600F3BCF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0774D1231B6806B600F3BCF5 /* Images.xcassets */; };
 		0774D1271B6806B600F3BCF5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0774D1251B6806B600F3BCF5 /* LaunchScreen.xib */; };
 		0774D1331B6806B600F3BCF5 /* IcebreakerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774D1321B6806B600F3BCF5 /* IcebreakerTests.m */; };
+		3414BFFB1B691C3C00C72689 /* brownieCut.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3414BFFA1B691C3C00C72689 /* brownieCut.jpg */; };
+		3414BFFE1B69247A00C72689 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3414BFFD1B69247A00C72689 /* User.m */; };
+		3414C0011B69270600C72689 /* FacebookAPICalls.m in Sources */ = {isa = PBXBuildFile; fileRef = 3414C0001B69270600C72689 /* FacebookAPICalls.m */; };
+		3414C0041B692C5100C72689 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 3414C0031B692C5100C72689 /* Friend.m */; };
+		3414C0091B692D8700C72689 /* LikedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3414C0081B692D8700C72689 /* LikedObject.m */; };
 		BD8CF8D81B682452003CCC1F /* friendSwiperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8CF8D71B682452003CCC1F /* friendSwiperViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +48,15 @@
 		0774D1311B6806B600F3BCF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0774D1321B6806B600F3BCF5 /* IcebreakerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IcebreakerTests.m; sourceTree = "<group>"; };
 		0B7A84EEE3036B26319BDB8F /* Pods-Icebreaker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Icebreaker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Icebreaker/Pods-Icebreaker.release.xcconfig"; sourceTree = "<group>"; };
+		3414BFFA1B691C3C00C72689 /* brownieCut.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = brownieCut.jpg; path = ../../Downloads/brownieCut.jpg; sourceTree = "<group>"; };
+		3414BFFC1B69247A00C72689 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		3414BFFD1B69247A00C72689 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		3414BFFF1B69270600C72689 /* FacebookAPICalls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAPICalls.h; sourceTree = "<group>"; };
+		3414C0001B69270600C72689 /* FacebookAPICalls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAPICalls.m; sourceTree = "<group>"; };
+		3414C0021B692C5100C72689 /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
+		3414C0031B692C5100C72689 /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
+		3414C0071B692D8700C72689 /* LikedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikedObject.h; sourceTree = "<group>"; };
+		3414C0081B692D8700C72689 /* LikedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikedObject.m; sourceTree = "<group>"; };
 		4E1AE44FEE25BC5F99A90406 /* libPods-Icebreaker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Icebreaker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD8CF8D61B682452003CCC1F /* friendSwiperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = friendSwiperViewController.h; sourceTree = "<group>"; };
 		BD8CF8D71B682452003CCC1F /* friendSwiperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = friendSwiperViewController.m; sourceTree = "<group>"; };
@@ -71,6 +85,7 @@
 		0774D10A1B6806B600F3BCF5 = {
 			isa = PBXGroup;
 			children = (
+				3414BFFA1B691C3C00C72689 /* brownieCut.jpg */,
 				0774D1151B6806B600F3BCF5 /* Icebreaker */,
 				0774D12F1B6806B600F3BCF5 /* IcebreakerTests */,
 				0774D1141B6806B600F3BCF5 /* Products */,
@@ -98,6 +113,8 @@
 				BD8CF8D61B682452003CCC1F /* friendSwiperViewController.h */,
 				BD8CF8D71B682452003CCC1F /* friendSwiperViewController.m */,
 				0774D1201B6806B600F3BCF5 /* Main.storyboard */,
+				3414C0051B692C6100C72689 /* User Classes */,
+				3414C0061B692C7000C72689 /* API Calls */,
 				0774D1231B6806B600F3BCF5 /* Images.xcassets */,
 				0774D1251B6806B600F3BCF5 /* LaunchScreen.xib */,
 				0774D1161B6806B600F3BCF5 /* Supporting Files */,
@@ -129,6 +146,28 @@
 				0774D1311B6806B600F3BCF5 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3414C0051B692C6100C72689 /* User Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3414BFFC1B69247A00C72689 /* User.h */,
+				3414BFFD1B69247A00C72689 /* User.m */,
+				3414C0021B692C5100C72689 /* Friend.h */,
+				3414C0031B692C5100C72689 /* Friend.m */,
+				3414C0071B692D8700C72689 /* LikedObject.h */,
+				3414C0081B692D8700C72689 /* LikedObject.m */,
+			);
+			name = "User Classes";
+			sourceTree = "<group>";
+		};
+		3414C0061B692C7000C72689 /* API Calls */ = {
+			isa = PBXGroup;
+			children = (
+				3414BFFF1B69270600C72689 /* FacebookAPICalls.h */,
+				3414C0001B69270600C72689 /* FacebookAPICalls.m */,
+			);
+			name = "API Calls";
 			sourceTree = "<group>";
 		};
 		B505157BA738EE66A6D9F8D1 /* Pods */ = {
@@ -233,6 +272,7 @@
 				0774D1221B6806B600F3BCF5 /* Main.storyboard in Resources */,
 				0774D1271B6806B600F3BCF5 /* LaunchScreen.xib in Resources */,
 				0774D1241B6806B600F3BCF5 /* Images.xcassets in Resources */,
+				3414BFFB1B691C3C00C72689 /* brownieCut.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,9 +323,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3414C0091B692D8700C72689 /* LikedObject.m in Sources */,
+				3414BFFE1B69247A00C72689 /* User.m in Sources */,
+				3414C0041B692C5100C72689 /* Friend.m in Sources */,
 				BD8CF8D81B682452003CCC1F /* friendSwiperViewController.m in Sources */,
 				0774D11F1B6806B600F3BCF5 /* ViewController.m in Sources */,
 				0774D11C1B6806B600F3BCF5 /* AppDelegate.m in Sources */,
+				3414C0011B69270600C72689 /* FacebookAPICalls.m in Sources */,
 				0774D1191B6806B600F3BCF5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
