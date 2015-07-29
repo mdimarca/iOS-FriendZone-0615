@@ -7,8 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Firebase/Firebase.h>
 
 @interface ViewController : UIViewController
+
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSMutableArray *chat;
+@property (nonatomic, strong) Firebase *firebase;
+
+
+@property (strong, nonatomic) IBOutlet UIButton *nameButton;
+@property (strong, nonatomic) IBOutlet UITextField *field;
+@property (strong, nonatomic) IBOutlet UITableView *messageTableView;
 
 
 @end

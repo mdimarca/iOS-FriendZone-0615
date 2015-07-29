@@ -3,15 +3,21 @@
 
 target 'Icebreaker' do
 
+# Facebook Pods
 pod 'FBSDKCoreKit'
 pod 'FBSDKLoginKit' 
 pod 'FBSDKShareKit'
+
+# UI Pods
 pod 'CWStatusBarNotification'
-pod 'SSKeychain'
 pod 'MJRefresh'
 pod 'ChameleonFramework'
-pod 'AFNetworking'
 pod 'JGProgressHUD'
+
+# Networking Pods
+pod 'SSKeychain'
+pod 'AFNetworking'
+pod 'Firebase'
 
 end
 
