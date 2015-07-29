@@ -19,6 +19,7 @@ pod 'JSQMessagesViewController'
 pod 'SSKeychain'
 pod 'AFNetworking'
 pod 'Firebase'
+pod 'MDCSwipeToChoose'
 
 end
 
