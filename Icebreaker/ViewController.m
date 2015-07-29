@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import "friendSwiperViewController.h"
 
 @interface ViewController () <FBSDKLoginButtonDelegate>
 
@@ -21,19 +20,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     
-    //FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-    //loginButton.center = self.view.center;
-    //[self.view addSubview:loginButton];
+    NSLog(@"GETTING CALLED!!!!! ((((!(!(!(!(!(!(");
     
     self.loginButton.readPermissions = @[@"public_profile", @"email", @"user_friends"];
     self.loginButton.delegate = self;
-    
-    if ([FBSDKAccessToken currentAccessToken]) {
-        // segue to next view
-        [self performSegueWithIdentifier:@"loginSegue" sender:self];
-    }
+   
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,10 +48,22 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+    
+    NSLog(@"What is this: %@", segue.destinationViewController);
+    
     if ([[segue identifier] isEqualToString:@"loginSegue"]) {
-        UINavigationController *navController = [segue destinationViewController];
-        friendSwiperViewController *friendSwiperViewContollerThing = navController.viewControllers.firstObject;
+        
+        
+        
+        NSLog(@"Are we going to segue?");
+//        UINavigationController *navController = [segue destinationViewController];
+//        friendSwiperViewController *friendSwiperViewContollerThing = navController.viewControllers.firstObject;
     }
 }
 
+- (IBAction)testButton:(id)sender {
+    
+    [self performSegueWithIdentifier:@"loginSegue" sender:self];
+    
+}
 @end
