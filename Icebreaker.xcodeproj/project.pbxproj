@@ -10,11 +10,15 @@
 		05E9DC6D61D82DABBB004BB6 /* libPods-Icebreaker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1AE44FEE25BC5F99A90406 /* libPods-Icebreaker.a */; };
 		0774D1191B6806B600F3BCF5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774D1181B6806B600F3BCF5 /* main.m */; };
 		0774D11C1B6806B600F3BCF5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774D11B1B6806B600F3BCF5 /* AppDelegate.m */; };
-		0774D1221B6806B600F3BCF5 /* Nic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0774D1201B6806B600F3BCF5 /* Nic.storyboard */; };
+		0774D1221B6806B600F3BCF5 /* Matches.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0774D1201B6806B600F3BCF5 /* Matches.storyboard */; };
 		0774D1241B6806B600F3BCF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0774D1231B6806B600F3BCF5 /* Images.xcassets */; };
 		0774D1271B6806B600F3BCF5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0774D1251B6806B600F3BCF5 /* LaunchScreen.xib */; };
 		0774D1331B6806B600F3BCF5 /* IcebreakerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774D1321B6806B600F3BCF5 /* IcebreakerTests.m */; };
+		BD8CF8D81B682452003CCC1F /* friendSwiperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8CF8D71B682452003CCC1F /* friendSwiperViewController.m */; };
+		BD8CF8DB1B694260003CCC1F /* userProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8CF8DA1B694260003CCC1F /* userProfileViewController.m */; };
 		BD8CF8DE1B69517B003CCC1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD8CF8DC1B69517B003CCC1F /* Main.storyboard */; };
+		BD8CF8E11B6958B4003CCC1F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8CF8E01B6958B4003CCC1F /* LoginViewController.m */; };
+		BD8CF8E41B69650A003CCC1F /* LinkedStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8CF8E31B69650A003CCC1F /* LinkedStoryboardSegue.m */; };
 		E12BEA1E1B6925D50083860B /* MatchesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E12BEA1D1B6925D50083860B /* MatchesTableViewController.m */; };
 		E12BEA211B6928810083860B /* MatchesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E12BEA201B6928810083860B /* MatchesTableViewCell.m */; };
 		E12BEA241B692E040083860B /* MatchedUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E12BEA231B692E040083860B /* MatchedUserViewController.m */; };
@@ -38,7 +42,7 @@
 		0774D1181B6806B600F3BCF5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0774D11A1B6806B600F3BCF5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0774D11B1B6806B600F3BCF5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0774D1211B6806B600F3BCF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Nic.storyboard; sourceTree = "<group>"; };
+		0774D1211B6806B600F3BCF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Matches.storyboard; sourceTree = "<group>"; };
 		0774D1231B6806B600F3BCF5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0774D1261B6806B600F3BCF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		0774D12C1B6806B600F3BCF5 /* IcebreakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IcebreakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,7 +50,15 @@
 		0774D1321B6806B600F3BCF5 /* IcebreakerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IcebreakerTests.m; sourceTree = "<group>"; };
 		0B7A84EEE3036B26319BDB8F /* Pods-Icebreaker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Icebreaker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Icebreaker/Pods-Icebreaker.release.xcconfig"; sourceTree = "<group>"; };
 		4E1AE44FEE25BC5F99A90406 /* libPods-Icebreaker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Icebreaker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD8CF8D61B682452003CCC1F /* friendSwiperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = friendSwiperViewController.h; sourceTree = "<group>"; };
+		BD8CF8D71B682452003CCC1F /* friendSwiperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = friendSwiperViewController.m; sourceTree = "<group>"; };
+		BD8CF8D91B694260003CCC1F /* userProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userProfileViewController.h; sourceTree = "<group>"; };
+		BD8CF8DA1B694260003CCC1F /* userProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = userProfileViewController.m; sourceTree = "<group>"; };
 		BD8CF8DD1B69517B003CCC1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BD8CF8DF1B6958B4003CCC1F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		BD8CF8E01B6958B4003CCC1F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		BD8CF8E21B69650A003CCC1F /* LinkedStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedStoryboardSegue.h; sourceTree = "<group>"; };
+		BD8CF8E31B69650A003CCC1F /* LinkedStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkedStoryboardSegue.m; sourceTree = "<group>"; };
 		C1B50C505EC89CE12AE138C8 /* Pods-Icebreaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Icebreaker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Icebreaker/Pods-Icebreaker.debug.xcconfig"; sourceTree = "<group>"; };
 		E12BEA1C1B6925D50083860B /* MatchesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchesTableViewController.h; sourceTree = "<group>"; };
 		E12BEA1D1B6925D50083860B /* MatchesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchesTableViewController.m; sourceTree = "<group>"; };
@@ -117,10 +129,6 @@
 				E12BEA061B6912120083860B /* Controller */,
 				E12BEA051B69120B0083860B /* Views */,
 				E12BEA031B6910CE0083860B /* Models */,
-				0774D11A1B6806B600F3BCF5 /* AppDelegate.h */,
-				0774D11B1B6806B600F3BCF5 /* AppDelegate.m */,
-				0774D1231B6806B600F3BCF5 /* Images.xcassets */,
-				0774D1251B6806B600F3BCF5 /* LaunchScreen.xib */,
 				0774D1161B6806B600F3BCF5 /* Supporting Files */,
 			);
 			path = Icebreaker;
@@ -129,6 +137,9 @@
 		0774D1161B6806B600F3BCF5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0774D11A1B6806B600F3BCF5 /* AppDelegate.h */,
+				0774D11B1B6806B600F3BCF5 /* AppDelegate.m */,
+				0774D1231B6806B600F3BCF5 /* Images.xcassets */,
 				0774D1171B6806B600F3BCF5 /* Info.plist */,
 				0774D1181B6806B600F3BCF5 /* main.m */,
 			);
@@ -171,6 +182,11 @@
 		E12BEA051B69120B0083860B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E12BEA1F1B6928810083860B /* MatchesTableViewCell.h */,
+				E12BEA201B6928810083860B /* MatchesTableViewCell.m */,
+				BD8CF8DC1B69517B003CCC1F /* Main.storyboard */,
+				0774D1201B6806B600F3BCF5 /* Matches.storyboard */,
+				0774D1251B6806B600F3BCF5 /* LaunchScreen.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -178,14 +194,16 @@
 		E12BEA061B6912120083860B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				BD8CF8DC1B69517B003CCC1F /* Main.storyboard */,
+				BD8CF8DF1B6958B4003CCC1F /* LoginViewController.h */,
+				BD8CF8E01B6958B4003CCC1F /* LoginViewController.m */,
 				E12BEA1C1B6925D50083860B /* MatchesTableViewController.h */,
 				E12BEA1D1B6925D50083860B /* MatchesTableViewController.m */,
-				E12BEA1F1B6928810083860B /* MatchesTableViewCell.h */,
-				E12BEA201B6928810083860B /* MatchesTableViewCell.m */,
 				E12BEA221B692E040083860B /* MatchedUserViewController.h */,
 				E12BEA231B692E040083860B /* MatchedUserViewController.m */,
-				0774D1201B6806B600F3BCF5 /* Nic.storyboard */,
+				BD8CF8D91B694260003CCC1F /* userProfileViewController.h */,
+				BD8CF8DA1B694260003CCC1F /* userProfileViewController.m */,
+				BD8CF8D61B682452003CCC1F /* friendSwiperViewController.h */,
+				BD8CF8D71B682452003CCC1F /* friendSwiperViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -195,6 +213,8 @@
 			children = (
 				E12BEA251B6940A60083860B /* iCarousel.h */,
 				E12BEA261B6940A60083860B /* iCarousel.m */,
+				BD8CF8E21B69650A003CCC1F /* LinkedStoryboardSegue.h */,
+				BD8CF8E31B69650A003CCC1F /* LinkedStoryboardSegue.m */,
 			);
 			name = "Other Classes";
 			sourceTree = "<group>";
@@ -301,7 +321,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0774D1221B6806B600F3BCF5 /* Nic.storyboard in Resources */,
+				0774D1221B6806B600F3BCF5 /* Matches.storyboard in Resources */,
 				0774D1271B6806B600F3BCF5 /* LaunchScreen.xib in Resources */,
 				0774D1241B6806B600F3BCF5 /* Images.xcassets in Resources */,
 				BD8CF8DE1B69517B003CCC1F /* Main.storyboard in Resources */,
@@ -359,6 +379,10 @@
 				E12BEA1E1B6925D50083860B /* MatchesTableViewController.m in Sources */,
 				E12BEA211B6928810083860B /* MatchesTableViewCell.m in Sources */,
 				E12BEA271B6940A60083860B /* iCarousel.m in Sources */,
+				BD8CF8D81B682452003CCC1F /* friendSwiperViewController.m in Sources */,
+				BD8CF8E41B69650A003CCC1F /* LinkedStoryboardSegue.m in Sources */,
+				BD8CF8E11B6958B4003CCC1F /* LoginViewController.m in Sources */,
+				BD8CF8DB1B694260003CCC1F /* userProfileViewController.m in Sources */,
 				0774D11C1B6806B600F3BCF5 /* AppDelegate.m in Sources */,
 				0774D1191B6806B600F3BCF5 /* main.m in Sources */,
 			);
@@ -383,12 +407,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0774D1201B6806B600F3BCF5 /* Nic.storyboard */ = {
+		0774D1201B6806B600F3BCF5 /* Matches.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				0774D1211B6806B600F3BCF5 /* Base */,
 			);
-			name = Nic.storyboard;
+			name = Matches.storyboard;
 			sourceTree = "<group>";
 		};
 		0774D1251B6806B600F3BCF5 /* LaunchScreen.xib */ = {
