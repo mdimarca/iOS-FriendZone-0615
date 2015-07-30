@@ -9,8 +9,11 @@
 #import "userProfileViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "DataStore.h"
 
 @interface userProfileViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 
 @end
 
@@ -19,6 +22,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    DataStore *dataStore = [DataStore sharedDataStore];
+    
+    self.userNameLabel.text = dataStore.user.name;
+    NSLog(@"%@", dataStore.user.name);
 }
 
 - (void)didReceiveMemoryWarning {
