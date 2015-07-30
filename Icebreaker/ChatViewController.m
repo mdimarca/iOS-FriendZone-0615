@@ -7,6 +7,7 @@
 //
 
 #import "ChatViewController.h"
+#import "DataStore.h"
 #define kFirechat @"https://icebreakerchat.firebaseio.com"
 
 
@@ -29,7 +30,13 @@
     self.firebase = [[Firebase alloc] initWithUrl:kFirechat];
     
     // Generate number for username
-    self.name = [NSString stringWithFormat:@"User%d", arc4random() % 1000];
+    
+    DataStore *dataStore = [DataStore sharedDataStore];
+    
+    
+    self.name = [NSString stringWithFormat:@"%@", dataStore.user.name];
+    
+    
     [self.nameField setTitle:self.name forState:UIControlStateNormal];
     
     // Sets new message location
