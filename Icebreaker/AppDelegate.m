@@ -36,7 +36,8 @@
     
     if ([FBSDKAccessToken currentAccessToken]) {
         
-        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"/me" parameters:@{@"fields": @"id,email,first_name,last_name,birthday,devices,inspirational_people,location,bio,friendlists"}]
+        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"/me"
+                                           parameters:@{@"fields": @"id, email, first_name, last_name, birthday, location, bio, friendlists"}]
          startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
              if (!error) {
                  NSLog(@"fetched user:%@", result);
