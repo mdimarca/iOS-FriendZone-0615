@@ -15,7 +15,6 @@
 		0774D1271B6806B600F3BCF5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0774D1251B6806B600F3BCF5 /* LaunchScreen.xib */; };
 		0774D1331B6806B600F3BCF5 /* IcebreakerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774D1321B6806B600F3BCF5 /* IcebreakerTests.m */; };
 		0774D1521B69478A00F3BCF5 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774D1511B69478A00F3BCF5 /* TableView.m */; };
-		3414BFFB1B691C3C00C72689 /* brownieCut.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3414BFFA1B691C3C00C72689 /* brownieCut.jpg */; };
 		3414BFFE1B69247A00C72689 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3414BFFD1B69247A00C72689 /* User.m */; };
 		3414C0011B69270600C72689 /* FacebookAPICalls.m in Sources */ = {isa = PBXBuildFile; fileRef = 3414C0001B69270600C72689 /* FacebookAPICalls.m */; };
 		3414C0041B692C5100C72689 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 3414C0031B692C5100C72689 /* Friend.m */; };
@@ -25,6 +24,9 @@
 		BD8CF8DE1B69517B003CCC1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD8CF8DC1B69517B003CCC1F /* Main.storyboard */; };
 		BD8CF8E11B6958B4003CCC1F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8CF8E01B6958B4003CCC1F /* LoginViewController.m */; };
 		BD8CF8E41B69650A003CCC1F /* LinkedStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8CF8E31B69650A003CCC1F /* LinkedStoryboardSegue.m */; };
+		BD8CF8E61B698825003CCC1F /* taylor_swift.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD8CF8E51B698825003CCC1F /* taylor_swift.jpg */; };
+		BD8CF8E91B698ADF003CCC1F /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8CF8E81B698ADF003CCC1F /* ChatViewController.m */; };
+		BD8CF8EB1B698B98003CCC1F /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD8CF8EA1B698B98003CCC1F /* Chat.storyboard */; };
 		E12BEA1E1B6925D50083860B /* MatchesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E12BEA1D1B6925D50083860B /* MatchesTableViewController.m */; };
 		E12BEA211B6928810083860B /* MatchesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E12BEA201B6928810083860B /* MatchesTableViewCell.m */; };
 		E12BEA241B692E040083860B /* MatchedUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E12BEA231B692E040083860B /* MatchedUserViewController.m */; };
@@ -57,7 +59,6 @@
 		0774D1501B69478A00F3BCF5 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
 		0774D1511B69478A00F3BCF5 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
 		0B7A84EEE3036B26319BDB8F /* Pods-Icebreaker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Icebreaker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Icebreaker/Pods-Icebreaker.release.xcconfig"; sourceTree = "<group>"; };
-		3414BFFA1B691C3C00C72689 /* brownieCut.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = brownieCut.jpg; path = ../../Downloads/brownieCut.jpg; sourceTree = "<group>"; };
 		3414BFFC1B69247A00C72689 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		3414BFFD1B69247A00C72689 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		3414BFFF1B69270600C72689 /* FacebookAPICalls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAPICalls.h; sourceTree = "<group>"; };
@@ -76,6 +77,10 @@
 		BD8CF8E01B6958B4003CCC1F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		BD8CF8E21B69650A003CCC1F /* LinkedStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedStoryboardSegue.h; sourceTree = "<group>"; };
 		BD8CF8E31B69650A003CCC1F /* LinkedStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkedStoryboardSegue.m; sourceTree = "<group>"; };
+		BD8CF8E51B698825003CCC1F /* taylor_swift.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = taylor_swift.jpg; sourceTree = "<group>"; };
+		BD8CF8E71B698ADF003CCC1F /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		BD8CF8E81B698ADF003CCC1F /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+		BD8CF8EA1B698B98003CCC1F /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		C1B50C505EC89CE12AE138C8 /* Pods-Icebreaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Icebreaker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Icebreaker/Pods-Icebreaker.debug.xcconfig"; sourceTree = "<group>"; };
 		E12BEA1C1B6925D50083860B /* MatchesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchesTableViewController.h; sourceTree = "<group>"; };
 		E12BEA1D1B6925D50083860B /* MatchesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchesTableViewController.m; sourceTree = "<group>"; };
@@ -122,7 +127,6 @@
 		0774D10A1B6806B600F3BCF5 = {
 			isa = PBXGroup;
 			children = (
-				3414BFFA1B691C3C00C72689 /* brownieCut.jpg */,
 				0774D1151B6806B600F3BCF5 /* Icebreaker */,
 				0774D12F1B6806B600F3BCF5 /* IcebreakerTests */,
 				0774D1141B6806B600F3BCF5 /* Products */,
@@ -143,19 +147,8 @@
 		0774D1151B6806B600F3BCF5 /* Icebreaker */ = {
 			isa = PBXGroup;
 			children = (
-				0774D11A1B6806B600F3BCF5 /* AppDelegate.h */,
-				0774D11B1B6806B600F3BCF5 /* AppDelegate.m */,
-				0774D11D1B6806B600F3BCF5 /* ViewController.h */,
-				0774D11E1B6806B600F3BCF5 /* ViewController.m */,
-				0774D1501B69478A00F3BCF5 /* TableView.h */,
-				0774D1511B69478A00F3BCF5 /* TableView.m */,
-				BD8CF8D61B682452003CCC1F /* friendSwiperViewController.h */,
-				BD8CF8D71B682452003CCC1F /* friendSwiperViewController.m */,
-				0774D1201B6806B600F3BCF5 /* Main.storyboard */,
 				3414C0051B692C6100C72689 /* User Classes */,
 				3414C0061B692C7000C72689 /* API Calls */,
-				0774D1231B6806B600F3BCF5 /* Images.xcassets */,
-				0774D1251B6806B600F3BCF5 /* LaunchScreen.xib */,
 				E12BEA291B6940B20083860B /* Other Classes */,
 				E12BEA061B6912120083860B /* Controller */,
 				E12BEA051B69120B0083860B /* Views */,
@@ -168,9 +161,8 @@
 		0774D1161B6806B600F3BCF5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0774D11A1B6806B600F3BCF5 /* AppDelegate.h */,
-				0774D11B1B6806B600F3BCF5 /* AppDelegate.m */,
 				0774D1231B6806B600F3BCF5 /* Images.xcassets */,
+				BD8CF8E51B698825003CCC1F /* taylor_swift.jpg */,
 				0774D1171B6806B600F3BCF5 /* Info.plist */,
 				0774D1181B6806B600F3BCF5 /* main.m */,
 			);
@@ -197,6 +189,8 @@
 		3414C0051B692C6100C72689 /* User Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0774D11A1B6806B600F3BCF5 /* AppDelegate.h */,
+				0774D11B1B6806B600F3BCF5 /* AppDelegate.m */,
 				3414BFFC1B69247A00C72689 /* User.h */,
 				3414BFFD1B69247A00C72689 /* User.m */,
 				3414C0021B692C5100C72689 /* Friend.h */,
@@ -235,11 +229,14 @@
 		E12BEA051B69120B0083860B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0774D1501B69478A00F3BCF5 /* TableView.h */,
+				0774D1511B69478A00F3BCF5 /* TableView.m */,
 				E12BEA1F1B6928810083860B /* MatchesTableViewCell.h */,
 				E12BEA201B6928810083860B /* MatchesTableViewCell.m */,
-				BD8CF8DC1B69517B003CCC1F /* Main.storyboard */,
-				0774D1201B6806B600F3BCF5 /* Matches.storyboard */,
 				0774D1251B6806B600F3BCF5 /* LaunchScreen.xib */,
+				BD8CF8EA1B698B98003CCC1F /* Chat.storyboard */,
+				0774D1201B6806B600F3BCF5 /* Matches.storyboard */,
+				BD8CF8DC1B69517B003CCC1F /* Main.storyboard */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -247,6 +244,10 @@
 		E12BEA061B6912120083860B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BD8CF8D61B682452003CCC1F /* friendSwiperViewController.h */,
+				BD8CF8D71B682452003CCC1F /* friendSwiperViewController.m */,
+				BD8CF8E71B698ADF003CCC1F /* ChatViewController.h */,
+				BD8CF8E81B698ADF003CCC1F /* ChatViewController.m */,
 				BD8CF8DF1B6958B4003CCC1F /* LoginViewController.h */,
 				BD8CF8E01B6958B4003CCC1F /* LoginViewController.m */,
 				E12BEA1C1B6925D50083860B /* MatchesTableViewController.h */,
@@ -255,8 +256,6 @@
 				E12BEA231B692E040083860B /* MatchedUserViewController.m */,
 				BD8CF8D91B694260003CCC1F /* userProfileViewController.h */,
 				BD8CF8DA1B694260003CCC1F /* userProfileViewController.m */,
-				BD8CF8D61B682452003CCC1F /* friendSwiperViewController.h */,
-				BD8CF8D71B682452003CCC1F /* friendSwiperViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -374,10 +373,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD8CF8EB1B698B98003CCC1F /* Chat.storyboard in Resources */,
+				BD8CF8E61B698825003CCC1F /* taylor_swift.jpg in Resources */,
 				0774D1221B6806B600F3BCF5 /* Matches.storyboard in Resources */,
 				0774D1271B6806B600F3BCF5 /* LaunchScreen.xib in Resources */,
 				0774D1241B6806B600F3BCF5 /* Images.xcassets in Resources */,
-				3414BFFB1B691C3C00C72689 /* brownieCut.jpg in Resources */,
 				BD8CF8DE1B69517B003CCC1F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,7 +429,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0774D11F1B6806B600F3BCF5 /* ViewController.m in Sources */,
 				0774D1521B69478A00F3BCF5 /* TableView.m in Sources */,
 				3414C0091B692D8700C72689 /* LikedObject.m in Sources */,
 				3414BFFE1B69247A00C72689 /* User.m in Sources */,
@@ -440,6 +439,7 @@
 				E12BEA271B6940A60083860B /* iCarousel.m in Sources */,
 				BD8CF8D81B682452003CCC1F /* friendSwiperViewController.m in Sources */,
 				BD8CF8E41B69650A003CCC1F /* LinkedStoryboardSegue.m in Sources */,
+				BD8CF8E91B698ADF003CCC1F /* ChatViewController.m in Sources */,
 				BD8CF8E11B6958B4003CCC1F /* LoginViewController.m in Sources */,
 				BD8CF8DB1B694260003CCC1F /* userProfileViewController.m in Sources */,
 				0774D11C1B6806B600F3BCF5 /* AppDelegate.m in Sources */,

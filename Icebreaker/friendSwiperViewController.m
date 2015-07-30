@@ -34,7 +34,8 @@
     
     MDCSwipeToChooseView *view = [[MDCSwipeToChooseView alloc] initWithFrame:self.view.bounds
                                                                      options:options];
-    view.imageView.image = [UIImage imageNamed:@"brownieCut.jpg"];
+
+    view.imageView.image = [UIImage imageNamed:@"taylor_swift.jpg"];
     [self.view addSubview:view];
 }
 

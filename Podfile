@@ -9,17 +9,11 @@ pod 'FBSDKLoginKit'
 pod 'FBSDKShareKit'
 
 # UI Pods
-pod 'CWStatusBarNotification'
-pod 'MJRefresh'
-pod 'ChameleonFramework'
-pod 'JGProgressHUD'
+pod 'MDCSwipeToChoose'
 pod 'JSQMessagesViewController'
 
 # Networking Pods
-pod 'SSKeychain'
-pod 'AFNetworking'
 pod 'Firebase'
-pod 'MDCSwipeToChoose'
 
 end
 

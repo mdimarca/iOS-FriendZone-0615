@@ -10,7 +10,7 @@
 
 @implementation FacebookAPICalls
 
-//-(void)getUserInformationWithCompletion:(void (^)(NSString *name, NSNumber *age, NSMutableArray *pictures))completionBlock {
+-(void)getUserInformationWithCompletion:(void (^)(NSString *name, NSNumber *age, NSMutableArray *pictures))completionBlock {
 //
 //    [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{ @"fields" : @"id,name,picture.width(100).height(100)"}]
 //     startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
@@ -28,7 +28,7 @@
 //             
 //         }
 //     }];
-//
-//}
+
+}
 
 @end
