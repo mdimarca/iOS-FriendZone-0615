@@ -6,9 +6,11 @@
 //  Copyright (c) 2015 ChickenBiscut. All rights reserved.
 //
 
-#import "AppDelegate.h"
+
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "AppDelegate.h"
+#import "FacebookAPICalls.h"
 
 @interface AppDelegate ()
 
@@ -30,20 +32,13 @@
     // Override point for customization after application launch.
     [FBSDKLoginButton class];
     
-    
-   BOOL shouldReturn =  [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
-
+    BOOL shouldReturn =  [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     
     if ([FBSDKAccessToken currentAccessToken]) {
         
-        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"/me"
-                                           parameters:@{@"fields": @"id, email, first_name, last_name, birthday, location, bio, friendlists"}]
-         startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-             if (!error) {
-                 NSLog(@"fetched user:%@", result);
-             }
-         }];
-        
+        [FacebookAPICalls getUserInformationWithCompletion:^(User *user) {
+            NSLog(@"%@", user.name);
+        }];
         
         self.window.hidden = NO;
         [self.window.rootViewController performSegueWithIdentifier:@"loginSegue" sender:self.window.rootViewController];
@@ -51,8 +46,6 @@
         
         //return shouldReturn;
     }
-    
-    
     
     return shouldReturn;
 }
