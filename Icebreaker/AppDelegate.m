@@ -16,18 +16,19 @@
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                                          openURL:url
-                                                sourceApplication:sourceApplication
-                                                       annotation:annotation];
-}
+//- (BOOL)application:(UIApplication *)application
+//            openURL:(NSURL *)url
+//  sourceApplication:(NSString *)sourceApplication
+//         annotation:(id)annotation {
+//    return [[FBSDKApplicationDelegate sharedInstance] application:application
+//                                                          openURL:url
+//                                                sourceApplication:sourceApplication
+//                                                       annotation:annotation];
+//}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
     [FBSDKLoginButton class];
     
     
@@ -43,16 +44,14 @@
                  NSLog(@"fetched user:%@", result);
              }
          }];
-        
+    
         
         self.window.hidden = NO;
         [self.window.rootViewController performSegueWithIdentifier:@"loginSegue" sender:self.window.rootViewController];
         [self.window makeKeyWindow];
         
-        //return shouldReturn;
+        return shouldReturn;
     }
-    
-    
     
     return shouldReturn;
 }

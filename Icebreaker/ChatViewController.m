@@ -7,21 +7,21 @@
 //
 
 #import "ChatViewController.h"
-#define kFirechat @"icebreakerchat.firebaseio.com"
+#define kFirechat @"https://icebreakerchat.firebaseio.com"
 
 
-@interface ChatViewController ()
+@interface ChatViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic) BOOL newMessagesOnTop;
 
 @end
 
-@implementation ChatViewController
+@implementation ChatViewController 
 
 #pragma mark  - Setup
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     // Initialize array that will store chat messages
     self.chat = [[NSMutableArray alloc] init];
     
@@ -30,7 +30,7 @@
     
     // Generate number for username
     self.name = [NSString stringWithFormat:@"User%d", arc4random() % 1000];
-    [self.nameButton setTitle:self.name forState:UIControlStateNormal];
+    [self.nameField setTitle:self.name forState:UIControlStateNormal];
     
     // Sets new message location
     self.newMessagesOnTop = YES;
@@ -49,39 +49,40 @@
         
         // Reload the tableview
         if (!initialAdds) {
-            [self.messageTableView reloadData];
+            [self.tableView reloadData];
         }
     }];
     
     [self.firebase observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         // Reload the table view so that the intial messages show up
-        [self.messageTableView reloadData];
+        [self.tableView reloadData];
         initialAdds = NO;
     }];
+
+
+
+//    // Creates a reference to a Firebase database URL
+//    Firebase *myRootReference = [[Firebase alloc] initWithUrl:@"https://icebreakerchat.firebaseio.com"];
+//    
+//    // Writes data to Firebase
+//    [myRootReference setValue:@"Second hard coding data send test"];
+//    
+//    // Reads data and reacts to changes
+//    [myRootReference observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+//        NSLog (@"%@ -> %@", snapshot.key, snapshot.value);
+//    }];
+//    
+//    [myRootReference createUser:@"email@email.com" password:@"password" withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
+//        if (error) {
+//            NSLog (@"Error: %@", error);
+//        } else {
+//            NSString *uid = [result objectForKey:@"uid"];
+//            NSLog(@"Success creating user account with uid: %@", uid);
+//        }
+//    }];
+
 }
 
-/*
-    // Creates a reference to a Firebase database URL
-    Firebase *myRootReference = [[Firebase alloc] initWithUrl:@"https://icebreakerchat.firebaseio.com"];
-    
-    // Writes data to Firebase
-    [myRootReference setValue:@"Successfully sent data to Firebase!"];
-    
-    // Reads data and reacts to changes
-    [myRootReference observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        NSLog (@"%@ -> %@", snapshot.key, snapshot.value);
-    }];
-    
-    [myRootReference createUser:@"email@email.com" password:@"password" withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
-        if (error) {
-            NSLog (@"Error: %@", error);
-        } else {
-            NSString *uid = [result objectForKey:@"uid"];
-            NSLog(@"Success creating user account with uid: %@", uid);
-        }
-    }];
-}
-*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -92,13 +93,13 @@
 #pragma mark  - Text Field
 // This method is called when the user enters text in the text field.
 // The chat message is added to our Firebase
+
 -(BOOL)textFieldShouldReturn:(UITextField *)aTextField {
     [aTextField resignFirstResponder];
     [[self.firebase childByAutoId] setValue:@{ @"name" : self.name, @"text" : aTextField.text }];
     
     [aTextField setText:@""];
     return NO;
-    
 }
 
 
@@ -133,9 +134,13 @@
     return height;
 }
 
+
 -(UITableViewCell *) tableView:(UITableView *)table cellForRowAtIndexPath:(NSIndexPath *)index{
     static NSString *cellIdentifier = @"Cell";
     UITableViewCell *cell = [table dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    NSLog (@"Cell for row at index path is being called!");
+
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
@@ -221,3 +226,4 @@
 
 
 @end
+
