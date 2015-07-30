@@ -7,11 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FBSDKProfilePictureView.h"
-#import "FBSDKGraphRequest.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "User.h"
+
 
 @interface FacebookAPICalls : NSObject
 
--(void)getUserInformationWithCompletion:(void (^)(NSString *name, NSNumber *age, NSMutableArray *pictures))completionBlock;
++ (void)getUserInformationWithCompletion:(void (^)(User *user))completionBlock;
 
 @end

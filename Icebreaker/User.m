@@ -10,12 +10,21 @@
 
 @implementation User
 
--(instancetype)initWith:(NSString *)name gender:(NSString *)gender age:(NSNumber *)age pictures:(NSMutableArray *)pictures aboutInformation:(NSString *)aboutInformation matches:(NSMutableArray *)matches friends:(NSMutableArray *)friends likes:(NSMutableArray *)likes {
+-(instancetype)initWithName:(NSString *)name
+                 facebookID:(NSString *)facebookID
+                     gender:(NSString *)gender
+//                        age:(NSNumber *)age
+                   pictures:(NSMutableArray *)pictures
+           aboutInformation:(NSString *)aboutInformation
+                    matches:(NSMutableArray *)matches
+                    friends:(NSMutableArray *)friends
+                      likes:(NSMutableArray *)likes {
     self = [super init];
     if (self) {
         _name = name;
+        _facebookID = facebookID;
         _gender = gender;
-        _age = age;
+//        _age = age;
         _pictures = pictures;
         _aboutInformation = aboutInformation;
         _matches = matches;
