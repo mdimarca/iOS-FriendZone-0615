@@ -25,7 +25,7 @@
     //Populate userPictures Array
     self.userPictures = @[@1,@2,@3,@4,@5];
     
-    self.iCarousel.type = iCarouselTypeLinear;
+    self.iCarousel.type = iCarouselTypeRotary;
     
     self.iCarousel.delegate = self;
     self.iCarousel.dataSource = self;
