@@ -34,7 +34,7 @@
     DataStore *dataStore = [DataStore sharedDataStore];
     
     
-    self.name = [NSString stringWithFormat:@"%@", dataStore.user.name];
+    self.name = [NSString stringWithFormat:@"%@", [NSString stringWithFormat:@"%@", dataStore.user.firstName]];
     
     
     [self.nameField setTitle:self.name forState:UIControlStateNormal];

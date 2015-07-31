@@ -17,7 +17,7 @@
 
 + (void)getUserInformationWithCompletion:(void (^)(User *user))completionBlock {
     
-    NSDictionary *params = @{ @"fields" : @"id, first_name, last_name, gender, picture.width(100).height(100)" };
+    NSDictionary *params = @{ @"fields" : @"id, first_name, last_name, gender, picture.width(100).height(100), cover, bio" };
     
     FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:@"/me" parameters:params];
     
@@ -25,15 +25,24 @@
         if (!error) {
             NSLog(@"fetched user:%@", result);
             
-            NSString *name = [NSString stringWithFormat:@"%@ %@", result[@"first_name"], result[@"last_name"]];
+            NSString *firstName = result[@"first_name"];
+            NSString *lastName = result[@"last_name"];
             NSString *facebookID = result[@"id"];
             NSString *gender = result[@"gender"];
+            NSString *aboutInformation = result[@"bio"];
+            
+            NSURL *coverURL = [NSURL URLWithString:result[@"cover"][@"source"]];
+            NSData *coverData = [NSData dataWithContentsOfURL:coverURL];
+            UIImage *coverPhoto = [UIImage imageWithData:coverData];
             
             DataStore *dataManager = [DataStore sharedDataStore];
             
-            dataManager.user.name = name;
+            dataManager.user.firstName = firstName;
+            dataManager.user.lastName = lastName;
             dataManager.user.facebookID = facebookID;
             dataManager.user.gender = gender;
+            dataManager.user.coverPhoto = coverPhoto;
+            dataManager.user.aboutInformation= aboutInformation;
             
             
             completionBlock(dataManager.user);

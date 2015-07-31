@@ -7,13 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface User : NSObject
 
 @property (strong, nonatomic) NSString *facebookID;
-@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *firstName;
+@property (strong, nonatomic) NSString *lastName;
 @property (strong, nonatomic) NSString *gender;
-//@property (strong, nonatomic) NSNumber *age;
+@property (strong, nonatomic) UIImage *coverPhoto;
 @property (strong, nonatomic) NSMutableArray *pictures;
 @property (strong, nonatomic) NSString *aboutInformation;
 @property (strong, nonatomic) NSMutableArray *matches;
@@ -22,14 +24,15 @@
 
 //@property (strong, nonatomic) JSQMessages *messages;
 
--(instancetype)initWithName:(NSString *)name
-                 facebookID:(NSString *)facebookID
-                     gender:(NSString *)gender
-//                        age:(NSNumber *)age
-                   pictures:(NSMutableArray *)pictures
-           aboutInformation:(NSString *)aboutInformation
-                    matches:(NSMutableArray *)matches
-                    friends:(NSMutableArray *)friends
-                      likes:(NSMutableArray *)likes;
+-(instancetype)initWithFirstName:(NSString *)firstName
+                        lastName:(NSString *)lastName
+                      facebookID:(NSString *)facebookID
+                          gender:(NSString *)gender
+                      coverPhoto:(UIImage *)coverPhoto
+                        pictures:(NSMutableArray *)pictures
+                aboutInformation:(NSString *)aboutInformation
+                         matches:(NSMutableArray *)matches
+                         friends:(NSMutableArray *)friends
+                           likes:(NSMutableArray *)likes;
 
 @end

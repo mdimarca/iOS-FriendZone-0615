@@ -23,7 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    self.loginButton.readPermissions = @[@"public_profile", @"email", @"user_friends"];
+    self.loginButton.readPermissions = @[@"public_profile", @"user_about_me", @"user_friends"];
     self.loginButton.delegate = self;
     
 }

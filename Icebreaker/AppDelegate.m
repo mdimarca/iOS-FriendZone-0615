@@ -38,7 +38,7 @@
     if ([FBSDKAccessToken currentAccessToken]) {
 
         [FacebookAPICalls getUserInformationWithCompletion:^(User *user) {
-            NSLog(@"%@", user.name);
+            NSLog(@"Got user info: %@", user.firstName);
         }];
         
         self.window.hidden = NO;
