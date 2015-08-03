@@ -14,6 +14,9 @@ pod 'JSQMessagesViewController'
 
 # Networking Pods
 pod 'Firebase'
+pod 'Parse'
+pod 'Bolts'
+pod 'ParseFacebookUtilsV4'
 
 end
 

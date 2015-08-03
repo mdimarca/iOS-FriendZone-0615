@@ -11,6 +11,8 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "AppDelegate.h"
 #import "FacebookAPICalls.h"
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+#import <Parse.h>
 
 @interface AppDelegate ()
 
@@ -29,26 +31,48 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
     
-    [FBSDKLoginButton class];
     
-    BOOL shouldReturn =  [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
-    
-    if ([FBSDKAccessToken currentAccessToken]) {
 
-        [FacebookAPICalls getUserInformationWithCompletion:^(User *user) {
-            NSLog(@"Got user info: %@", user.firstName);
-        }];
-        
-        self.window.hidden = NO;
-        [self.window.rootViewController performSegueWithIdentifier:@"loginSegue" sender:self.window.rootViewController];
-        [self.window makeKeyWindow];
-        
-        return shouldReturn;
-    }
+    [Parse setApplicationId:@"P6AzSHqR4zZp5vNRbraT7410jwGQOEbvnriCaIfb" clientKey:@"QbxlO8eS7vRSIDtzq91yksmJJoxO4w4oOF2SJDl2"];
+    [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
     
-    return shouldReturn;
+    
+    
+//    [PFFacebookUtils logInInBackgroundWithReadPermissions:@[ @"publish_actions" ] block:^(PFUser *user, NSError *error) {
+//        if (!user) {
+//            NSLog(@"Uh oh. The user cancelled the Facebook login.");
+//        } else if (user.isNew) {
+//            NSLog(@"User signed up and logged in through Facebook!");
+//        } else {
+//            NSLog(@"User logged in through Facebook!");
+//        }
+//    }];
+    
+    
+    
+    
+    
+    
+    
+//    [FBSDKLoginButton class];
+//    
+//    BOOL shouldReturn =  [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+//    
+//    if ([FBSDKAccessToken currentAccessToken]) {
+//
+//        [FacebookAPICalls getUserInformationWithCompletion:^(User *user) {
+//            NSLog(@"Got user info: %@", user.firstName);
+//        }];
+//        
+//        self.window.hidden = NO;
+//        [self.window.rootViewController performSegueWithIdentifier:@"loginSegue" sender:self.window.rootViewController];
+//        [self.window makeKeyWindow];
+//        
+//        return shouldReturn;
+//    }
+    
+    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
