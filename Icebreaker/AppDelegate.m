@@ -13,6 +13,7 @@
 #import "FacebookAPICalls.h"
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 #import <Parse.h>
+#import "Constants.h"
 
 @interface AppDelegate ()
 
@@ -34,7 +35,9 @@
     
     
 
-    [Parse setApplicationId:@"P6AzSHqR4zZp5vNRbraT7410jwGQOEbvnriCaIfb" clientKey:@"QbxlO8eS7vRSIDtzq91yksmJJoxO4w4oOF2SJDl2"];
+    [Parse setApplicationId:PARSE_APP_ID
+                  clientKey:PARSE_CLIENT_KEY];
+    
     [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
     
     

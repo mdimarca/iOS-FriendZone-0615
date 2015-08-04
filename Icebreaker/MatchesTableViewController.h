@@ -2,7 +2,7 @@
 //  MatchesTableViewController.h
 //  Icebreaker
 //
-//  Created by Nicholas Ang on 7/29/15.
+//  Created by Gan Chau on 8/4/15.
 //  Copyright (c) 2015 ChickenBiscut. All rights reserved.
 //
 

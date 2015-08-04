@@ -14,9 +14,9 @@
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 
 
-@interface LoginViewController () <FBSDKLoginButtonDelegate>
+@interface LoginViewController () //<FBSDKLoginButtonDelegate>
 
-@property (weak, nonatomic) IBOutlet FBSDKLoginButton *loginButton;
+//@property (weak, nonatomic) IBOutlet FBSDKLoginButton *loginButton;
 
 @end
 
@@ -73,13 +73,13 @@
             } else {
                 NSLog(@"User logged in through Facebook.");
             }
-            [PFFacebookUtils linkUserInBackground:[PFUser currentUser]
-                           withPublishPermissions:@[ @"publish_actions"]
-                                            block:^(BOOL succeeded, NSError *error) {
-                                                if (succeeded) {
-                                                    NSLog(@"User now has read and publish permissions!");
-                                                }
-                                            }];
+//            [PFFacebookUtils linkUserInBackground:[PFUser currentUser]
+//                           withPublishPermissions:@[ @"publish_actions"]
+//                                            block:^(BOOL succeeded, NSError *error) {
+//                                                if (succeeded) {
+//                                                    NSLog(@"User now has read and publish permissions!");
+//                                                }
+//                                            }];
             [self performSegueWithIdentifier:@"loginSegue" sender:self];
             
         }
@@ -129,8 +129,8 @@
 //                                        }];
 
     
-    self.loginButton.readPermissions = @[@"public_profile", @"user_about_me", @"user_likes"];
-    self.loginButton.delegate = self;
+//    self.loginButton.readPermissions = @[@"public_profile", @"user_about_me", @"user_likes"];
+//    self.loginButton.delegate = self;
     
 }
 
@@ -158,15 +158,46 @@
                 NSString *facebookID = result[@"id"];
                 NSString *gender = result[@"gender"];
                 NSString *aboutInformation = result[@"bio"];
+                NSArray *likesData = result[@"likes"][@"data"];
+                NSMutableArray *likes = [@[] mutableCopy];
                 
-                NSURL *coverURL = [NSURL URLWithString:result[@"cover"][@"source"]];
-                NSData *coverData = [NSData dataWithContentsOfURL:coverURL];
-                UIImage *coverPhoto = [UIImage imageWithData:coverData];
+            
+
+                NSString *coverPhotoURLString = result[@"cover"][@"source"];
+                UIImage *coverPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:coverPhotoURLString]]];
                 
-  
+                PFUser *user = [PFUser currentUser];
+                user[@"first_name"] = firstName;
+                user[@"last_name"] = lastName;
+                user[@"facebookID"] = facebookID;
+                user[@"gender"] = gender;
+                user[@"aboutInformation"] = aboutInformation;
+                user[@"coverPhotoURLString"] = coverPhotoURLString;
+                
+//                PFRelation *likeRelation = [user relationForKey:@"likes"];
+                //need to put an array of the user's likes in there
+                for (NSDictionary *likesDictionary in likesData) {
+                    NSString *like = likesDictionary[@"name"];
+                    
+//                    PFObject *likePFObject = [PFObject objectWithClassName:@"like"];
+//                    likePFObject[@"content"] = like;
+//                    [likeRelation addObject:likePFObject];
+                    [likes addObject:like];
+                    
+                    NSLog(@"I like %@", like);
+                }
+                
+                user[@"likes"] = [likes copy];
                 
                 
-                            
+                //saves the information for a user on parse
+                [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if(succeeded){
+                        NSLog(@"The user's information and relations have been updated");
+                    } else {
+                        NSLog(@"Error updating user information: %@", error.description);
+                    }
+                }];
             }
         }];
         
@@ -174,15 +205,15 @@
     }
 }
 
-#pragma mark - FB Login Button delegate method
-- (void)loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result error:(NSError *)error
-{
-    [self performSegueWithIdentifier:@"loginSegue" sender:self];
-}
-
-- (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton
-{
-    
-}
+//#pragma mark - FB Login Button delegate method
+//- (void)loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result error:(NSError *)error
+//{
+//    [self performSegueWithIdentifier:@"loginSegue" sender:self];
+//}
+//
+//- (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton
+//{
+//    
+//}
 
 @end

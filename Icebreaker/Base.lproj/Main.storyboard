@@ -18,25 +18,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J0f-8s-oSw" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="60" y="320" width="256" height="46"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="afM-lu-LeB"/>
-                                    <constraint firstAttribute="width" constant="256" id="ydB-yP-4vO"/>
-                                </constraints>
-                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ey-NW-dJV">
+                                <rect key="frame" x="16" y="319" width="343" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Log in with Facebook">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="J0f-8s-oSw" secondAttribute="centerX" constant="-0.5" id="f6o-6A-5JW"/>
-                            <constraint firstAttribute="centerY" secondItem="J0f-8s-oSw" secondAttribute="centerY" constant="-9" id="y82-LW-dni"/>
+                            <constraint firstItem="0ey-NW-dJV" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="31A-xy-MkK"/>
+                            <constraint firstItem="0ey-NW-dJV" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="92w-0O-Lfp"/>
+                            <constraint firstAttribute="centerY" secondItem="0ey-NW-dJV" secondAttribute="centerY" constant="-0.5" id="Q39-dQ-13j"/>
+                            <constraint firstAttribute="centerX" secondItem="0ey-NW-dJV" secondAttribute="centerX" id="RpJ-df-hGP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jUf-no-mfA"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="loginButton" destination="J0f-8s-oSw" id="j27-x3-MUZ"/>
                         <segue destination="KlW-jC-HbI" kind="presentation" identifier="loginSegue" animates="NO" id="ffM-Ky-5mr"/>
                     </connections>
                 </viewController>

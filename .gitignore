@@ -16,5 +16,6 @@ DerivedData
 .idea/
 *.hmap
 *.xccheckout
+Constants.m
 
 Pods
