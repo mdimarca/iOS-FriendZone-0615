@@ -87,10 +87,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Noy-nC-b6s">
-                                <rect key="frame" x="16" y="302" width="343" height="120"/>
+                                <rect key="frame" x="16" y="310" width="343" height="112"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="FPF-g0-B5T"/>
+                                    <constraint firstAttribute="height" constant="112" id="FPF-g0-B5T"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
@@ -108,12 +108,30 @@
                                     <action selector="logOutButtonTapped:" destination="ES5-bu-BHX" eventType="touchUpInside" id="5Fo-xj-6ef"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaW-6I-bTg">
+                                <rect key="frame" x="16" y="443" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jGG-cy-5g4">
+                                <rect key="frame" x="16" y="472" width="343" height="112"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="112" id="P67-Nq-RHK"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="hdu-qL-8ol" secondAttribute="centerX" id="1Ag-3w-c1Y"/>
                             <constraint firstItem="mc7-OL-Z5g" firstAttribute="top" secondItem="pfM-oE-ycN" secondAttribute="bottom" id="3FX-8N-lNN"/>
                             <constraint firstItem="n4V-HH-5ni" firstAttribute="leading" secondItem="WOJ-kd-ciP" secondAttribute="leadingMargin" id="5Dq-du-a8h"/>
+                            <constraint firstItem="jGG-cy-5g4" firstAttribute="trailing" secondItem="WOJ-kd-ciP" secondAttribute="trailingMargin" id="5GO-RC-k0n"/>
                             <constraint firstAttribute="centerX" secondItem="G3K-WS-U2g" secondAttribute="centerX" id="6CG-ne-PWB"/>
                             <constraint firstItem="hdu-qL-8ol" firstAttribute="trailing" secondItem="WOJ-kd-ciP" secondAttribute="trailingMargin" id="6oW-AX-A01"/>
                             <constraint firstItem="Noy-nC-b6s" firstAttribute="leading" secondItem="WOJ-kd-ciP" secondAttribute="leadingMargin" id="B3F-aU-l96"/>
@@ -124,12 +142,17 @@
                             <constraint firstItem="KtB-ab-erq" firstAttribute="trailing" secondItem="WOJ-kd-ciP" secondAttribute="trailingMargin" id="LiD-qv-9uB"/>
                             <constraint firstItem="n4V-HH-5ni" firstAttribute="top" secondItem="KtB-ab-erq" secondAttribute="bottom" constant="26" id="V1d-Vn-d2r"/>
                             <constraint firstItem="mHt-09-8Xo" firstAttribute="top" secondItem="hdu-qL-8ol" secondAttribute="bottom" constant="20" id="X8I-Ty-5Cy"/>
+                            <constraint firstItem="yaW-6I-bTg" firstAttribute="trailing" secondItem="WOJ-kd-ciP" secondAttribute="trailingMargin" id="Z1s-kD-QmA"/>
                             <constraint firstItem="KtB-ab-erq" firstAttribute="top" secondItem="G3K-WS-U2g" secondAttribute="bottom" constant="8" id="ajG-Go-4y6"/>
                             <constraint firstItem="mc7-OL-Z5g" firstAttribute="width" secondItem="WOJ-kd-ciP" secondAttribute="width" id="cgz-qS-bJi"/>
                             <constraint firstAttribute="centerX" secondItem="KtB-ab-erq" secondAttribute="centerX" id="e8H-6y-i3K"/>
                             <constraint firstItem="KtB-ab-erq" firstAttribute="leading" secondItem="WOJ-kd-ciP" secondAttribute="leadingMargin" id="fhj-vF-pEe"/>
                             <constraint firstItem="hdu-qL-8ol" firstAttribute="leading" secondItem="WOJ-kd-ciP" secondAttribute="leadingMargin" id="keH-xl-Ad2"/>
-                            <constraint firstItem="Noy-nC-b6s" firstAttribute="top" secondItem="n4V-HH-5ni" secondAttribute="bottom" id="mMR-Mj-aRC"/>
+                            <constraint firstItem="Noy-nC-b6s" firstAttribute="top" secondItem="n4V-HH-5ni" secondAttribute="bottom" constant="8" id="mMR-Mj-aRC"/>
+                            <constraint firstItem="jGG-cy-5g4" firstAttribute="leading" secondItem="WOJ-kd-ciP" secondAttribute="leadingMargin" id="mPG-YJ-xrx"/>
+                            <constraint firstItem="yaW-6I-bTg" firstAttribute="leading" secondItem="WOJ-kd-ciP" secondAttribute="leadingMargin" id="pPV-Ai-XEa"/>
+                            <constraint firstItem="yaW-6I-bTg" firstAttribute="top" secondItem="Noy-nC-b6s" secondAttribute="bottom" constant="21" id="q6g-Ha-ImU"/>
+                            <constraint firstItem="jGG-cy-5g4" firstAttribute="top" secondItem="yaW-6I-bTg" secondAttribute="bottom" constant="8" id="wGn-dd-ynK"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -137,6 +160,7 @@
                         <outlet property="aboutLabel" destination="n4V-HH-5ni" id="f6d-Vf-QI6"/>
                         <outlet property="aboutTextView" destination="Noy-nC-b6s" id="UIo-nR-y6L"/>
                         <outlet property="coverPhotoImageView" destination="mc7-OL-Z5g" id="d1v-P4-Nm4"/>
+                        <outlet property="likesTextView" destination="jGG-cy-5g4" id="vBY-2r-ywF"/>
                         <outlet property="profilePhotoImageView" destination="G3K-WS-U2g" id="TlT-0H-hvg"/>
                         <outlet property="userNameLabel" destination="KtB-ab-erq" id="rw8-SQ-bT0"/>
                     </connections>

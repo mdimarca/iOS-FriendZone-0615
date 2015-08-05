@@ -12,12 +12,13 @@
 #import <Parse.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 #import "User.h"
+#import "DataStore.h"
 
 @interface LoginViewController ()
 
 @property (strong, nonatomic) NSString *facebookIDLocal;
 @property (strong, nonatomic) NSString *parseIDLocal;
-@property (strong, nonatomic) User *user;
+@property (strong, nonatomic) User *localUser;
 
 @end
 
@@ -95,7 +96,8 @@
             NSString *coverPhotoURLString = result[@"cover"][@"source"];
             UIImage *coverPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:coverPhotoURLString]]];
             
-            
+            NSString *profilePhotoURLString = result[@"picture"][@"data"][@"url"];
+            UIImage *profilePhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:profilePhotoURLString]]];
             
             for (NSDictionary *likesDictionary in likesData) {
                 NSString *like = likesDictionary[@"name"];
@@ -116,6 +118,19 @@
             user[@"aboutInformation"] = aboutInformation;
             user[@"coverPhotoURLString"] = coverPhotoURLString;
             user[@"likes"] = [likes copy];
+            user[@"matches"] = [@[] mutableCopy];
+            
+            //SHARED LOCAL USER
+            self.localUser = [[User alloc] init];
+            self.localUser.firstName = firstName;
+            self.localUser.lastName = lastName;
+            self.localUser.coverPhoto = coverPhoto;
+            self.localUser.profilePhoto = profilePhoto;
+            self.localUser.gender = gender;
+            self.localUser.aboutInformation = aboutInformation;
+            self.localUser.likes = likes;
+            DataStore *dataStore = [DataStore sharedDataStore];
+            dataStore.user = self.localUser;
             
             //SAVES INFORMATION ON PARSE
             [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

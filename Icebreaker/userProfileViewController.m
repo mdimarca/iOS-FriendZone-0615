@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *coverPhotoImageView;
 @property (weak, nonatomic) IBOutlet FBSDKProfilePictureView *profilePhotoImageView;
 @property (weak, nonatomic) IBOutlet UITextView *aboutTextView;
+@property (weak, nonatomic) IBOutlet UITextView *likesTextView;
 @property (weak, nonatomic) IBOutlet UILabel *aboutLabel;
 
 @end
@@ -28,7 +29,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self updateData];
+
+}
+
+- (void)updateData
+{
     DataStore *dataStore = [DataStore sharedDataStore];
     
     self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", dataStore.user.firstName, dataStore.user.lastName];
@@ -36,10 +43,22 @@
     self.coverPhotoImageView.clipsToBounds = YES;
     
     self.profilePhotoImageView.layer.cornerRadius = 40;
+    self.profilePhotoImageView.layer.borderWidth = 1;
+    self.profilePhotoImageView.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.profilePhotoImageView.clipsToBounds = YES;
     
     self.aboutLabel.text = [NSString stringWithFormat:@"About %@", dataStore.user.firstName];
     self.aboutTextView.text = dataStore.user.aboutInformation;
+    
+    NSString *likesString = @"";
+    if (dataStore.user.likes) {
+        for (NSString *like in dataStore.user.likes) {
+            likesString = [likesString stringByAppendingString:[NSString stringWithFormat:@"%@\n", like]];
+        }
+    }
+
+    self.likesTextView.text = likesString;
+
 }
 
 - (void)didReceiveMemoryWarning {

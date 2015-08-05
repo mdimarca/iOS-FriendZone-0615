@@ -10,10 +10,26 @@
 
 @implementation User
 
+-(instancetype)init
+{
+    return [self initWithFirstName:@""
+                          lastName:@""
+                        facebookID:@""
+                            gender:@""
+                      profilePhoto:nil
+                        coverPhoto:nil
+                          pictures:[@[] mutableCopy]
+                  aboutInformation:@""
+                           matches:[@[] mutableCopy]
+                           friends:[@[] mutableCopy]
+                             likes:[@[] mutableCopy]];
+}
+
 -(instancetype)initWithFirstName:(NSString *)firstName
                         lastName:(NSString *)lastName
                       facebookID:(NSString *)facebookID
                           gender:(NSString *)gender
+                    profilePhoto:(UIImage *)profilePhoto
                       coverPhoto:(UIImage *)coverPhoto
                         pictures:(NSMutableArray *)pictures
                 aboutInformation:(NSString *)aboutInformation
@@ -28,6 +44,7 @@
         _lastName = lastName;
         _facebookID = facebookID;
         _gender = gender;
+        _profilePhoto = profilePhoto;
         _coverPhoto = coverPhoto;
         _pictures = pictures;
         _aboutInformation = aboutInformation;

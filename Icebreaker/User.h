@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSString *firstName;
 @property (strong, nonatomic) NSString *lastName;
 @property (strong, nonatomic) NSString *gender;
+@property (strong, nonatomic) UIImage *profilePhoto;
 @property (strong, nonatomic) UIImage *coverPhoto;
 @property (strong, nonatomic) NSMutableArray *pictures;
 @property (strong, nonatomic) NSString *aboutInformation;
@@ -28,6 +29,7 @@
                         lastName:(NSString *)lastName
                       facebookID:(NSString *)facebookID
                           gender:(NSString *)gender
+                    profilePhoto:(UIImage *)profilePhoto
                       coverPhoto:(UIImage *)coverPhoto
                         pictures:(NSMutableArray *)pictures
                 aboutInformation:(NSString *)aboutInformation

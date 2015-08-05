@@ -24,16 +24,7 @@
 {
     self = [super init];
     if (self) {
-        _user = [[User alloc] initWithFirstName:@""
-                                       lastName:@""
-                                     facebookID:@""
-                                         gender:@""
-                                     coverPhoto:nil
-                                       pictures:[@[] mutableCopy]
-                               aboutInformation:@""
-                                        matches:[@[] mutableCopy]
-                                        friends:[@[] mutableCopy]
-                                          likes:[@[] mutableCopy]];
+        _user = [[User alloc] init];
     }
     return self;
 }
