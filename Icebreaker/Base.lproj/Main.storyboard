@@ -97,38 +97,39 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XRc-77-D7p" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="16" y="601" width="343" height="46"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="E9T-qI-1Yl"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdu-qL-8ol">
+                                <rect key="frame" x="16" y="617" width="343" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Log out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <action selector="logOutButtonTapped:" destination="ES5-bu-BHX" eventType="valueChanged" id="Bfj-7B-Pbw"/>
+                                    <action selector="logOutButtonTapped:" destination="ES5-bu-BHX" eventType="touchUpInside" id="5Fo-xj-6ef"/>
                                 </connections>
-                            </view>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="XRc-77-D7p" secondAttribute="centerX" id="0cS-lO-tKA"/>
-                            <constraint firstItem="XRc-77-D7p" firstAttribute="leading" secondItem="WOJ-kd-ciP" secondAttribute="leading" constant="16" id="1jN-DX-sTD"/>
+                            <constraint firstAttribute="centerX" secondItem="hdu-qL-8ol" secondAttribute="centerX" id="1Ag-3w-c1Y"/>
                             <constraint firstItem="mc7-OL-Z5g" firstAttribute="top" secondItem="pfM-oE-ycN" secondAttribute="bottom" id="3FX-8N-lNN"/>
                             <constraint firstItem="n4V-HH-5ni" firstAttribute="leading" secondItem="WOJ-kd-ciP" secondAttribute="leadingMargin" id="5Dq-du-a8h"/>
                             <constraint firstAttribute="centerX" secondItem="G3K-WS-U2g" secondAttribute="centerX" id="6CG-ne-PWB"/>
+                            <constraint firstItem="hdu-qL-8ol" firstAttribute="trailing" secondItem="WOJ-kd-ciP" secondAttribute="trailingMargin" id="6oW-AX-A01"/>
                             <constraint firstItem="Noy-nC-b6s" firstAttribute="leading" secondItem="WOJ-kd-ciP" secondAttribute="leadingMargin" id="B3F-aU-l96"/>
                             <constraint firstItem="Noy-nC-b6s" firstAttribute="trailing" secondItem="WOJ-kd-ciP" secondAttribute="trailingMargin" id="EjV-ni-Nnw"/>
                             <constraint firstItem="n4V-HH-5ni" firstAttribute="trailing" secondItem="WOJ-kd-ciP" secondAttribute="trailingMargin" id="H5C-R4-a0I"/>
                             <constraint firstItem="G3K-WS-U2g" firstAttribute="top" secondItem="mc7-OL-Z5g" secondAttribute="bottom" constant="-40" id="H8R-mC-tQa"/>
                             <constraint firstAttribute="centerX" secondItem="mc7-OL-Z5g" secondAttribute="centerX" id="HTp-qA-QqT"/>
                             <constraint firstItem="KtB-ab-erq" firstAttribute="trailing" secondItem="WOJ-kd-ciP" secondAttribute="trailingMargin" id="LiD-qv-9uB"/>
-                            <constraint firstAttribute="trailing" secondItem="XRc-77-D7p" secondAttribute="trailing" constant="16" id="TW0-PN-XDW"/>
                             <constraint firstItem="n4V-HH-5ni" firstAttribute="top" secondItem="KtB-ab-erq" secondAttribute="bottom" constant="26" id="V1d-Vn-d2r"/>
+                            <constraint firstItem="mHt-09-8Xo" firstAttribute="top" secondItem="hdu-qL-8ol" secondAttribute="bottom" constant="20" id="X8I-Ty-5Cy"/>
                             <constraint firstItem="KtB-ab-erq" firstAttribute="top" secondItem="G3K-WS-U2g" secondAttribute="bottom" constant="8" id="ajG-Go-4y6"/>
                             <constraint firstItem="mc7-OL-Z5g" firstAttribute="width" secondItem="WOJ-kd-ciP" secondAttribute="width" id="cgz-qS-bJi"/>
                             <constraint firstAttribute="centerX" secondItem="KtB-ab-erq" secondAttribute="centerX" id="e8H-6y-i3K"/>
                             <constraint firstItem="KtB-ab-erq" firstAttribute="leading" secondItem="WOJ-kd-ciP" secondAttribute="leadingMargin" id="fhj-vF-pEe"/>
+                            <constraint firstItem="hdu-qL-8ol" firstAttribute="leading" secondItem="WOJ-kd-ciP" secondAttribute="leadingMargin" id="keH-xl-Ad2"/>
                             <constraint firstItem="Noy-nC-b6s" firstAttribute="top" secondItem="n4V-HH-5ni" secondAttribute="bottom" id="mMR-Mj-aRC"/>
-                            <constraint firstItem="mHt-09-8Xo" firstAttribute="top" secondItem="XRc-77-D7p" secondAttribute="bottom" constant="20" id="nBQ-KO-KiP"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -136,7 +137,6 @@
                         <outlet property="aboutLabel" destination="n4V-HH-5ni" id="f6d-Vf-QI6"/>
                         <outlet property="aboutTextView" destination="Noy-nC-b6s" id="UIo-nR-y6L"/>
                         <outlet property="coverPhotoImageView" destination="mc7-OL-Z5g" id="d1v-P4-Nm4"/>
-                        <outlet property="loginButton" destination="XRc-77-D7p" id="bCo-K7-ubS"/>
                         <outlet property="profilePhotoImageView" destination="G3K-WS-U2g" id="TlT-0H-hvg"/>
                         <outlet property="userNameLabel" destination="KtB-ab-erq" id="rw8-SQ-bT0"/>
                     </connections>

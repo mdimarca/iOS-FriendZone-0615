@@ -10,14 +10,14 @@
 #import "LoginViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <Parse/Parse.h>
 #import "DataStore.h"
 
-@interface userProfileViewController () <FBSDKLoginButtonDelegate>
+@interface userProfileViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *coverPhotoImageView;
 @property (weak, nonatomic) IBOutlet FBSDKProfilePictureView *profilePhotoImageView;
-@property (weak, nonatomic) IBOutlet FBSDKLoginButton *loginButton;
 @property (weak, nonatomic) IBOutlet UITextView *aboutTextView;
 @property (weak, nonatomic) IBOutlet UILabel *aboutLabel;
 
@@ -40,8 +40,6 @@
     
     self.aboutLabel.text = [NSString stringWithFormat:@"About %@", dataStore.user.firstName];
     self.aboutTextView.text = dataStore.user.aboutInformation;
-    
-    self.loginButton.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,14 +47,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - FB Login Button delegate method
-
-- (void)loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result error:(NSError *)error
-{
-}
-
-- (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton
-{
+- (IBAction)logOutButtonTapped:(id)sender {
+    [PFUser logOut];
     [self.navigationController dismissViewControllerAnimated:NO completion:nil];
 }
 
