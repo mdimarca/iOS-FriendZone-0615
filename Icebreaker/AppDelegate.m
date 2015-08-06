@@ -14,6 +14,7 @@
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 #import <Parse.h>
 #import "Constants.h"
+#import "ChatWithPeopleVC.h"
 
 @interface AppDelegate ()
 
@@ -34,12 +35,20 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen]bounds]];
+    
+    ChatWithPeopleVC *rootVC = [[ChatWithPeopleVC alloc] init];
+    
+    self.window.rootViewController = rootVC;
+    
+    
+    
 
-    [Parse setApplicationId:PARSE_APP_ID
-                  clientKey:PARSE_CLIENT_KEY];
-    
-    [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
-    
+//    [Parse setApplicationId:PARSE_APP_ID
+//                  clientKey:PARSE_CLIENT_KEY];
+//    
+//    [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
+//    
     
     
 //    [PFFacebookUtils logInInBackgroundWithReadPermissions:@[ @"publish_actions" ] block:^(PFUser *user, NSError *error) {
