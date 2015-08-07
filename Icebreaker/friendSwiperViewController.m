@@ -8,8 +8,17 @@
 
 #import "friendSwiperViewController.h"
 #import <MDCSwipeToChoose/MDCSwipeToChoose.h>
+#import "DataStore.h"
+#import "ChoosePersonViewOurs.h"
+
+static const CGFloat ChoosePersonButtonHorizontalPadding = 88.f;
+static const CGFloat ChoosePersonButtonHVerticalPadding = 20.f;
 
 @interface friendSwiperViewController () <MDCSwipeToChooseDelegate>
+
+@property (strong, nonatomic) DataStore *dataManager;
+@property (strong, nonatomic) NSMutableArray *potentialMatches;
+@property (nonatomic, strong) NSMutableArray *trackPotentialMatches;
 
 @end
 
@@ -19,24 +28,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //INITIALIZE THE DATA MANAGER
+    self.dataManager = [DataStore sharedDataStore];
+    //GET POTENTIAL MATCHES FROM DATA STORE
     
-    // You can customize MDCSwipeToChooseView using MDCSwipeToChooseViewOptions.
-    MDCSwipeToChooseViewOptions *options = [MDCSwipeToChooseViewOptions new];
-    options.delegate = self;
-    options.likedText = @"Keep";
-    options.likedColor = [UIColor blueColor];
-    options.nopeText = @"Delete";
-    options.onPan = ^(MDCPanState *state){
-        if (state.thresholdRatio == 1.f && state.direction == MDCSwipeDirectionLeft) {
-            NSLog(@"Let go now to delete the photo!");
-        }
-    };
+    self.trackPotentialMatches = [@[]mutableCopy];
     
-    MDCSwipeToChooseView *view = [[MDCSwipeToChooseView alloc] initWithFrame:self.view.bounds
-                                                                     options:options];
+    NSLog(@"LOCAL USER2 %@",self.dataManager.user.facebookID);
 
-    view.imageView.image = [UIImage imageNamed:@"taylor_swift.jpg"];
-    [self.view addSubview:view];
+    [self.dataManager fetchMatchesWithCompletionBlock:^(BOOL success) {
+        if (success) {
+            
+            self.potentialMatches = [self.dataManager.potentialMatchArray mutableCopy];
+            NSLog(@"%@ POTENTIAL",self.potentialMatches);
+
+            self.frontCardView = [self popPersonViewWithFrame:[self frontCardViewFrame]];
+            [self.view addSubview:self.frontCardView];
+            
+            self.backCardView = [self popPersonViewWithFrame:[self backCardViewFrame]];
+            [self.view insertSubview:self.backCardView belowSubview:self.frontCardView];
+            
+            //update UI stuff
+        } else {
+            
+        
+            //failure, alert user of failure
+        }
+        
+        
+    }];
 }
 
 #pragma mark - MDCSwipeToChooseDelegate Callbacks
@@ -46,27 +66,85 @@
     NSLog(@"Couldn't decide, huh?");
 }
 
-// Sent before a choice is made. Cancel the choice by returning `NO`. Otherwise return `YES`.
-- (BOOL)view:(UIView *)view shouldBeChosenWithDirection:(MDCSwipeDirection)direction {
+// This is called then a user swipes the view fully left or right.
+- (void)view:(UIView *)view wasChosenWithDirection:(MDCSwipeDirection)direction {
+    DataStore *dataManager = self.dataManager;
+
+     User *user = self.trackPotentialMatches[0];
+    
     if (direction == MDCSwipeDirectionLeft) {
-        return YES;
-    } else {
-        // Snap the view back and cancel the choice.
-        [UIView animateWithDuration:0.16 animations:^{
-            view.transform = CGAffineTransformIdentity;
-            view.center = [view superview].center;
+        NSLog(@"Photo rejected!");
+        [user.rejectedProfiles addObject:user.facebookID];
+        [ParseAPICalls updateParsePotentialMatchesWithFacebookID:user.facebookID withAccepted:NO withCompletion:^(BOOL success) {
+            
         }];
-        return NO;
+    } else {
+        NSLog(@"Photo liked!");
+        [user.acceptedProfiles addObject:user.facebookID];
+        [ParseAPICalls updateParsePotentialMatchesWithFacebookID:user.facebookID withAccepted:YES withCompletion:^(BOOL success) {
+        }];
+        [ParseAPICalls isSwipeAMatch:user.facebookID withCompletion:^(BOOL success, User *matchedUser) {
+            if(success){
+                //GO to main thread and update the views
+                NSLog(@"MATCHED");
+                [ParseAPICalls updateMatchWithLocalUser:dataManager.user withOtherParseUser:dataManager.potentialMatchArray[0] withCompletion:^(BOOL success) {
+                }];
+            }
+        }];
+        [self.trackPotentialMatches removeObjectAtIndex:0];
+    }
+    self.frontCardView = self.backCardView;
+    if ((self.backCardView = [self popPersonViewWithFrame:[self backCardViewFrame]])) {
+        self.backCardView.alpha = 0.0;
+        [self.view insertSubview:self.backCardView belowSubview:self.frontCardView];
+        [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            self.backCardView.alpha = 1.f;
+        } completion:nil];
     }
 }
 
-// This is called then a user swipes the view fully left or right.
-- (void)view:(UIView *)view wasChosenWithDirection:(MDCSwipeDirection)direction {
-    if (direction == MDCSwipeDirectionLeft) {
-        NSLog(@"Photo deleted!");
-    } else {
-        NSLog(@"Photo saved!");
+-(ChoosePersonViewOurs *)popPersonViewWithFrame:(CGRect)frame{
+    
+    if (self.potentialMatches.count ==0) {
+        return  nil;
     }
+    MDCSwipeToChooseViewOptions *options = [MDCSwipeToChooseViewOptions new];
+    options.delegate = self;
+    options.threshold = 160.f;
+    options.onPan = ^(MDCPanState *state){
+        CGRect frame = [self backCardViewFrame];
+        self.backCardView.frame = CGRectMake(frame.origin.x, frame.origin.y - (state.thresholdRatio * 10.f), CGRectGetWidth(frame), CGRectGetHeight(frame));
+    };
+    ChoosePersonViewOurs *personView = [[ChoosePersonViewOurs alloc] initWithFrame:frame user:self.potentialMatches[0] options:options];
+    [self.trackPotentialMatches addObject:self.potentialMatches[0]];
+    [self.potentialMatches removeObjectAtIndex:0];
+    return personView;
+    
 }
+
+-(void)setFrontCardView:(ChoosePersonViewOurs *)frontCardView{
+    _frontCardView = frontCardView;
+    self.user = frontCardView.user;
+}
+
+#pragma mark - Construction
+
+-(CGRect)frontCardViewFrame{
+    CGFloat horizontalPadding = 20.f;
+    CGFloat topPadding = 90.f;
+    CGFloat bottomPadding = 320.f;
+    return CGRectMake(horizontalPadding, topPadding, CGRectGetWidth(self.view.frame) - (horizontalPadding *2), CGRectGetHeight(self.view.frame) - bottomPadding);
+}
+
+
+-(CGRect)backCardViewFrame {
+    CGRect frontFrame = [self frontCardViewFrame];
+    
+    return CGRectMake(frontFrame.origin.x, frontFrame.origin.y + 10.f, CGRectGetWidth(frontFrame), CGRectGetHeight(frontFrame));
+    
+}
+
+
+
 
 @end

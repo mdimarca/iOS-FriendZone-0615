@@ -12,20 +12,26 @@
 
 -(instancetype)init
 {
-    return [self initWithFirstName:@""
-                          lastName:@""
-                        facebookID:@""
-                            gender:@""
-                      profilePhoto:nil
-                        coverPhoto:nil
-                          pictures:[@[] mutableCopy]
-                  aboutInformation:@""
-                           matches:[@[] mutableCopy]
-                           friends:[@[] mutableCopy]
-                             likes:[@[] mutableCopy]];
+    self = [super init];
+    if (self) {
+        _firstName = @"";
+        _lastName = @"";
+        _facebookID = @"";
+        _gender = @"";
+        _profilePhoto = [UIImage new];
+        _coverPhoto = [UIImage new];
+        _pictures = [@[] mutableCopy];
+        _aboutInformation = @"";
+        _matches = [@[] mutableCopy];
+        _friends = [@[] mutableCopy];
+        _likes = [@[] mutableCopy];
+        _rejectedProfiles = [@[] mutableCopy];
+        _acceptedProfiles = [@[] mutableCopy];
+    }
+    return self;
 }
 
--(instancetype)initWithFirstName:(NSString *)firstName
++(User *)newUserWithFirstName:(NSString *)firstName
                         lastName:(NSString *)lastName
                       facebookID:(NSString *)facebookID
                           gender:(NSString *)gender
@@ -36,24 +42,25 @@
                          matches:(NSMutableArray *)matches
                          friends:(NSMutableArray *)friends
                            likes:(NSMutableArray *)likes
+                rejectedProfiles:(NSMutableArray *)rejectedProfiles
+                acceptedProfiles:(NSMutableArray *)acceptedProfiles
 {
-    self = [super init];
+    User *newUser = [[User alloc]init];
+        newUser.firstName = firstName;
+        newUser.lastName= lastName;
+        newUser.facebookID = facebookID;
+        newUser.gender = gender;
+        newUser.profilePhoto = profilePhoto;
+        newUser.coverPhoto = coverPhoto;
+        newUser.pictures = pictures;
+        newUser.aboutInformation = aboutInformation;
+        newUser.matches = matches;
+        newUser.friends = friends;
+        newUser.likes = likes;
+        newUser.rejectedProfiles = rejectedProfiles;
+        newUser.acceptedProfiles = acceptedProfiles;
     
-    if (self) {
-        _firstName = firstName;
-        _lastName = lastName;
-        _facebookID = facebookID;
-        _gender = gender;
-        _profilePhoto = profilePhoto;
-        _coverPhoto = coverPhoto;
-        _pictures = pictures;
-        _aboutInformation = aboutInformation;
-        _matches = matches;
-        _friends = friends;
-        _likes = likes;
-    }
-    
-    return self;
+    return newUser;
 }
 
 @end
