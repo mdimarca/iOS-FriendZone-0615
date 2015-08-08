@@ -13,7 +13,7 @@
 #import <Parse/Parse.h>
 #import "DataStore.h"
 
-NSString *const FIREBASE_CHAT_URL = @"https://icebreakerchat.firebaseio.com";
+NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
 
 @interface MessagingViewController ()
 
@@ -88,35 +88,40 @@ NSString *const FIREBASE_CHAT_URL = @"https://icebreakerchat.firebaseio.com";
      *  self.inputToolbar.maximumHeight = 150;
      */
     
-//    
-//    // Sets new message location
-//    BOOL newMessagesOnTop = YES;
-//    
-//    // This allows us to check if there were messages stored on the server when we booted up (YES) or if they are new messages since we've started the app.
-//    // This is so we can batch together the initial messages' reloadData for a pref gain.
-//    __block BOOL initialAdds = YES;
-//    
-//    [self.firebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
-//        
-//        if (newMessagesOnTop){
-//            [self.messages insertObject:snapshot.value atIndex:0];
-//        } else {
-//            [self.messages addObject:snapshot.value];
-//        }
-//        
-//        // Reload the tableview
-//        if (!initialAdds) {
-//            [self.collectionView reloadData];
-//        }
-//        NSLog(@"%@", snapshot.value);
-//    }];
-//    
-//    [self.firebase observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-//        // Reload the table view so that the intial messages show up
-//        [self.collectionView reloadData];
-//        initialAdds = NO;
-//    }];
-//    
+    
+    // Sets new message location
+    BOOL newMessagesOnTop = NO;
+    
+    // This allows us to check if there were messages stored on the server when we booted up (YES) or if they are new messages since we've started the app.
+    // This is so we can batch together the initial messages' reloadData for a pref gain.
+    __block BOOL initialAdds = YES;
+    
+    [self.firebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+        
+        JSQMessage *message = [[JSQMessage alloc] initWithSenderId:self.senderId
+    senderDisplayName:snapshot.value[@"name"]
+    date:[NSDate date]
+                                                              text:snapshot.value[@"text"]];
+        
+        if (newMessagesOnTop){
+            [self.messages insertObject:message atIndex:0];
+        } else {
+            [self.messages addObject:message];
+        }
+        
+        // Reload the tableview
+        if (!initialAdds) {
+            [self.collectionView reloadData];
+        }
+        NSLog(@"%@", snapshot.value);
+    }];
+    
+    [self.firebase observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        // Reload the table view so that the intial messages show up
+        [self.collectionView reloadData];
+        initialAdds = NO;
+    }];
+    
     
 }
 
@@ -142,6 +147,8 @@ NSString *const FIREBASE_CHAT_URL = @"https://icebreakerchat.firebaseio.com";
                                                           date:date
                                                           text:text];
     
+    [[self.firebase childByAutoId] setValue:@{ @"name" : senderDisplayName,
+                                               @"text" : text }];
     [self.messages addObject:message];
     NSLog(@"%@", self.messages);
     [self finishSendingMessageAnimated:YES];

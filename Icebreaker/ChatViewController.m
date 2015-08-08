@@ -117,6 +117,7 @@
 
 -(NSInteger) tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section{
     // Number of chat messages
+    NSLog(@"Chat count: %lu", self.chat.count);
     return [self.chat count];
 }
 
