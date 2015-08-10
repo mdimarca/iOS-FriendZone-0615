@@ -6,16 +6,16 @@
 //  Copyright (c) 2015 ChickenBiscut. All rights reserved.
 //
 
-#import "Game.h"
+#import "GameViewController.h"
 
-@implementation Game
+@implementation GameViewController
 
 
 - (IBAction)doneButtonTapped:(id)sender {
     
     NSString *answer = self.answerTextField.text;
     
-    Result *resultVC = [[Result alloc] init];
+    ResultViewController *resultVC = [[ResultViewController alloc] init];
     resultVC.answerLabel.text = answer;
     
     NSLog (@"Answer: %@", answer);
@@ -24,7 +24,7 @@
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    Result *destinationVC = segue.destinationViewController;
+    ResultViewController *destinationVC = segue.destinationViewController;
     destinationVC.answerOne = self.answerTextField.text;
 }
 

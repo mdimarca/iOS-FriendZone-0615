@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--Game-->
+        <!--Game View Controller-->
         <scene sceneID="ybt-Tm-2w5">
             <objects>
-                <viewController id="7YZ-cs-5gM" customClass="Game" sceneMemberID="viewController">
+                <viewController id="7YZ-cs-5gM" customClass="GameViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kqY-uc-dgX"/>
                         <viewControllerLayoutGuide type="bottom" id="yU3-IX-mqS"/>
@@ -50,10 +50,10 @@
             </objects>
             <point key="canvasLocation" x="328.5" y="229.5"/>
         </scene>
-        <!--Result-->
+        <!--Result View Controller-->
         <scene sceneID="xPs-wc-C3M">
             <objects>
-                <viewController id="fhb-Mk-4t2" customClass="Result" sceneMemberID="viewController">
+                <viewController id="fhb-Mk-4t2" customClass="ResultViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ahb-dX-SO5"/>
                         <viewControllerLayoutGuide type="bottom" id="uV0-nJ-0R3"/>

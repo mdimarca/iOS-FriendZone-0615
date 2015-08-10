@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Game.h"
+#import "GameViewController.h"
 
-@interface Result : UIViewController
+@interface ResultViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UILabel *answerLabel;
 

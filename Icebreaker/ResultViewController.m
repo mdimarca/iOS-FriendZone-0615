@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 ChickenBiscut. All rights reserved.
 //
 
-#import "Result.h"
+#import "ResultViewController.h"
 
-@implementation Result
+@implementation ResultViewController
 
 -(void) viewDidLoad {
     
