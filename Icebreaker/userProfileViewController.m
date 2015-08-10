@@ -37,7 +37,7 @@
 - (void)updateData
 {
     DataStore *dataStore = [DataStore sharedDataStore];
-    
+//    NSLog(@"COVER PHOTO ISSUE: %@", self);
     self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", dataStore.user.firstName, dataStore.user.lastName];
     self.coverPhotoImageView.image = dataStore.user.coverPhoto;
     self.coverPhotoImageView.clipsToBounds = YES;

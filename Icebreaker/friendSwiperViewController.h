@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChoosePersonViewOurs.h"
+#import "User.h"
 
 @interface friendSwiperViewController : UIViewController
+
+@property (strong, nonatomic) User *user;
+@property (strong, nonatomic) ChoosePersonViewOurs *frontCardView;
+@property (strong, nonatomic) ChoosePersonViewOurs *backCardView;
 
 @end

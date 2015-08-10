@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -25,19 +25,53 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="facebookLoginTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="gAf-IO-gPf"/>
+                                </connections>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ln5-Fa-C3O">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="0ey-NW-dJV" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="31A-xy-MkK"/>
+                            <constraint firstItem="ln5-Fa-C3O" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="5Ve-xh-BRR"/>
+                            <constraint firstItem="ln5-Fa-C3O" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="7zO-9m-GZB"/>
                             <constraint firstItem="0ey-NW-dJV" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="92w-0O-Lfp"/>
+                            <constraint firstItem="ln5-Fa-C3O" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-20" id="EEi-7Z-zWo"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="ln5-Fa-C3O" secondAttribute="bottom" id="HhE-d1-nfA"/>
+                            <constraint firstItem="ln5-Fa-C3O" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="Kz1-NQ-LXO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ln5-Fa-C3O" secondAttribute="trailing" constant="-16" id="Nil-SS-q6O"/>
                             <constraint firstAttribute="centerY" secondItem="0ey-NW-dJV" secondAttribute="centerY" constant="-0.5" id="Q39-dQ-13j"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ln5-Fa-C3O" secondAttribute="trailing" id="RbL-I1-22g"/>
                             <constraint firstAttribute="centerX" secondItem="0ey-NW-dJV" secondAttribute="centerX" id="RpJ-df-hGP"/>
+                            <constraint firstItem="ln5-Fa-C3O" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="Vea-SI-MYM"/>
+                            <constraint firstAttribute="centerX" secondItem="ln5-Fa-C3O" secondAttribute="centerX" id="i0z-fB-egJ"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="ln5-Fa-C3O" secondAttribute="bottom" id="kwN-Md-XpA"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="ln5-Fa-C3O" secondAttribute="bottom" id="mIe-lz-cLX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ln5-Fa-C3O" secondAttribute="trailing" constant="-16" id="mNP-9R-W2V"/>
+                            <constraint firstItem="ln5-Fa-C3O" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="p19-SL-JFB"/>
+                            <constraint firstAttribute="centerY" secondItem="ln5-Fa-C3O" secondAttribute="centerY" id="rvG-B2-EVv"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5Ve-xh-BRR"/>
+                                <exclude reference="Kz1-NQ-LXO"/>
+                                <exclude reference="RbL-I1-22g"/>
+                                <exclude reference="Vea-SI-MYM"/>
+                                <exclude reference="mNP-9R-W2V"/>
+                                <exclude reference="p19-SL-JFB"/>
+                                <exclude reference="HhE-d1-nfA"/>
+                                <exclude reference="mIe-lz-cLX"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="jUf-no-mfA"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="hackView" destination="ln5-Fa-C3O" id="ytS-8q-HeH"/>
                         <segue destination="KlW-jC-HbI" kind="presentation" identifier="loginSegue" animates="NO" id="ffM-Ky-5mr"/>
                     </connections>
                 </viewController>
@@ -114,7 +148,7 @@
                                 <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jGG-cy-5g4">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jGG-cy-5g4">
                                 <rect key="frame" x="16" y="472" width="343" height="112"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>

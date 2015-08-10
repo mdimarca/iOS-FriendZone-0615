@@ -13,19 +13,24 @@
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 #import "User.h"
 #import "DataStore.h"
+#import "friendSwiperViewController.h"
+
 
 @interface LoginViewController ()
 
 @property (strong, nonatomic) NSString *facebookIDLocal;
 @property (strong, nonatomic) NSString *parseIDLocal;
 @property (strong, nonatomic) User *localUser;
+@property (nonatomic) BOOL previouslyLoggedIn;
+
+@property (weak, nonatomic) IBOutlet UIView *hackView;
+@property (nonatomic, strong) DataStore *dataStore;
 
 @end
 
 @implementation LoginViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (IBAction)facebookLoginTapped:(id)sender {
     
     //FACEBOOK PERMISSIONS
     [PFFacebookUtils logInInBackgroundWithReadPermissions:@[ @"public_profile", @"user_about_me", @"user_likes", @"user_friends" ] block:^(PFUser *user, NSError *error) {
@@ -37,10 +42,30 @@
             } else {
                 NSLog(@"User logged in through Facebook.");
             }
-
+            
             [self performSegueWithIdentifier:@"loginSegue" sender:self];
         }
     }];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.dataStore = [DataStore sharedDataStore];
+    
+    self.previouslyLoggedIn = NO;
+    if ([PFUser currentUser] ||
+        [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
+        self.previouslyLoggedIn = YES;
+        self.hackView.hidden = NO;
+    }
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if (self.previouslyLoggedIn) {
+        [self performSegueWithIdentifier:@"loginSegue" sender:self];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,20 +74,6 @@
 
 -(void)createLocalUserWithFirstName:(NSString *)firstName lastName:(NSString *)lastName facebookID:(NSString *)facebookID gender:(NSString *)gender aboutInformation:(NSString *)aboutInformation likes:(NSArray *)likes coverPhoto:(UIImage *)coverPhoto {
     
-    //MAKE A LOCAL INSTANCE OF THE USER
-//    User *user = [self.user initWithFirstName:firstName
-//                   lastName:lastName
-//                 facebookID:facebookID
-//                     gender:gender
-//                 coverPhoto:coverPhoto
-//                   pictures:<#(NSMutableArray *)#>
-//           aboutInformation:aboutInformation
-//                    matches:[[NSMutableArray alloc] init];
-//                    friends:<#(NSMutableArray *)#>
-//                      likes:likes];
-    
-//    //PUT LOCAL USER INSTANCE IN SHARED DATA
-//    self.user = user;
 }
 
 -(void)getFacebookUserDataAndPutInParse{
@@ -77,9 +88,9 @@
             NSLog(@"Cannot fetch friends: %@", error.description);
         }
     }];
-
     
-    NSDictionary *params = @{ @"fields" : @"id, first_name, last_name, gender, picture.width(100).height(100), cover, bio, likes" };
+    
+    NSDictionary *params = @{ @"fields" : @"id, first_name, last_name, gender, picture.width(400).height(400), cover, bio, likes" };
     FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:@"/me" parameters:params];
     [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
         if (!error) {
@@ -115,10 +126,18 @@
             user[@"last_name"] = lastName;
             user[@"facebookID"] = facebookID;
             user[@"gender"] = gender;
-            user[@"aboutInformation"] = aboutInformation;
+            if (aboutInformation != nil) {
+                user[@"aboutInformation"] = aboutInformation;
+            }
+            else{
+                user[@"aboutInformation"] = @"";
+            }
             user[@"coverPhotoURLString"] = coverPhotoURLString;
             user[@"likes"] = [likes copy];
             user[@"matches"] = [@[] mutableCopy];
+            user[@"profile_photo"] = profilePhotoURLString;
+            user[@"rejected_profiles"] = [@[] mutableCopy];
+            user[@"accepted_profiles"] = [@[] mutableCopy];
             
             //Parse search for users
             PFQuery *userQuery = [PFUser query];
@@ -138,6 +157,9 @@
             self.localUser.gender = gender;
             self.localUser.aboutInformation = aboutInformation;
             self.localUser.likes = likes;
+            self.localUser.facebookID = facebookID;
+            self.localUser.pictures = [@[] mutableCopy];
+            self.localUser.friends = [@[] mutableCopy];
             DataStore *dataStore = [DataStore sharedDataStore];
             dataStore.user = self.localUser;
             
@@ -151,13 +173,13 @@
             }];
             
             //CREATE A LOCAL USER
-//            [self createLocalUserWithFirstName:firstName
-//                                      lastName:lastName
-//                                    facebookID:facebookID
-//                                        gender:gender
-//                              aboutInformation:aboutInformation
-//                                         likes:[likes copy]
-//                                    coverPhoto:coverPhoto];
+            //            [self createLocalUserWithFirstName:firstName
+            //                                      lastName:lastName
+            //                                    facebookID:facebookID
+            //                                        gender:gender
+            //                              aboutInformation:aboutInformation
+            //                                         likes:[likes copy]
+            //                                    coverPhoto:coverPhoto];
         }
     }];
 }
@@ -165,8 +187,15 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([[segue identifier] isEqualToString:@"loginSegue"]) {
-        //MUST CREATE AN INSTANCE OF THE USER LOGGING IN ON PARSE AND LOCALLY FOR USE
-        [self getFacebookUserDataAndPutInParse];
+        
+        if (self.previouslyLoggedIn) {
+            //DO PARSE
+            [self.dataStore fetchCurrentUserData];
+        }
+        else if (!self.previouslyLoggedIn){
+            //MUST CREATE AN INSTANCE OF THE USER LOGGING IN ON PARSE AND LOCALLY FOR USE
+            [self getFacebookUserDataAndPutInParse];
+        }
     }
 }
 

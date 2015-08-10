@@ -33,13 +33,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    
-
-    [Parse setApplicationId:PARSE_APP_ID
-                  clientKey:PARSE_CLIENT_KEY];
-    
+        [Parse setApplicationId:PARSE_APP_ID
+                      clientKey:PARSE_CLIENT_KEY];
+        
     [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
-    
     
     
 //    [PFFacebookUtils logInInBackgroundWithReadPermissions:@[ @"publish_actions" ] block:^(PFUser *user, NSError *error) {

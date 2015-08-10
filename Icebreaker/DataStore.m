@@ -25,8 +25,49 @@
     self = [super init];
     if (self) {
         _user = [[User alloc] init];
+        _potentialMatchArray = [[NSMutableArray alloc] init];
     }
     return self;
 }
+
+- (void)fetchMatchesWithCompletionBlock:(void (^)(BOOL success))completion {
+    
+    [ParseAPICalls getPotentialMatchesWithCompletionBlock:^(NSArray *matches, BOOL success) {
+        
+        if (success) {
+            self.potentialMatchArray = [matches mutableCopy];
+            completion(YES);
+        } else {
+            
+            completion(NO);
+        }
+}];
+}
+
+-(void)fetchCurrentUserData{
+    
+    PFUser *currentUser = [PFUser currentUser];
+    
+    NSString *currentUserURLString = currentUser[@"coverPhotoURLString"];
+    UIImage *coverPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:currentUserURLString]]];
+    
+    self.user = [User newUserWithFirstName:currentUser[@"first_name"]
+                                        lastName: currentUser[@"last_name"]
+                                      facebookID:currentUser[@"facebookID"]
+                                          gender:currentUser[@"gender"]
+                              profilePhoto:currentUser[@"profile_photo"]
+                                coverPhoto:coverPhoto
+                                        pictures:[@[] mutableCopy]
+                                aboutInformation:currentUser[@"aboutInformation"]
+                                         matches:currentUser[@"matches"]
+                                         friends:[@[] mutableCopy]
+                                           likes:currentUser[@"likes"]
+                                rejectedProfiles:currentUser[@"rejected_profiles"]
+                                acceptedProfiles:currentUser[@"accepted_profiles"]];
+    
+    NSLog(@"%@ ACCEPTED PROFILES",self.user.acceptedProfiles);
+    
+}
+
 
 @end

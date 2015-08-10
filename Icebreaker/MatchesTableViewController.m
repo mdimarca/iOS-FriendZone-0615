@@ -8,11 +8,12 @@
 
 #import "MatchesTableViewController.h"
 #import "MatchesTableViewCell.h"
+#import "DataStore.h"
 
 @interface MatchesTableViewController ()
 
 
-
+@property (nonatomic, strong) DataStore *dataStore;
 
 @end
 
@@ -26,6 +27,11 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.dataStore = [DataStore sharedDataStore];
+    
+    NSLog(@"CHECK ACCEPTED %@",self.dataStore.user.acceptedProfiles);
+       NSLog(@"CHECK REJECTED %@",self.dataStore.user.rejectedProfiles);
 }
 
 - (void)didReceiveMemoryWarning {
