@@ -60,11 +60,11 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
     
     JSQMessagesBubbleImageFactory *bubbleFactory = [[JSQMessagesBubbleImageFactory alloc] init];
     self.bubbleImageOutgoing = [bubbleFactory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleBlueColor]];
-    self.bubbleImageIncoming = [bubbleFactory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
+    self.bubbleImageIncoming = [bubbleFactory incomingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
     
     self.avatar = [JSQMessagesAvatarImageFactory avatarImageWithImage:dataStore.user.profilePhoto
                                                              diameter:30];
-    
+    self.inputToolbar.contentView.leftBarButtonItem = nil; /* custom button or nil to remove */
     self.showLoadEarlierMessagesHeader = NO;
     
     
@@ -121,9 +121,32 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
         [self.collectionView reloadData];
         initialAdds = NO;
     }];
-    
-    
 }
+
+//+ (void)createGameOnFirebaseWithRef:(Firebase *)ref
+//                               user:(SBUser *)user
+//                withCompletionBlock:(void (^)(BOOL success, NSString *digits))block
+//                   withFailureBlock:(void (^)(NSError *error))failureBlock {
+//    NSString *randomNumber = [SBConstants randomRoomNumber];
+//    [ref runTransactionBlock:^FTransactionResult *(FMutableData *currentData) {
+//        NSArray *newRoom = @[ @{ @"name": user.name,
+//                                 @"monster": user.monster,
+//                                 @"hp": user.hp,
+//                                 @"vp": user.vp } ];
+//        [[currentData childDataByAppendingPath:randomNumber] setValue:newRoom];
+//        
+//        return [FTransactionResult successWithValue:currentData];
+//    } andCompletionBlock:^(NSError *error, BOOL committed, FDataSnapshot *snapshot) {
+//        if (committed) {
+//            block(YES, randomNumber);
+//        } else {
+//            failureBlock(error);
+//        }
+//    }];
+//}
+
+
+
 
 #pragma mark - JSQMessagesViewController method overrides
 
