@@ -65,7 +65,7 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
     self.avatar = [JSQMessagesAvatarImageFactory avatarImageWithImage:dataStore.user.profilePhoto
                                                              diameter:30];
     
-    self.showLoadEarlierMessagesHeader = YES;
+    self.showLoadEarlierMessagesHeader = NO;
     
     
     /**
@@ -98,9 +98,9 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
     
     [self.firebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         
-        JSQMessage *message = [[JSQMessage alloc] initWithSenderId:self.senderId
-    senderDisplayName:snapshot.value[@"name"]
-    date:[NSDate date]
+        JSQMessage *message = [[JSQMessage alloc] initWithSenderId:snapshot.value[@"senderID"]
+                                                 senderDisplayName:snapshot.value[@"name"]
+                                                              date:[NSDate date]
                                                               text:snapshot.value[@"text"]];
         
         if (newMessagesOnTop){
@@ -148,8 +148,9 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
                                                           text:text];
     
     [[self.firebase childByAutoId] setValue:@{ @"name" : senderDisplayName,
-                                               @"text" : text }];
-    [self.messages addObject:message];
+                                               @"text" : text,
+                                               @"senderID" : senderId}];
+    //[self.messages addObject:message];
     NSLog(@"%@", self.messages);
     [self finishSendingMessageAnimated:YES];
 
