@@ -115,9 +115,6 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
             }
 
         
-        
-
-        
         // Reload the tableview
         if (!initialAdds) {
             [self.collectionView reloadData];
