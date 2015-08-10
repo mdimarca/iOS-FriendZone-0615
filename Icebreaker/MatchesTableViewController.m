@@ -31,7 +31,7 @@
     self.dataStore = [DataStore sharedDataStore];
     
     NSLog(@"CHECK ACCEPTED %@",self.dataStore.user.acceptedProfiles);
-       NSLog(@"CHECK REJECTED %@",self.dataStore.user.rejectedProfiles);
+    NSLog(@"CHECK REJECTED %@",self.dataStore.user.rejectedProfiles);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,7 +50,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     // Return the number of rows in the section.
-    return 5;
+    return self.dataStore.user.acceptedProfiles.count;
 }
 
 
@@ -58,17 +58,20 @@
     
     MatchesTableViewCell *cell = (MatchesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"userCell" forIndexPath:indexPath];
     
-    cell.name.text = @"hello";
-    
-    
+    cell.name.text = self.dataStore.user.acceptedProfiles[indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60;
+    [self performSegueWithIdentifier:@"matchProfileSegue" sender:self];
 }
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return 60;
+//}
 
 
 /*

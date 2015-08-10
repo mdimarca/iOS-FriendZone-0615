@@ -12,6 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *userProfilePicture;
 @property (weak, nonatomic) IBOutlet UILabel *name;
-@property (weak, nonatomic) IBOutlet UIImageView *iceBreakerImage;
+//@property (weak, nonatomic) IBOutlet UIImageView *iceBreakerImage;
 
 @end
