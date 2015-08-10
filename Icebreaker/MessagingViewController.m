@@ -98,16 +98,24 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
     
     [self.firebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         
-        JSQMessage *message = [[JSQMessage alloc] initWithSenderId:snapshot.value[@"senderID"]
-                                                 senderDisplayName:snapshot.value[@"name"]
-                                                              date:[NSDate date]
-                                                              text:snapshot.value[@"text"]];
+        NSLog(@"snapshot: %@", snapshot);
+        NSLog(@"snapshot value: %@", snapshot.value);
         
-        if (newMessagesOnTop){
-            [self.messages insertObject:message atIndex:0];
-        } else {
-            [self.messages addObject:message];
+        if ([snapshot.key isEqualToString:@"123456"]) {
+            JSQMessage *message = [[JSQMessage alloc] initWithSenderId:snapshot.value[@"senderID"]
+                                                     senderDisplayName:snapshot.value[@"name"]
+                                                                  date:[NSDate date]
+                                                                  text:snapshot.value[@"text"]];
+            
+            if (newMessagesOnTop){
+                [self.messages insertObject:message atIndex:0];
+            } else {
+                [self.messages addObject:message];
+            }
         }
+        
+        
+
         
         // Reload the tableview
         if (!initialAdds) {
@@ -121,6 +129,13 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
         [self.collectionView reloadData];
         initialAdds = NO;
     }];
+    
+    
+    
+
+    
+    
+    
 }
 
 //+ (void)createGameOnFirebaseWithRef:(Firebase *)ref
@@ -170,9 +185,21 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
                                                           date:date
                                                           text:text];
     
-    [[self.firebase childByAutoId] setValue:@{ @"name" : senderDisplayName,
-                                               @"text" : text,
-                                               @"senderID" : senderId}];
+    
+    [self.firebase runTransactionBlock:^FTransactionResult *(FMutableData *currentData) {
+        NSDictionary *newRoom = @{ @"name" : senderDisplayName,
+                                   @"text" : text,
+                                   @"senderID" : senderId };
+        [[currentData childDataByAppendingPath:@"123456"] setValue:newRoom];
+        
+        return [FTransactionResult successWithValue:currentData]; }];
+    
+    
+    
+    
+//    [[self.firebase childByAutoId] setValue:@{ @"name" : senderDisplayName,
+//                                               @"text" : text,
+//                                               @"senderID" : senderId}];
     //[self.messages addObject:message];
     NSLog(@"%@", self.messages);
     [self finishSendingMessageAnimated:YES];
