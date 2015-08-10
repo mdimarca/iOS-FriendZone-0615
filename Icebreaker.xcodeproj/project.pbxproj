@@ -16,7 +16,7 @@
 		0774D1331B6806B600F3BCF5 /* IcebreakerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774D1321B6806B600F3BCF5 /* IcebreakerTests.m */; };
 		0774D1521B69478A00F3BCF5 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774D1511B69478A00F3BCF5 /* TableView.m */; };
 		077A05081B791E1600592986 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 077A05071B791E1600592986 /* Constants.m */; };
-		077A050A1B7920C600592986 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 077A05091B7920C600592986 /* Storyboard.storyboard */; };
+		077A050A1B7920C600592986 /* Game.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 077A05091B7920C600592986 /* Game.storyboard */; };
 		3414BFFE1B69247A00C72689 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3414BFFD1B69247A00C72689 /* User.m */; };
 		3414C0011B69270600C72689 /* FacebookAPICalls.m in Sources */ = {isa = PBXBuildFile; fileRef = 3414C0001B69270600C72689 /* FacebookAPICalls.m */; };
 		3414C0041B692C5100C72689 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 3414C0031B692C5100C72689 /* Friend.m */; };
@@ -65,7 +65,7 @@
 		0774D1501B69478A00F3BCF5 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
 		0774D1511B69478A00F3BCF5 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
 		077A05071B791E1600592986 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
-		077A05091B7920C600592986 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		077A05091B7920C600592986 /* Game.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Game.storyboard; sourceTree = "<group>"; };
 		0B7A84EEE3036B26319BDB8F /* Pods-Icebreaker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Icebreaker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Icebreaker/Pods-Icebreaker.release.xcconfig"; sourceTree = "<group>"; };
 		3414BFFC1B69247A00C72689 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		3414BFFD1B69247A00C72689 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
@@ -287,7 +287,7 @@
 				BD8CF8EA1B698B98003CCC1F /* Chat.storyboard */,
 				0774D1201B6806B600F3BCF5 /* Matches.storyboard */,
 				BD8CF8DC1B69517B003CCC1F /* Main.storyboard */,
-				077A05091B7920C600592986 /* Storyboard.storyboard */,
+				077A05091B7920C600592986 /* Game.storyboard */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -440,7 +440,7 @@
 				0774D1221B6806B600F3BCF5 /* Matches.storyboard in Resources */,
 				0774D1271B6806B600F3BCF5 /* LaunchScreen.xib in Resources */,
 				0774D1241B6806B600F3BCF5 /* Images.xcassets in Resources */,
-				077A050A1B7920C600592986 /* Storyboard.storyboard in Resources */,
+				077A050A1B7920C600592986 /* Game.storyboard in Resources */,
 				BD8CF8DE1B69517B003CCC1F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
