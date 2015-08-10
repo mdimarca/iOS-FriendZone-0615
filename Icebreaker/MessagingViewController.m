@@ -60,19 +60,19 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
     
     JSQMessagesBubbleImageFactory *bubbleFactory = [[JSQMessagesBubbleImageFactory alloc] init];
     self.bubbleImageOutgoing = [bubbleFactory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleBlueColor]];
-    self.bubbleImageIncoming = [bubbleFactory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
+    self.bubbleImageIncoming = [bubbleFactory incomingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
     
     self.avatar = [JSQMessagesAvatarImageFactory avatarImageWithImage:dataStore.user.profilePhoto
                                                              diameter:30];
-    
+    self.inputToolbar.contentView.leftBarButtonItem = nil; /* custom button or nil to remove */
     self.showLoadEarlierMessagesHeader = NO;
     
     
     /**
      *  Register custom menu actions for cells.
      */
-    [JSQMessagesCollectionViewCell registerMenuAction:@selector(customAction:)];
-    [UIMenuController sharedMenuController].menuItems = @[ [[UIMenuItem alloc] initWithTitle:@"Custom Action" action:@selector(customAction:)] ];
+//    [JSQMessagesCollectionViewCell registerMenuAction:@selector(customAction:)];
+//    [UIMenuController sharedMenuController].menuItems = @[ [[UIMenuItem alloc] initWithTitle:@"Custom Action" action:@selector(customAction:)] ];
     
     
     /**
@@ -96,18 +96,27 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
     // This is so we can batch together the initial messages' reloadData for a pref gain.
     __block BOOL initialAdds = YES;
     
-    [self.firebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+    
+    
+    [[self.firebase childByAppendingPath:@"123456"] observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         
+        NSLog(@"snapshot: %@", snapshot.value);
+        
+
         JSQMessage *message = [[JSQMessage alloc] initWithSenderId:snapshot.value[@"senderID"]
-                                                 senderDisplayName:snapshot.value[@"name"]
-                                                              date:[NSDate date]
-                                                              text:snapshot.value[@"text"]];
+                                                     senderDisplayName:snapshot.value[@"name"]
+                                                                  date:[NSDate date]
+                                                                  text:snapshot.value[@"text"]];
+            
+            if (newMessagesOnTop){
+                [self.messages insertObject:message atIndex:0];
+            } else {
+                [self.messages addObject:message];
+            }
+
         
-        if (newMessagesOnTop){
-            [self.messages insertObject:message atIndex:0];
-        } else {
-            [self.messages addObject:message];
-        }
+        
+
         
         // Reload the tableview
         if (!initialAdds) {
@@ -123,7 +132,37 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
     }];
     
     
+    
+
+    
+    
+    
 }
+
+//+ (void)createGameOnFirebaseWithRef:(Firebase *)ref
+//                               user:(SBUser *)user
+//                withCompletionBlock:(void (^)(BOOL success, NSString *digits))block
+//                   withFailureBlock:(void (^)(NSError *error))failureBlock {
+//    NSString *randomNumber = [SBConstants randomRoomNumber];
+//    [ref runTransactionBlock:^FTransactionResult *(FMutableData *currentData) {
+//        NSArray *newRoom = @[ @{ @"name": user.name,
+//                                 @"monster": user.monster,
+//                                 @"hp": user.hp,
+//                                 @"vp": user.vp } ];
+//        [[currentData childDataByAppendingPath:randomNumber] setValue:newRoom];
+//        
+//        return [FTransactionResult successWithValue:currentData];
+//    } andCompletionBlock:^(NSError *error, BOOL committed, FDataSnapshot *snapshot) {
+//        if (committed) {
+//            block(YES, randomNumber);
+//        } else {
+//            failureBlock(error);
+//        }
+//    }];
+//}
+
+
+
 
 #pragma mark - JSQMessagesViewController method overrides
 
@@ -147,56 +186,69 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
                                                           date:date
                                                           text:text];
     
-    [[self.firebase childByAutoId] setValue:@{ @"name" : senderDisplayName,
-                                               @"text" : text,
-                                               @"senderID" : senderId}];
-    //[self.messages addObject:message];
+    
+//    [self.firebase runTransactionBlock:^FTransactionResult *(FMutableData *currentData) {
+//        NSDictionary *newRoom = @{ @"name" : senderDisplayName,
+//                                   @"text" : text,
+//                                   @"senderID" : senderId };
+//        [[[self.firebase childByAppendingPath:@"123456"] childByAutoId] setValue:newRoom];
+//        //[[currentData childDataByAppendingPath:@"123456"] setValue:newRoom];
+//        
+//        return [FTransactionResult successWithValue:currentData]; }];
+    
+    
+    NSDictionary *newRoom = @{ @"name" : senderDisplayName,
+                               @"text" : text,
+                               @"senderID" : senderId };
+    
+    [[[self.firebase childByAppendingPath:@"123456"] childByAutoId] setValue:newRoom];
+//    [self.messages addObject:message];
     NSLog(@"%@", self.messages);
     [self finishSendingMessageAnimated:YES];
 
 }
 
-- (void)didPressAccessoryButton:(UIButton *)sender
-{
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Media messages"
-                                                       delegate:self
-                                              cancelButtonTitle:@"Cancel"
-                                         destructiveButtonTitle:nil
-                                              otherButtonTitles:@"Send photo", @"Send location", @"Send video", nil];
-    
-    [sheet showFromToolbar:self.inputToolbar];
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == actionSheet.cancelButtonIndex) {
-        return;
-    }
-    
-    switch (buttonIndex) {
-        case 0:
-            //[self.demoData addPhotoMediaMessage];
-            break;
-            
-        case 1:
-        {
-            //__weak UICollectionView *weakView = self.collectionView;
-            
-            //[self.demoData addLocationMediaMessageCompletion:^{
-            //    [weakView reloadData];
-            //}];
-        }
-            break;
-            
-        case 2:
-            //[self.demoData addVideoMediaMessage];
-            break;
-    }
-    
-    [JSQSystemSoundPlayer jsq_playMessageSentSound];
-    
-    [self finishSendingMessageAnimated:YES];
-}
+//- (void)didPressAccessoryButton:(UIButton *)sender
+//{
+//    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Media messages"
+//                                                       delegate:self
+//                                              cancelButtonTitle:@"Cancel"
+//                                         destructiveButtonTitle:nil
+//                                              otherButtonTitles:@"Send photo", @"Send location", @"Send video", nil];
+//    
+//    [sheet showFromToolbar:self.inputToolbar];
+//}
+//
+//- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+//{
+//    if (buttonIndex == actionSheet.cancelButtonIndex) {
+//        return;
+//    }
+//    
+//    switch (buttonIndex) {
+//        case 0:
+//            //[self.demoData addPhotoMediaMessage];
+//            break;
+//            
+//        case 1:
+//        {
+//            //__weak UICollectionView *weakView = self.collectionView;
+//            
+//            //[self.demoData addLocationMediaMessageCompletion:^{
+//            //    [weakView reloadData];
+//            //}];
+//        }
+//            break;
+//            
+//        case 2:
+//            //[self.demoData addVideoMediaMessage];
+//            break;
+//    }
+//    
+//    [JSQSystemSoundPlayer jsq_playMessageSentSound];
+//    
+//    [self finishSendingMessageAnimated:YES];
+//}
 
 #pragma mark - JSQMessages CollectionView DataSource
 
