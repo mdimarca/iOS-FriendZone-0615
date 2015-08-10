@@ -52,18 +52,18 @@
     UIImage *coverPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:currentUserURLString]]];
     
     self.user = [User newUserWithFirstName:currentUser[@"first_name"]
-                                        lastName: currentUser[@"last_name"]
-                                      facebookID:currentUser[@"facebookID"]
-                                          gender:currentUser[@"gender"]
-                              profilePhoto:currentUser[@"profile_photo"]
+                                  lastName:currentUser[@"last_name"]
+                                facebookID:currentUser[@"facebookID"]
+                                    gender:currentUser[@"gender"]
+                              profilePhoto:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:currentUser[@"profile_photo"]]]]
                                 coverPhoto:coverPhoto
-                                        pictures:[@[] mutableCopy]
-                                aboutInformation:currentUser[@"aboutInformation"]
-                                         matches:currentUser[@"matches"]
-                                         friends:[@[] mutableCopy]
-                                           likes:currentUser[@"likes"]
-                                rejectedProfiles:currentUser[@"rejected_profiles"]
-                                acceptedProfiles:currentUser[@"accepted_profiles"]];
+                                  pictures:[@[] mutableCopy]
+                          aboutInformation:currentUser[@"aboutInformation"]
+                                   matches:currentUser[@"matches"]
+                                   friends:[@[] mutableCopy]
+                                     likes:currentUser[@"likes"]
+                          rejectedProfiles:currentUser[@"rejected_profiles"]
+                          acceptedProfiles:currentUser[@"accepted_profiles"]];
     
     NSLog(@"%@ ACCEPTED PROFILES",self.user.acceptedProfiles);
     
