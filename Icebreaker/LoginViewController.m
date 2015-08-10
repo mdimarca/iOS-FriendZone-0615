@@ -101,10 +101,10 @@
             NSString *lastName = result[@"last_name"];
             NSString *facebookID = result[@"id"];
             NSString *gender = result[@"gender"];
-            NSString *aboutInformation = result[@"bio"];
+            NSString *aboutInformation = @"This is my about information"; //result[@"bio"];
             NSArray *likesData = result[@"likes"][@"data"];
             NSMutableArray *likes = [@[] mutableCopy];
-            NSString *coverPhotoURLString = result[@"cover"][@"source"];
+            NSString *coverPhotoURLString = @"http://animalia-life.com/data_images/dog/dog1.jpg"; //result[@"cover"][@"source"];
             UIImage *coverPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:coverPhotoURLString]]];
             
             NSString *profilePhotoURLString = result[@"picture"][@"data"][@"url"];

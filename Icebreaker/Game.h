@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Result.h"
 
 @interface Game : UIViewController
+
+@property (strong, nonatomic) IBOutlet UILabel *questionLabel;
+@property (strong, nonatomic) IBOutlet UITextField *answerTextField;
+
+- (IBAction)doneButtonTapped:(id)sender;
 
 @end
