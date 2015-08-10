@@ -17,6 +17,7 @@
 		0774D1521B69478A00F3BCF5 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774D1511B69478A00F3BCF5 /* TableView.m */; };
 		077A05081B791E1600592986 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 077A05071B791E1600592986 /* Constants.m */; };
 		077A050A1B7920C600592986 /* Game.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 077A05091B7920C600592986 /* Game.storyboard */; };
+		077A050D1B79268400592986 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 077A050C1B79268400592986 /* Game.m */; };
 		3414BFFE1B69247A00C72689 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3414BFFD1B69247A00C72689 /* User.m */; };
 		3414C0011B69270600C72689 /* FacebookAPICalls.m in Sources */ = {isa = PBXBuildFile; fileRef = 3414C0001B69270600C72689 /* FacebookAPICalls.m */; };
 		3414C0041B692C5100C72689 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 3414C0031B692C5100C72689 /* Friend.m */; };
@@ -66,6 +67,8 @@
 		0774D1511B69478A00F3BCF5 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
 		077A05071B791E1600592986 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		077A05091B7920C600592986 /* Game.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Game.storyboard; sourceTree = "<group>"; };
+		077A050B1B79268400592986 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		077A050C1B79268400592986 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		0B7A84EEE3036B26319BDB8F /* Pods-Icebreaker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Icebreaker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Icebreaker/Pods-Icebreaker.release.xcconfig"; sourceTree = "<group>"; };
 		3414BFFC1B69247A00C72689 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		3414BFFD1B69247A00C72689 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
@@ -288,6 +291,8 @@
 				0774D1201B6806B600F3BCF5 /* Matches.storyboard */,
 				BD8CF8DC1B69517B003CCC1F /* Main.storyboard */,
 				077A05091B7920C600592986 /* Game.storyboard */,
+				077A050B1B79268400592986 /* Game.h */,
+				077A050C1B79268400592986 /* Game.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -493,6 +498,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0774D1521B69478A00F3BCF5 /* TableView.m in Sources */,
+				077A050D1B79268400592986 /* Game.m in Sources */,
 				3414C0091B692D8700C72689 /* LikedObject.m in Sources */,
 				3414BFFE1B69247A00C72689 /* User.m in Sources */,
 				34587A691B7261C4001E6BE3 /* ChoosePersonViewOurs.m in Sources */,
