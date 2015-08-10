@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ey-NW-dJV">
-                                <rect key="frame" x="16" y="319" width="343" height="30"/>
+                                <rect key="frame" x="16" y="548" width="343" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Log in with Facebook">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -29,44 +29,18 @@
                                     <action selector="facebookLoginTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="gAf-IO-gPf"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ln5-Fa-C3O">
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ln5-Fa-C3O">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="0ey-NW-dJV" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="31A-xy-MkK"/>
-                            <constraint firstItem="ln5-Fa-C3O" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="5Ve-xh-BRR"/>
-                            <constraint firstItem="ln5-Fa-C3O" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="7zO-9m-GZB"/>
-                            <constraint firstItem="0ey-NW-dJV" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="92w-0O-Lfp"/>
-                            <constraint firstItem="ln5-Fa-C3O" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-20" id="EEi-7Z-zWo"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="ln5-Fa-C3O" secondAttribute="bottom" id="HhE-d1-nfA"/>
-                            <constraint firstItem="ln5-Fa-C3O" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="Kz1-NQ-LXO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ln5-Fa-C3O" secondAttribute="trailing" constant="-16" id="Nil-SS-q6O"/>
-                            <constraint firstAttribute="centerY" secondItem="0ey-NW-dJV" secondAttribute="centerY" constant="-0.5" id="Q39-dQ-13j"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ln5-Fa-C3O" secondAttribute="trailing" id="RbL-I1-22g"/>
-                            <constraint firstAttribute="centerX" secondItem="0ey-NW-dJV" secondAttribute="centerX" id="RpJ-df-hGP"/>
-                            <constraint firstItem="ln5-Fa-C3O" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="Vea-SI-MYM"/>
-                            <constraint firstAttribute="centerX" secondItem="ln5-Fa-C3O" secondAttribute="centerX" id="i0z-fB-egJ"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="ln5-Fa-C3O" secondAttribute="bottom" id="kwN-Md-XpA"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="ln5-Fa-C3O" secondAttribute="bottom" id="mIe-lz-cLX"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ln5-Fa-C3O" secondAttribute="trailing" constant="-16" id="mNP-9R-W2V"/>
-                            <constraint firstItem="ln5-Fa-C3O" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="p19-SL-JFB"/>
-                            <constraint firstAttribute="centerY" secondItem="ln5-Fa-C3O" secondAttribute="centerY" id="rvG-B2-EVv"/>
+                            <constraint firstItem="0ey-NW-dJV" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="f5d-9U-6JK"/>
+                            <constraint firstItem="0ey-NW-dJV" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="qfQ-oL-GyT"/>
+                            <constraint firstAttribute="centerX" secondItem="0ey-NW-dJV" secondAttribute="centerX" id="wbf-wK-uCi"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="0ey-NW-dJV" secondAttribute="bottom" constant="89" id="wiE-Me-ogf"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="5Ve-xh-BRR"/>
-                                <exclude reference="Kz1-NQ-LXO"/>
-                                <exclude reference="RbL-I1-22g"/>
-                                <exclude reference="Vea-SI-MYM"/>
-                                <exclude reference="mNP-9R-W2V"/>
-                                <exclude reference="p19-SL-JFB"/>
-                                <exclude reference="HhE-d1-nfA"/>
-                                <exclude reference="mIe-lz-cLX"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="jUf-no-mfA"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -206,6 +180,7 @@
         <!--Navigation Controller-->
         <scene sceneID="3D6-Fw-QNk">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZTs-8Y-NwS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="KlW-jC-HbI" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="96P-Ts-iie">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -215,7 +190,6 @@
                         <segue destination="Q2Q-6m-0rd" kind="relationship" relationship="rootViewController" id="5AW-zL-TYU"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZTs-8Y-NwS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2242" y="464"/>
         </scene>
