@@ -18,9 +18,6 @@
 
     }];
     
-//    NSArray *questions = @[@"Question One" @"Question Two" @"Question Three"];
-//    self.questionLabel.text = questions[0];
-    
 }
 
 - (IBAction)nextQuestionButtonTapped:(id)sender {
@@ -38,10 +35,14 @@
 }
 
 -(void)doneButtonHelperwithCompletion:(void (^)(BOOL success))completionBlock{
-    NSString *answer = self.answerOneTextField.text;
     
+    NSString *answerOne = self.answerOneTextField.text;
+    NSString *answerTwo = self.answerTwoTextField.text;
+    NSString *answerThree = self.answerThreeTextField.text;
+
     PFUser *user = [PFUser currentUser];
-    user[@"answer"] = @[answer];
+    user[@"answers"] = @[answerOne, answerTwo, answerThree];
+    
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
         if (!error) {
             completionBlock(YES);
@@ -51,17 +52,14 @@
             completionBlock(NO);
         }
     }];
-    
-    ResultViewController *resultVC = [[ResultViewController alloc] init];
-    resultVC.answerLabel.text = answer;
-    
-    NSLog (@"Answer: %@", answer);
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-        
+    
     ResultViewController *destinationVC = segue.destinationViewController;
     destinationVC.answerOne = self.answerOneTextField.text;
+    destinationVC.answerTwo = self.answerTwoTextField.text;
+    destinationVC.answerThree = self.answerThreeTextField.text;
 }
 
 -(void) viewDidLoad {

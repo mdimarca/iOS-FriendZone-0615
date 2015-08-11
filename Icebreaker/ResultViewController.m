@@ -11,12 +11,14 @@
 @implementation ResultViewController
 
 -(void) viewDidLoad {
+        
+    self.answerOneLabel.text = self.answerOne;
+    self.answerTwoLabel.text = self.answerTwo;
+    self.answerThreeLabel.text = self.answerThree;
+
     
-//    Game *gameVC = [[Game alloc]init];
     
-    self.answerLabel.text = self.answerOne;
-    
-//    self.questions = @[@"Question One" @"Question Two" @"Question Three"];
+
     
 }
 

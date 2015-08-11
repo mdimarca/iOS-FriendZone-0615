@@ -11,12 +11,12 @@
 
 @interface ResultViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UILabel *answerLabel;
+@property (strong, nonatomic) IBOutlet UILabel *answerOneLabel;
+@property (strong, nonatomic) IBOutlet UILabel *answerTwoLabel;
+@property (strong, nonatomic) IBOutlet UILabel *answerThreeLabel;
 
 @property (strong, nonatomic) NSString *answerOne;
 @property (strong, nonatomic) NSString *answerTwo;
 @property (strong, nonatomic) NSString *answerThree;
-
-@property (strong, nonatomic) NSArray *questions;
 
 @end
