@@ -11,8 +11,15 @@
 
 @interface GameViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UILabel *questionLabel;
-@property (strong, nonatomic) IBOutlet UITextField *answerTextField;
+@property (strong, nonatomic) IBOutlet UILabel *questionOneLabel;
+@property (strong, nonatomic) IBOutlet UITextField *answerOneTextField;
+
+@property (strong, nonatomic) IBOutlet UILabel *questionTwoLabel;
+@property (strong, nonatomic) IBOutlet UITextField *answerTwoTextField;
+
+@property (strong, nonatomic) IBOutlet UILabel *questionThreeLabel;
+@property (strong, nonatomic) IBOutlet UITextField *answerThreeTextField;
+
 
 - (IBAction)doneButtonTapped:(id)sender;
 
