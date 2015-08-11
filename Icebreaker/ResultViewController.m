@@ -16,10 +16,6 @@
     self.answerTwoLabel.text = self.answerTwo;
     self.answerThreeLabel.text = self.answerThree;
 
-    
-    
-
-    
 }
 
 

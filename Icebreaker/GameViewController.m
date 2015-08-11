@@ -17,7 +17,6 @@
     [self doneButtonHelperwithCompletion:^(BOOL success) {
 
     }];
-    
 }
 
 - (IBAction)nextQuestionButtonTapped:(id)sender {
@@ -69,6 +68,5 @@
     
     self.answerTwoTextField.alpha = 0;
     self.answerThreeTextField.alpha = 0;
-
 }
 @end
