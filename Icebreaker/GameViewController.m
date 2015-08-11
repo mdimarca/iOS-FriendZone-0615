@@ -9,7 +9,7 @@
 #import "GameViewController.h"
 #import <Parse.h>
 
-@implementation GameViewController
+@implementation GameViewController 
 
 
 - (IBAction)doneButtonTapped:(id)sender {
@@ -21,6 +21,20 @@
 //    NSArray *questions = @[@"Question One" @"Question Two" @"Question Three"];
 //    self.questionLabel.text = questions[0];
     
+}
+
+- (IBAction)nextQuestionButtonTapped:(id)sender {
+    
+    self.questionTwoLabel.alpha = 1;
+    self.answerTwoTextField.alpha = 1;
+    
+    
+    if ((![self.answerTwoTextField.text isEqualToString:@""])) {
+        self.questionThreeLabel.alpha = 1;
+        self.answerThreeTextField.alpha = 1;
+        
+        self.nextQuestionButton.alpha = 0;
+    }
 }
 
 -(void)doneButtonHelperwithCompletion:(void (^)(BOOL success))completionBlock{
@@ -45,13 +59,18 @@
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+        
     ResultViewController *destinationVC = segue.destinationViewController;
     destinationVC.answerOne = self.answerOneTextField.text;
 }
 
 -(void) viewDidLoad {
     
-
+    self.questionTwoLabel.alpha = 0;
+    self.questionThreeLabel.alpha = 0;
+    
+    self.answerTwoTextField.alpha = 0;
+    self.answerThreeTextField.alpha = 0;
 
 }
 @end
