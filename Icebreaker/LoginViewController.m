@@ -79,12 +79,29 @@
 - (void)facebookLoginButtonAnimation {
     [UIView animateWithDuration:.5
                           delay:0
-                        options:UIViewAnimationOptionCurveEaseInOut
+                        options:UIViewAnimationOptionCurveEaseOut
                      animations:^{
-                         self.facebookButtonBottomConstraint.constant = 50;
+                         self.facebookButtonBottomConstraint.constant = 30;
                          [self.view layoutIfNeeded];
                      } completion:^(BOOL finished) {
-                            NSLog(@"complete?");
+                         
+                         [UIView animateWithDuration:.15
+                                               delay:0
+                                             options:UIViewAnimationOptionCurveEaseIn
+                                          animations:^{
+                                              self.facebookButtonBottomConstraint.constant = 25;
+                                              [self.view layoutIfNeeded];
+                                          } completion:^(BOOL finished) {
+                                              [UIView animateWithDuration:.15
+                                                                    delay:0
+                                                                  options:UIViewAnimationOptionCurveEaseOut
+                                                               animations:^{
+                                                                   self.facebookButtonBottomConstraint.constant = 30;
+                                                                   [self.view layoutIfNeeded];
+                                                               } completion:^(BOOL finished) {
+                                                                   
+                                                               }];
+                                          }];
                      }];
 }
 
