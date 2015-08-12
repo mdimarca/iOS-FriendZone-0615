@@ -64,13 +64,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.dataStore = [DataStore sharedDataStore];
+    [self facebookLoginButtonAnimation];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.facebookButtonBottomConstraint.constant = -300;
+
     [super viewWillAppear:animated];
     [self imageReset];
 }
@@ -80,9 +81,10 @@
                           delay:0
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
-                         self.facebookButtonBottomConstraint.constant = 0;
+                         self.facebookButtonBottomConstraint.constant = 50;
+                         [self.view layoutIfNeeded];
                      } completion:^(BOOL finished) {
-                         //
+                            NSLog(@"complete?");
                      }];
 }
 
