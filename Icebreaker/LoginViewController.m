@@ -29,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *image2LeadingConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *image1LeadingConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *image3TopConstraint;
+@property (strong, nonatomic) IBOutlet UIButton *facebookButton;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *facebookButtonBottomConstraint;
 
 //@property (weak, nonatomic) IBOutlet UIView *hackView;
 @property (nonatomic, strong) DataStore *dataStore;
@@ -62,14 +64,45 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.dataStore = [DataStore sharedDataStore];
+    [self facebookLoginButtonAnimation];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+
     [super viewWillAppear:animated];
     [self imageReset];
+}
+
+- (void)facebookLoginButtonAnimation {
+    [UIView animateWithDuration:.5
+                          delay:0
+                        options:UIViewAnimationOptionCurveEaseOut
+                     animations:^{
+                         self.facebookButtonBottomConstraint.constant = 30;
+                         [self.view layoutIfNeeded];
+                     } completion:^(BOOL finished) {
+                         
+                         [UIView animateWithDuration:.15
+                                               delay:0
+                                             options:UIViewAnimationOptionCurveEaseIn
+                                          animations:^{
+                                              self.facebookButtonBottomConstraint.constant = 25;
+                                              [self.view layoutIfNeeded];
+                                          } completion:^(BOOL finished) {
+                                              [UIView animateWithDuration:.15
+                                                                    delay:0
+                                                                  options:UIViewAnimationOptionCurveEaseOut
+                                                               animations:^{
+                                                                   self.facebookButtonBottomConstraint.constant = 30;
+                                                                   [self.view layoutIfNeeded];
+                                                               } completion:^(BOOL finished) {
+                                                                   
+                                                               }];
+                                          }];
+                     }];
 }
 
 - (void)imageReset
@@ -136,6 +169,8 @@
         [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
         self.previouslyLoggedIn = YES;
 //        self.hackView.hidden = NO;
+        
+        
     }
 
     
