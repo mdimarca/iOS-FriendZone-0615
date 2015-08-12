@@ -68,7 +68,10 @@
 
 - (IBAction)logOutButtonTapped:(id)sender {
     [PFUser logOut];
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    
+    LoginViewController *loginController = self.presentingViewController;
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
 }
 
 
