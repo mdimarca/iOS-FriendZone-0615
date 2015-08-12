@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		05E9DC6D61D82DABBB004BB6 /* libPods-Icebreaker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1AE44FEE25BC5F99A90406 /* libPods-Icebreaker.a */; };
+		074BE1C01B7BBEF6007FE066 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 074BE1BF1B7BBEF6007FE066 /* Constants.m */; };
 		0774D1191B6806B600F3BCF5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774D1181B6806B600F3BCF5 /* main.m */; };
 		0774D11C1B6806B600F3BCF5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774D11B1B6806B600F3BCF5 /* AppDelegate.m */; };
 		0774D1221B6806B600F3BCF5 /* Matches.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0774D1201B6806B600F3BCF5 /* Matches.storyboard */; };
@@ -15,7 +16,6 @@
 		0774D1271B6806B600F3BCF5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0774D1251B6806B600F3BCF5 /* LaunchScreen.xib */; };
 		0774D1331B6806B600F3BCF5 /* IcebreakerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774D1321B6806B600F3BCF5 /* IcebreakerTests.m */; };
 		0774D1521B69478A00F3BCF5 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774D1511B69478A00F3BCF5 /* TableView.m */; };
-		077A05081B791E1600592986 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 077A05071B791E1600592986 /* Constants.m */; };
 		077A050A1B7920C600592986 /* GameViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 077A05091B7920C600592986 /* GameViewController.storyboard */; };
 		077A050D1B79268400592986 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 077A050C1B79268400592986 /* GameViewController.m */; };
 		077A05101B792A8100592986 /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 077A050F1B792A8100592986 /* ResultViewController.m */; };
@@ -56,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		074BE1BF1B7BBEF6007FE066 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		0774D1131B6806B600F3BCF5 /* Icebreaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Icebreaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0774D1171B6806B600F3BCF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0774D1181B6806B600F3BCF5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -69,7 +70,6 @@
 		0774D1321B6806B600F3BCF5 /* IcebreakerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IcebreakerTests.m; sourceTree = "<group>"; };
 		0774D1501B69478A00F3BCF5 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
 		0774D1511B69478A00F3BCF5 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
-		077A05071B791E1600592986 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		077A05091B7920C600592986 /* GameViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GameViewController.storyboard; sourceTree = "<group>"; };
 		077A050B1B79268400592986 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		077A050C1B79268400592986 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
@@ -285,7 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				BD0046521B71022D00D68325 /* Constants.h */,
-				077A05071B791E1600592986 /* Constants.m */,
+				074BE1BF1B7BBEF6007FE066 /* Constants.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -525,9 +525,9 @@
 				E12BEA211B6928810083860B /* MatchesTableViewCell.m in Sources */,
 				BD0046511B71019000D68325 /* MatchesTableViewController.m in Sources */,
 				E12BEA271B6940A60083860B /* iCarousel.m in Sources */,
+				074BE1C01B7BBEF6007FE066 /* Constants.m in Sources */,
 				077A05101B792A8100592986 /* ResultViewController.m in Sources */,
 				BD8CF8D81B682452003CCC1F /* friendSwiperViewController.m in Sources */,
-				077A05081B791E1600592986 /* Constants.m in Sources */,
 				BD8CF8E41B69650A003CCC1F /* LinkedStoryboardSegue.m in Sources */,
 				BD0046571B73992D00D68325 /* MessagingViewController.m in Sources */,
 				BD8CF8E91B698ADF003CCC1F /* ChatViewController.m in Sources */,

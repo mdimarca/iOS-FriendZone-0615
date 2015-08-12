@@ -29,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *image2LeadingConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *image1LeadingConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *image3TopConstraint;
+@property (strong, nonatomic) IBOutlet UIButton *facebookButton;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *facebookButtonBottomConstraint;
 
 //@property (weak, nonatomic) IBOutlet UIView *hackView;
 @property (nonatomic, strong) DataStore *dataStore;
@@ -136,6 +138,18 @@
         [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
         self.previouslyLoggedIn = YES;
 //        self.hackView.hidden = NO;
+        
+        
+        [UIView animateWithDuration:.5
+                              delay:0
+                            options:UIViewAnimationOptionCurveEaseInOut
+        animations:^{
+            //
+        } completion:^(BOOL finished) {
+            //
+        }];
+        
+        
     }
 
     
