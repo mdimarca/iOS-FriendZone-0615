@@ -14,7 +14,7 @@
 static const CGFloat ChoosePersonButtonHorizontalPadding = 88.f;
 static const CGFloat ChoosePersonButtonHVerticalPadding = 20.f;
 
-@interface friendSwiperViewController () <MDCSwipeToChooseDelegate>
+@interface friendSwiperViewController () < MDCSwipeToChooseDelegate>
 
 @property (strong, nonatomic) DataStore *dataManager;
 @property (strong, nonatomic) NSMutableArray *potentialMatches;

@@ -53,19 +53,25 @@
     
     self.dataStore = [DataStore sharedDataStore];
     
-    self.previouslyLoggedIn = NO;
-    if ([PFUser currentUser] ||
-        [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
-        self.previouslyLoggedIn = YES;
-        self.hackView.hidden = NO;
-    }
+    
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    
+    self.previouslyLoggedIn = NO;
+    if ([PFUser currentUser] ||
+        [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
+        self.previouslyLoggedIn = YES;
+//        self.hackView.hidden = NO;
+    }
+
+    
     if (self.previouslyLoggedIn) {
         [self performSegueWithIdentifier:@"loginSegue" sender:self];
     }
+    
 }
 
 - (void)didReceiveMemoryWarning {
