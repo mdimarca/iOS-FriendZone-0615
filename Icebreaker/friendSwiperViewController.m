@@ -35,6 +35,20 @@ static const CGFloat ChoosePersonButtonHVerticalPadding = 20.f;
     self.trackPotentialMatches = [@[]mutableCopy];
     
     NSLog(@"LOCAL USER2 %@",self.dataManager.user.facebookID);
+    
+    
+
+    [ParseAPICalls getMatchesFromParseWithCompletionBlock:^(BOOL success, NSArray *matches) {
+        
+        if (success) {
+            
+            NSLog(@"WWOWOWOOWOWOWOWOWOWOWOWO!!! : %@", matches);
+        }
+        
+        
+    }];
+
+    
 
     [self.dataManager fetchMatchesWithCompletionBlock:^(BOOL success) {
         if (success) {

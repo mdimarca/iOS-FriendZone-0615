@@ -41,4 +41,9 @@
              rejectedProfiles:(NSMutableArray *)rejectedProfiles
              acceptedProfiles:(NSMutableArray *)acceptedProfiles;
 
+
++ (User *)createUserForMatchWithName:(NSString *)name
+                        ProfilePhoto:(UIImage *)photo;
+
+
 @end

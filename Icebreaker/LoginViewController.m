@@ -243,6 +243,11 @@
             //SAVES INFORMATION ON PARSE
             [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if(succeeded){
+                    
+                    PFObject *matchesInHeaven = [PFObject objectWithClassName:@"Relationship"];
+                    matchesInHeaven[@"owner"] = user;
+                    [matchesInHeaven saveInBackground];
+                    
                     NSLog(@"The user's information and relations have been updated");
                 } else {
                     NSLog(@"Error updating user information: %@", error.description);

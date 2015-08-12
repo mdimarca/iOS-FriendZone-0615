@@ -7,6 +7,7 @@
 //
 
 #import "DataStore.h"
+#import "User.h"
 
 @implementation DataStore
 
@@ -36,6 +37,13 @@
         
         if (success) {
             self.potentialMatchArray = [matches mutableCopy];
+            
+            for (User *person in matches) {
+                
+                NSLog(@"====== INSIDE FETCH ==== Name: %@", person.firstName);
+            }
+
+            
             completion(YES);
         } else {
             
