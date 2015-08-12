@@ -36,6 +36,8 @@
 		BD8CF8E91B698ADF003CCC1F /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8CF8E81B698ADF003CCC1F /* ChatViewController.m */; };
 		BD8CF8EB1B698B98003CCC1F /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD8CF8EA1B698B98003CCC1F /* Chat.storyboard */; };
 		BD8CF8EE1B6AC624003CCC1F /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8CF8ED1B6AC624003CCC1F /* DataStore.m */; };
+		BDA3C3FD1B7AE6A500212267 /* IMG_0577.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BDA3C3FC1B7AE6A500212267 /* IMG_0577.jpg */; };
+		BDA3C3FF1B7AEE5500212267 /* IMG_0571.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BDA3C3FE1B7AEE5500212267 /* IMG_0571.jpg */; };
 		E12BEA211B6928810083860B /* MatchesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E12BEA201B6928810083860B /* MatchesTableViewCell.m */; };
 		E12BEA241B692E040083860B /* MatchedUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E12BEA231B692E040083860B /* MatchedUserViewController.m */; };
 		E12BEA271B6940A60083860B /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = E12BEA261B6940A60083860B /* iCarousel.m */; };
@@ -115,6 +117,8 @@
 		BD8CF8EA1B698B98003CCC1F /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		BD8CF8EC1B6AC624003CCC1F /* DataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStore.h; sourceTree = "<group>"; };
 		BD8CF8ED1B6AC624003CCC1F /* DataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStore.m; sourceTree = "<group>"; };
+		BDA3C3FC1B7AE6A500212267 /* IMG_0577.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = IMG_0577.jpg; path = Images.xcassets/IMG_0577.jpg; sourceTree = "<group>"; };
+		BDA3C3FE1B7AEE5500212267 /* IMG_0571.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = IMG_0571.jpg; path = Images.xcassets/IMG_0571.jpg; sourceTree = "<group>"; };
 		C1B50C505EC89CE12AE138C8 /* Pods-Icebreaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Icebreaker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Icebreaker/Pods-Icebreaker.debug.xcconfig"; sourceTree = "<group>"; };
 		E12BEA1F1B6928810083860B /* MatchesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchesTableViewCell.h; sourceTree = "<group>"; };
 		E12BEA201B6928810083860B /* MatchesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchesTableViewCell.m; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 			children = (
 				0774D1231B6806B600F3BCF5 /* Images.xcassets */,
 				BD8CF8E51B698825003CCC1F /* taylor_swift.jpg */,
+				BDA3C3FC1B7AE6A500212267 /* IMG_0577.jpg */,
+				BDA3C3FE1B7AEE5500212267 /* IMG_0571.jpg */,
 				0774D1171B6806B600F3BCF5 /* Info.plist */,
 				0774D1181B6806B600F3BCF5 /* main.m */,
 			);
@@ -447,7 +453,9 @@
 			files = (
 				BD8CF8EB1B698B98003CCC1F /* Chat.storyboard in Resources */,
 				BD8CF8E61B698825003CCC1F /* taylor_swift.jpg in Resources */,
+				BDA3C3FD1B7AE6A500212267 /* IMG_0577.jpg in Resources */,
 				0774D1221B6806B600F3BCF5 /* Matches.storyboard in Resources */,
+				BDA3C3FF1B7AEE5500212267 /* IMG_0571.jpg in Resources */,
 				0774D1271B6806B600F3BCF5 /* LaunchScreen.xib in Resources */,
 				0774D1241B6806B600F3BCF5 /* Images.xcassets in Resources */,
 				077A050A1B7920C600592986 /* GameViewController.storyboard in Resources */,

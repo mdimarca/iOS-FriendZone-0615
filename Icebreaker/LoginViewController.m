@@ -22,13 +22,23 @@
 @property (strong, nonatomic) NSString *parseIDLocal;
 @property (strong, nonatomic) User *localUser;
 @property (nonatomic) BOOL previouslyLoggedIn;
+@property (weak, nonatomic) IBOutlet UIImageView *loginImage1;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *image2TrailingConstraint;
+@property (weak, nonatomic) IBOutlet UIImageView *loginImage2;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *image2LeadingConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *image1LeadingConstraint;
 
-@property (weak, nonatomic) IBOutlet UIView *hackView;
+//@property (weak, nonatomic) IBOutlet UIView *hackView;
 @property (nonatomic, strong) DataStore *dataStore;
 
 @end
 
 @implementation LoginViewController
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
 
 - (IBAction)facebookLoginTapped:(id)sender {
     
@@ -52,9 +62,6 @@
     [super viewDidLoad];
     
     self.dataStore = [DataStore sharedDataStore];
-    
-    
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
