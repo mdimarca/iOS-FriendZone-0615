@@ -110,9 +110,9 @@
         
         NSArray *likesMadeFromUserWeJustLiked = userWeJustLiked[@"accepted_profiles"];
         
-        UIImage *profilePhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:userWeJustLiked[@"profile_photo"]]]];
-        
-        NSString *name = userWeJustLiked[@"first_name"];
+//        UIImage *profilePhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:userWeJustLiked[@"profile_photo"]]]];
+//        
+//        NSString *name = userWeJustLiked[@"first_name"];
         
         NSString *currentUserFBID = currentUser[@"facebookID"];
 
