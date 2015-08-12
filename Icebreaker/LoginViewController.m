@@ -25,8 +25,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *loginImage1;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *image2TrailingConstraint;
 @property (weak, nonatomic) IBOutlet UIImageView *loginImage2;
+@property (weak, nonatomic) IBOutlet UIImageView *loginImage3;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *image2LeadingConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *image1LeadingConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *image3TopConstraint;
 
 //@property (weak, nonatomic) IBOutlet UIView *hackView;
 @property (nonatomic, strong) DataStore *dataStore;
@@ -64,8 +66,70 @@
     self.dataStore = [DataStore sharedDataStore];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self imageReset];
+}
+
+- (void)imageReset
+{
+    self.image1LeadingConstraint.constant = 0;
+    self.image2LeadingConstraint.constant = 0;
+    self.image3TopConstraint.constant = 0;
+    self.loginImage2.alpha = 0;
+    self.loginImage3.alpha = 0;
+}
+
+- (void)animateImages
+{
+    [UIView animateKeyframesWithDuration:18
+                                   delay:0
+                                 options:UIViewKeyframeAnimationOptionCalculationModeLinear
+                              animations:^{
+                                  
+                                  [UIView addKeyframeWithRelativeStartTime:0
+                                                          relativeDuration:0.4
+                                                                animations:^{
+                                                                    self.image1LeadingConstraint.constant = -100;
+                                                                    [self.view layoutIfNeeded];
+                                                                }];
+                                  [UIView addKeyframeWithRelativeStartTime:0.2
+                                                          relativeDuration:0.2
+                                                                animations:^{
+                                                                    self.loginImage2.alpha = 1;
+                                                                    self.image2LeadingConstraint.constant = -50;
+                                                                    [self.view layoutIfNeeded];
+                                                                }];
+                                  [UIView addKeyframeWithRelativeStartTime:0.4
+                                                          relativeDuration:0.4
+                                                                animations:^{
+                                                                    self.image2LeadingConstraint.constant = -150;
+                                                                    [self.view layoutIfNeeded];
+                                                                }];
+                                  [UIView addKeyframeWithRelativeStartTime:0.6
+                                                          relativeDuration:0.2
+                                                                animations:^{
+                                                                    self.loginImage3.alpha = 1;
+                                                                    self.image3TopConstraint.constant = -50;
+                                                                    [self.view layoutIfNeeded];
+                                                                }];
+                                  [UIView addKeyframeWithRelativeStartTime:0.8
+                                                          relativeDuration:0.2
+                                                                animations:^{
+                                                                    self.image3TopConstraint.constant = -100;
+                                                                    [self.view layoutIfNeeded];
+                                                                }];
+                              }
+                              completion:^(BOOL finished) {
+                                  NSLog(@"Animation completed.");
+                              }];
+}
+
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    
+    [self animateImages];
     
     self.previouslyLoggedIn = NO;
     if ([PFUser currentUser] ||
