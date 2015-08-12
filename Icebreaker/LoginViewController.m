@@ -70,8 +70,20 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    self.facebookButtonBottomConstraint.constant = -300;
     [super viewWillAppear:animated];
     [self imageReset];
+}
+
+- (void)facebookLoginButtonAnimation {
+    [UIView animateWithDuration:.5
+                          delay:0
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         self.facebookButtonBottomConstraint.constant = 0;
+                     } completion:^(BOOL finished) {
+                         //
+                     }];
 }
 
 - (void)imageReset
@@ -138,16 +150,6 @@
         [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
         self.previouslyLoggedIn = YES;
 //        self.hackView.hidden = NO;
-        
-        
-        [UIView animateWithDuration:.5
-                              delay:0
-                            options:UIViewAnimationOptionCurveEaseInOut
-        animations:^{
-            //
-        } completion:^(BOOL finished) {
-            //
-        }];
         
         
     }
