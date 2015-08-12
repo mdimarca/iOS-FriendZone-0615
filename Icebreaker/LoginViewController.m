@@ -65,7 +65,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataStore = [DataStore sharedDataStore];
-    [self facebookLoginButtonAnimation];
     
 }
 
@@ -74,6 +73,7 @@
 
     [super viewWillAppear:animated];
     [self imageReset];
+    [self facebookLoginButtonAnimation];
 }
 
 - (void)facebookLoginButtonAnimation {
