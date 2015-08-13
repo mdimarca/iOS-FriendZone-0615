@@ -39,6 +39,8 @@
 		BDA3C3FD1B7AE6A500212267 /* IMG_0577.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BDA3C3FC1B7AE6A500212267 /* IMG_0577.jpg */; };
 		BDA3C4011B7B869F00212267 /* IMG_0649.JPG in Resources */ = {isa = PBXBuildFile; fileRef = BDA3C4001B7B869F00212267 /* IMG_0649.JPG */; };
 		BDA3C4031B7B8BE600212267 /* IMG_0650.JPG in Resources */ = {isa = PBXBuildFile; fileRef = BDA3C4021B7B8BE600212267 /* IMG_0650.JPG */; };
+		BDA3C4051B7CF9E900212267 /* liked_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BDA3C4041B7CF9E900212267 /* liked_2x.png */; };
+		BDA3C4071B7CF9F000212267 /* nope_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BDA3C4061B7CF9F000212267 /* nope_2x.png */; };
 		E12BEA211B6928810083860B /* MatchesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E12BEA201B6928810083860B /* MatchesTableViewCell.m */; };
 		E12BEA241B692E040083860B /* MatchedUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E12BEA231B692E040083860B /* MatchedUserViewController.m */; };
 		E12BEA271B6940A60083860B /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = E12BEA261B6940A60083860B /* iCarousel.m */; };
@@ -121,6 +123,8 @@
 		BDA3C3FC1B7AE6A500212267 /* IMG_0577.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = IMG_0577.jpg; path = Images.xcassets/IMG_0577.jpg; sourceTree = "<group>"; };
 		BDA3C4001B7B869F00212267 /* IMG_0649.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = IMG_0649.JPG; path = Images.xcassets/IMG_0649.JPG; sourceTree = "<group>"; };
 		BDA3C4021B7B8BE600212267 /* IMG_0650.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = IMG_0650.JPG; path = Images.xcassets/IMG_0650.JPG; sourceTree = "<group>"; };
+		BDA3C4041B7CF9E900212267 /* liked_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = liked_2x.png; path = Images.xcassets/liked_2x.png; sourceTree = "<group>"; };
+		BDA3C4061B7CF9F000212267 /* nope_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nope_2x.png; path = Images.xcassets/nope_2x.png; sourceTree = "<group>"; };
 		C1B50C505EC89CE12AE138C8 /* Pods-Icebreaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Icebreaker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Icebreaker/Pods-Icebreaker.debug.xcconfig"; sourceTree = "<group>"; };
 		E12BEA1F1B6928810083860B /* MatchesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchesTableViewCell.h; sourceTree = "<group>"; };
 		E12BEA201B6928810083860B /* MatchesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchesTableViewCell.m; sourceTree = "<group>"; };
@@ -202,6 +206,8 @@
 			children = (
 				0774D1231B6806B600F3BCF5 /* Images.xcassets */,
 				BD8CF8E51B698825003CCC1F /* taylor_swift.jpg */,
+				BDA3C4041B7CF9E900212267 /* liked_2x.png */,
+				BDA3C4061B7CF9F000212267 /* nope_2x.png */,
 				BDA3C3FC1B7AE6A500212267 /* IMG_0577.jpg */,
 				BDA3C4001B7B869F00212267 /* IMG_0649.JPG */,
 				BDA3C4021B7B8BE600212267 /* IMG_0650.JPG */,
@@ -454,10 +460,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDA3C4051B7CF9E900212267 /* liked_2x.png in Resources */,
 				BDA3C4011B7B869F00212267 /* IMG_0649.JPG in Resources */,
 				BD8CF8EB1B698B98003CCC1F /* Chat.storyboard in Resources */,
 				BD8CF8E61B698825003CCC1F /* taylor_swift.jpg in Resources */,
 				BDA3C3FD1B7AE6A500212267 /* IMG_0577.jpg in Resources */,
+				BDA3C4071B7CF9F000212267 /* nope_2x.png in Resources */,
 				0774D1221B6806B600F3BCF5 /* Matches.storyboard in Resources */,
 				0774D1271B6806B600F3BCF5 /* LaunchScreen.xib in Resources */,
 				0774D1241B6806B600F3BCF5 /* Images.xcassets in Resources */,
