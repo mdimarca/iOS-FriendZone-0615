@@ -40,9 +40,47 @@
     NSLog(@"CHECK ACCEPTED %@",self.dataStore.user.acceptedProfiles);
     NSLog(@"CHECK REJECTED %@",self.dataStore.user.rejectedProfiles);
     
-    User *match1 = [User createUserForMatchWithName:@"Joe" ProfilePhoto:[UIImage imageNamed:@"PlaceHolder"]];
-    User *match2 = [User createUserForMatchWithName:@"Mary" ProfilePhoto:[UIImage imageNamed:@"clip"]];
-    User *match3 = [User createUserForMatchWithName:@"Jackson" ProfilePhoto:[UIImage imageNamed:@"play"]];
+    User *match1 = [User newUserWithFirstName:@"Marshall"
+                                     lastName:@"Walker"
+                                   facebookID:@"125555"
+                                       gender:@"male"
+                                 profilePhoto:[UIImage imageNamed:@"liked_2x"]
+                                   coverPhoto:nil
+                                     pictures:[@[] mutableCopy]
+                             aboutInformation:@"I have an insane collection of My Little Ponies. When I grow up, I want to be real pony trainer."
+                                      matches:[@[] mutableCopy]
+                                      friends:[@[] mutableCopy]
+                                        likes:[@[@"chocolate", @"banana", @"hamburgers", @"the sky", @"churros", @"Facebook"] mutableCopy]
+                             rejectedProfiles:[@[] mutableCopy]
+                             acceptedProfiles:[@[] mutableCopy]];
+    
+    User *match2 = [User newUserWithFirstName:@"Julia"
+                                     lastName:@"Washington"
+                                   facebookID:@"120393"
+                                       gender:@"female"
+                                 profilePhoto:[UIImage imageNamed:@"nope_2x"]
+                                   coverPhoto:nil
+                                     pictures:[@[] mutableCopy]
+                             aboutInformation:@"I am a professional ice cream taster and armpit sniffer. I own 43 turtles, and I have one puppy named Paul."
+                                      matches:[@[] mutableCopy]
+                                      friends:[@[] mutableCopy]
+                                        likes:[@[@"Chipotle", @"NBA", @"Santa Claus", @"Smurfs", @"roses", @"hoses", @"noses", @"beer"] mutableCopy]
+                             rejectedProfiles:[@[] mutableCopy]
+                             acceptedProfiles:[@[] mutableCopy]];
+    
+    User *match3 = [User newUserWithFirstName:@"Miguel"
+                                     lastName:@"Jaxson"
+                                   facebookID:@"123456"
+                                       gender:@"male"
+                                 profilePhoto:[UIImage imageNamed:@"PlaceHolder"]
+                                   coverPhoto:nil
+                                     pictures:[@[] mutableCopy]
+                             aboutInformation:@"I like to play football in the desert while wearing cowboy boots. I also love to read and play with my puppy, Jimmo."
+                                      matches:[@[] mutableCopy]
+                                      friends:[@[] mutableCopy]
+                                        likes:[@[@"cowboys", @"cotton", @"vanilla", @"the moon", @"rocks", @"Game of Thrones"] mutableCopy]
+                             rejectedProfiles:[@[] mutableCopy]
+                             acceptedProfiles:[@[] mutableCopy]];
     
     self.matchesDemoData = @[match1, match2, match3];
 }
@@ -68,7 +106,7 @@
     
     User *currentMatch = self.matchesDemoData[indexPath.row];
     
-    cell.name.text = currentMatch.firstName;
+    cell.name.text = [NSString stringWithFormat:@"%@ %@", currentMatch.firstName, currentMatch.lastName];
     cell.userProfilePicture.image = currentMatch.profilePhoto;
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

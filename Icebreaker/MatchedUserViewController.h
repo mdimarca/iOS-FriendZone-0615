@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "iCarousel.h"
+//#import "iCarousel.h"
 
 @interface MatchedUserViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet iCarousel *iCarousel;
+//@property (weak, nonatomic) IBOutlet iCarousel *iCarousel;
 
 @end
