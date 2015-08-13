@@ -37,11 +37,22 @@
 {
     self.userProfileImage.layer.cornerRadius = 65;
     self.userProfileImage.clipsToBounds = YES;
+    self.userProfileImage.image = self.matchedUser.profilePhoto;
+    self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", self.matchedUser.firstName, self.matchedUser.lastName];
+    self.userAboutInformationTextView.text = self.matchedUser.aboutInformation;
+    NSString *likesString = @"";
+    if (self.matchedUser.likes) {
+        for (NSString *like in self.matchedUser.likes) {
+            likesString = [likesString stringByAppendingString:[NSString stringWithFormat:@"%@\n", like]];
+        }
+    }
+    
+    self.userLikesTextView.text = likesString;
 }
 
 - (void)setUpTitleView
 {
-    self.navigationBar.title = @"Joe";
+    self.navigationBar.title = self.matchedUser.firstName;
 }
 
 
