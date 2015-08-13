@@ -10,12 +10,12 @@
 #import "MatchesTableViewCell.h"
 #import "DataStore.h"
 #import "User.h"
+#import "MatchedUserViewController.h"
 
 @interface MatchesTableViewController ()
 
-
 @property (nonatomic, strong) DataStore *dataStore;
-@property (nonatomic, strong) NSArray *matchesDemoData;
+@property (assign, nonatomic) NSInteger index;
 
 @end
 
@@ -82,7 +82,7 @@
                              rejectedProfiles:[@[] mutableCopy]
                              acceptedProfiles:[@[] mutableCopy]];
     
-    self.matchesDemoData = @[match1, match2, match3];
+    self.dataStore.user.matches = [@[match1, match2, match3] mutableCopy];
 }
 
 #pragma mark - Table view data source
@@ -96,7 +96,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     // Return the number of rows in the section.
-    return self.matchesDemoData.count;
+    return self.dataStore.user.matches.count;
 }
 
 
@@ -104,7 +104,7 @@
     
     MatchesTableViewCell *cell = (MatchesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"userCell" forIndexPath:indexPath];
     
-    User *currentMatch = self.matchesDemoData[indexPath.row];
+    User *currentMatch = self.dataStore.user.matches[indexPath.row];
     
     cell.name.text = [NSString stringWithFormat:@"%@ %@", currentMatch.firstName, currentMatch.lastName];
     cell.userProfilePicture.image = currentMatch.profilePhoto;
@@ -116,7 +116,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.index = indexPath.row;
     [self performSegueWithIdentifier:@"matchProfileSegue" sender:self];
+    
 }
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 //{
@@ -158,13 +160,16 @@
  }
  */
 
-/*
+
  #pragma mark - Navigation
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
  // Get the new view controller using [segue destinationViewController].
  // Pass the selected object to the new view controller.
+
+     MatchedUserViewController *destinationVC = segue.destinationViewController;
+     destinationVC.matchedUser = self.dataStore.user.matches[self.index];
  }
- */
+
 
 @end
