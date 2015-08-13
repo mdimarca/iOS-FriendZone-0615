@@ -252,8 +252,8 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
 // Create and add the "nope" button.
 - (void)constructNopeButton {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    UIImage *image = [UIImage imageNamed:@"nope@2x.png"];
-    button.frame = CGRectMake(ChoosePersonButtonHorizontalPadding,
+    UIImage *image = [UIImage imageNamed:@"nope_2x"];
+    button.frame = CGRectMake(ChoosePersonButtonHorizontalPadding - 30,
                               CGRectGetMaxY(self.backCardView.frame) + ChoosePersonButtonVerticalPadding + 450.f,
                               image.size.width,
                               image.size.height);
@@ -274,8 +274,8 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
 // Create and add the "like" button.
 - (void)constructLikedButton {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    UIImage *image = [UIImage imageNamed:@"liked@2x.png"];
-    button.frame = CGRectMake(CGRectGetMaxX(self.view.frame) - image.size.width - ChoosePersonButtonHorizontalPadding,
+    UIImage *image = [UIImage imageNamed:@"liked_2x"];
+    button.frame = CGRectMake(CGRectGetMaxX(self.view.frame) - image.size.width - ChoosePersonButtonHorizontalPadding + 30,
                               CGRectGetMaxY(self.backCardView.frame) + ChoosePersonButtonVerticalPadding + 450.f,
                               image.size.width,
                               image.size.height);
