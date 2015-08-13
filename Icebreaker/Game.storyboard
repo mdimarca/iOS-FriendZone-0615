@@ -55,6 +55,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o1R-rr-s72">
                                 <rect key="frame" x="54" y="279" width="268" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.28235294119999998" green="0.66274509800000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -69,6 +70,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1mh-a1-yNo">
                                 <rect key="frame" x="54" y="221" width="268" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.28235294119999998" green="0.66274509800000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -83,6 +85,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JpF-Zl-ThG">
                                 <rect key="frame" x="54" y="159" width="266" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.28235294119999998" green="0.66274509800000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -100,39 +103,29 @@
                                     <segue destination="fhb-Mk-4t2" kind="show" id="sTz-dp-hdy"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fDG-zd-8YZ">
-                                <rect key="frame" x="54" y="328" width="268" height="46"/>
-                                <color key="backgroundColor" red="0.43529411764705883" green="0.82745098039215681" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
-                                <state key="normal" title="Next Question">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="nextQuestionButtonTapped:" destination="7YZ-cs-5gM" eventType="touchUpInside" id="XVh-vz-y7b"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="island" translatesAutoresizingMaskIntoConstraints="NO" id="APR-yD-duO">
-                                <rect key="frame" x="168" y="74" width="44" height="44"/>
+                                <rect key="frame" x="171" y="81" width="44" height="44"/>
                                 <color key="backgroundColor" red="0.37254901959999998" green="0.7843137255" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="peanut" translatesAutoresizingMaskIntoConstraints="NO" id="kLO-Q7-JSK">
-                                <rect key="frame" x="116" y="74" width="44" height="44"/>
+                                <rect key="frame" x="119" y="81" width="44" height="44"/>
                                 <color key="backgroundColor" red="0.37254901959999998" green="0.7843137255" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="city" translatesAutoresizingMaskIntoConstraints="NO" id="ffC-fh-gUM">
-                                <rect key="frame" x="220" y="74" width="44" height="44"/>
+                                <rect key="frame" x="223" y="81" width="44" height="44"/>
                                 <color key="backgroundColor" red="0.37254901959999998" green="0.7843137255" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.31287097944774767" green="0.73310888982866518" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="answerOneTextField" destination="o1R-rr-s72" id="5Cn-O2-Jz7"/>
                         <outlet property="answerThreeTextField" destination="JpF-Zl-ThG" id="KQI-X9-lFI"/>
                         <outlet property="answerTwoTextField" destination="1mh-a1-yNo" id="Dvj-rI-4Ge"/>
-                        <outlet property="nextQuestionButton" destination="fDG-zd-8YZ" id="kBQ-Ln-2dP"/>
+                        <outlet property="cityImage" destination="ffC-fh-gUM" id="rNV-ek-Bxh"/>
+                        <outlet property="islandImage" destination="APR-yD-duO" id="TJg-wX-AtA"/>
+                        <outlet property="peanutImage" destination="kLO-Q7-JSK" id="DvE-e5-Jt2"/>
                         <outlet property="questionOneLabel" destination="zWb-aC-UP8" id="JgV-si-10t"/>
                         <outlet property="questionThreeLabel" destination="tgQ-w6-XZW" id="ZLL-Qd-SaX"/>
                         <outlet property="questionTwoLabel" destination="MZc-ka-Rjz" id="cSk-mh-i2q"/>

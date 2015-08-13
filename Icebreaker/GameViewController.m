@@ -19,20 +19,6 @@
     }];
 }
 
-- (IBAction)nextQuestionButtonTapped:(id)sender {
-    
-    self.questionTwoLabel.alpha = 1;
-    self.answerTwoTextField.alpha = 1;
-    
-    
-    if ((![self.answerTwoTextField.text isEqualToString:@""])) {
-        self.questionThreeLabel.alpha = 1;
-        self.answerThreeTextField.alpha = 1;
-        
-        self.nextQuestionButton.alpha = 0;
-    }
-}
-
 -(void)doneButtonHelperwithCompletion:(void (^)(BOOL success))completionBlock{
     
     NSString *answerOne = self.answerOneTextField.text;
@@ -61,12 +47,4 @@
     destinationVC.answerThree = self.answerThreeTextField.text;
 }
 
--(void) viewDidLoad {
-    
-    self.questionTwoLabel.alpha = 0;
-    self.questionThreeLabel.alpha = 0;
-    
-    self.answerTwoTextField.alpha = 0;
-    self.answerThreeTextField.alpha = 0;
-}
 @end
