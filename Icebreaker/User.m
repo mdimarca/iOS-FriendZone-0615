@@ -63,4 +63,18 @@
     return newUser;
 }
 
++ (User *)createUserForMatchWithName:(NSString *)name
+                        ProfilePhoto:(UIImage *)photo {
+    
+    
+   
+    User *person = [[User alloc] init];
+    
+    person.firstName = name;
+    person.profilePhoto = photo;
+    
+    return person;
+
+}
+
 @end

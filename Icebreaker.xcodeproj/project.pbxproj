@@ -16,7 +16,7 @@
 		0774D1271B6806B600F3BCF5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0774D1251B6806B600F3BCF5 /* LaunchScreen.xib */; };
 		0774D1331B6806B600F3BCF5 /* IcebreakerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774D1321B6806B600F3BCF5 /* IcebreakerTests.m */; };
 		0774D1521B69478A00F3BCF5 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774D1511B69478A00F3BCF5 /* TableView.m */; };
-		077A050A1B7920C600592986 /* GameViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 077A05091B7920C600592986 /* GameViewController.storyboard */; };
+		077A050A1B7920C600592986 /* Game.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 077A05091B7920C600592986 /* Game.storyboard */; };
 		077A050D1B79268400592986 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 077A050C1B79268400592986 /* GameViewController.m */; };
 		077A05101B792A8100592986 /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 077A050F1B792A8100592986 /* ResultViewController.m */; };
 		3414BFFE1B69247A00C72689 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3414BFFD1B69247A00C72689 /* User.m */; };
@@ -70,7 +70,7 @@
 		0774D1321B6806B600F3BCF5 /* IcebreakerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IcebreakerTests.m; sourceTree = "<group>"; };
 		0774D1501B69478A00F3BCF5 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
 		0774D1511B69478A00F3BCF5 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
-		077A05091B7920C600592986 /* GameViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GameViewController.storyboard; sourceTree = "<group>"; };
+		077A05091B7920C600592986 /* Game.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Game.storyboard; sourceTree = "<group>"; };
 		077A050B1B79268400592986 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		077A050C1B79268400592986 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		077A050E1B792A8100592986 /* ResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultViewController.h; sourceTree = "<group>"; };
@@ -302,7 +302,7 @@
 				BD8CF8EA1B698B98003CCC1F /* Chat.storyboard */,
 				0774D1201B6806B600F3BCF5 /* Matches.storyboard */,
 				BD8CF8DC1B69517B003CCC1F /* Main.storyboard */,
-				077A05091B7920C600592986 /* GameViewController.storyboard */,
+				077A05091B7920C600592986 /* Game.storyboard */,
 				077A050B1B79268400592986 /* GameViewController.h */,
 				077A050C1B79268400592986 /* GameViewController.m */,
 				077A050E1B792A8100592986 /* ResultViewController.h */,
@@ -461,7 +461,7 @@
 				0774D1221B6806B600F3BCF5 /* Matches.storyboard in Resources */,
 				0774D1271B6806B600F3BCF5 /* LaunchScreen.xib in Resources */,
 				0774D1241B6806B600F3BCF5 /* Images.xcassets in Resources */,
-				077A050A1B7920C600592986 /* GameViewController.storyboard in Resources */,
+				077A050A1B7920C600592986 /* Game.storyboard in Resources */,
 				BDA3C4031B7B8BE600212267 /* IMG_0650.JPG in Resources */,
 				BD8CF8DE1B69517B003CCC1F /* Main.storyboard in Resources */,
 			);

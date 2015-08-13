@@ -13,6 +13,7 @@
 - (void)awakeFromNib {
     // Initialization code
     self.userProfilePicture.layer.cornerRadius = 25;
+    self.userProfilePicture.clipsToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
