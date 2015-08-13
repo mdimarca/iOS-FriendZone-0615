@@ -19,7 +19,7 @@
         _facebookID = @"";
         _gender = @"";
         _profilePhoto = [UIImage new];
-        _coverPhoto = [UIImage new];
+//        _coverPhoto = [UIImage new];
         _pictures = [@[] mutableCopy];
         _aboutInformation = @"";
         _matches = [@[] mutableCopy];
