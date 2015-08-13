@@ -9,11 +9,13 @@
 #import "MatchesTableViewController.h"
 #import "MatchesTableViewCell.h"
 #import "DataStore.h"
+#import "User.h"
 
 @interface MatchesTableViewController ()
 
 
 @property (nonatomic, strong) DataStore *dataStore;
+@property (nonatomic, strong) NSArray *matchesDemoData;
 
 @end
 
@@ -28,15 +30,21 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    [self setupData];
+}
+
+- (void)setupData
+{
     self.dataStore = [DataStore sharedDataStore];
     
     NSLog(@"CHECK ACCEPTED %@",self.dataStore.user.acceptedProfiles);
     NSLog(@"CHECK REJECTED %@",self.dataStore.user.rejectedProfiles);
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    User *match1 = [User createUserForMatchWithName:@"Joe" ProfilePhoto:[UIImage imageNamed:@"PlaceHolder"]];
+    User *match2 = [User createUserForMatchWithName:@"Mary" ProfilePhoto:[UIImage imageNamed:@"clip"]];
+    User *match3 = [User createUserForMatchWithName:@"Jackson" ProfilePhoto:[UIImage imageNamed:@"play"]];
+    
+    self.matchesDemoData = @[match1, match2, match3];
 }
 
 #pragma mark - Table view data source
@@ -50,7 +58,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     // Return the number of rows in the section.
-    return self.dataStore.user.acceptedProfiles.count;
+    return self.matchesDemoData.count;
 }
 
 
@@ -58,7 +66,11 @@
     
     MatchesTableViewCell *cell = (MatchesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"userCell" forIndexPath:indexPath];
     
-    cell.name.text = self.dataStore.user.acceptedProfiles[indexPath.row];
+    User *currentMatch = self.matchesDemoData[indexPath.row];
+    
+    cell.name.text = currentMatch.firstName;
+    cell.userProfilePicture.image = currentMatch.profilePhoto;
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
