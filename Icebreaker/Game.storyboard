@@ -156,7 +156,6 @@
         <!--View Controller-->
         <scene sceneID="iMy-mS-4cl">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dIt-bs-5bZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="wtO-3N-6pp" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BCS-fB-Xko"/>
@@ -169,6 +168,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dIt-bs-5bZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1370.5" y="241.5"/>
         </scene>

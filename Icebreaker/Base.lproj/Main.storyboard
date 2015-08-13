@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -235,7 +235,54 @@
                     <view key="view" contentMode="scaleToFill" id="8uQ-ZY-t7G">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JsT-mT-KvX">
+                                <rect key="frame" x="47" y="179" width="281" height="200"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xaJ-09-c4W">
+                                        <rect key="frame" x="154" y="40" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="cao-us-cgL"/>
+                                            <constraint firstAttribute="height" constant="100" id="qI6-Mw-GOb"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It's a match!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JgY-y8-V2X">
+                                        <rect key="frame" x="69" y="148" width="145" height="44"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="145" id="Jhi-Bf-It4"/>
+                                            <constraint firstAttribute="height" constant="44" id="igG-BN-TrH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dja-Wo-fwA">
+                                        <rect key="frame" x="27" y="40" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="C9U-eO-zhv"/>
+                                            <constraint firstAttribute="width" constant="100" id="ycX-yo-hJU"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="dja-Wo-fwA" firstAttribute="leading" secondItem="JsT-mT-KvX" secondAttribute="leading" constant="27" id="0Mo-fO-XpF" userLabel="left image left"/>
+                                    <constraint firstItem="JgY-y8-V2X" firstAttribute="top" secondItem="xaJ-09-c4W" secondAttribute="bottom" constant="8" id="EcI-9x-m9g" userLabel="text top"/>
+                                    <constraint firstAttribute="height" constant="200" id="YF4-hD-zHV" userLabel="match view height"/>
+                                    <constraint firstAttribute="trailing" secondItem="xaJ-09-c4W" secondAttribute="trailing" constant="27" id="k2Z-uX-9K1" userLabel="right image right"/>
+                                    <constraint firstAttribute="centerX" secondItem="JgY-y8-V2X" secondAttribute="centerX" constant="-0.5" id="rLd-1r-XQL" userLabel="text center x"/>
+                                    <constraint firstItem="xaJ-09-c4W" firstAttribute="top" secondItem="JsT-mT-KvX" secondAttribute="top" constant="40" id="yL8-qQ-TuB" userLabel="right image top"/>
+                                    <constraint firstItem="dja-Wo-fwA" firstAttribute="top" secondItem="JsT-mT-KvX" secondAttribute="top" constant="40" id="zR2-Xh-uZx" userLabel="left image top"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JsT-mT-KvX" firstAttribute="top" secondItem="VVt-bN-NnH" secondAttribute="bottom" constant="115" id="8sf-dm-Mm9" userLabel="match view top"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JsT-mT-KvX" secondAttribute="trailing" constant="31" id="OIH-Kb-bsa" userLabel="match right"/>
+                            <constraint firstItem="JsT-mT-KvX" firstAttribute="leading" secondItem="8uQ-ZY-t7G" secondAttribute="leadingMargin" constant="31" id="gnS-sQ-mMh" userLabel="match left"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mBU-tp-akT">
                         <barButtonItem key="leftBarButtonItem" title="Profile" id="YHL-eM-IS4">
@@ -249,10 +296,20 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="itsAMatchLabel" destination="JgY-y8-V2X" id="7k7-aY-2pi"/>
+                        <outlet property="leftImage" destination="dja-Wo-fwA" id="bHw-zT-S8a"/>
+                        <outlet property="leftProfilePictureConstraint" destination="0Mo-fO-XpF" id="eeB-k2-HXa"/>
+                        <outlet property="matchNotificationLabelTop" destination="EcI-9x-m9g" id="5sE-MI-qVX"/>
+                        <outlet property="matchView" destination="JsT-mT-KvX" id="3ca-uc-A8Q"/>
+                        <outlet property="rightImage" destination="xaJ-09-c4W" id="Ik2-CK-Bnt"/>
+                        <outlet property="rightProfilePictureConstraint" destination="k2Z-uX-9K1" id="T9g-hH-iiY"/>
+                        <outlet property="viewProperty" destination="8uQ-ZY-t7G" id="fur-H6-5i1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oNA-wk-rnZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2940" y="464"/>
+            <point key="canvasLocation" x="2939.5" y="463.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="HjI-MT-meN">

@@ -16,4 +16,5 @@
 @property (strong, nonatomic) ChoosePersonViewOurs *frontCardView;
 @property (strong, nonatomic) ChoosePersonViewOurs *backCardView;
 
+
 @end
