@@ -1,1 +1,1 @@
-Icebreaker is a student application.
+Icebreaker is a student iOS application written in Objective-C.
