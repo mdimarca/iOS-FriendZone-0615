@@ -24,4 +24,8 @@
 - (IBAction)doneButtonTapped:(id)sender;
 - (IBAction)nextQuestionButtonTapped:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIImageView *peanutImage;
+@property (strong, nonatomic) IBOutlet UIImageView *islandImage;
+@property (strong, nonatomic) IBOutlet UIImageView *cityImage;
+
 @end
