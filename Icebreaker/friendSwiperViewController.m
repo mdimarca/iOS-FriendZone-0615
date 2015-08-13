@@ -172,30 +172,41 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
     DataStore *dataManager = self.dataManager;
     [self keepOrRemoveLikeAndRejectButton];
 
-    User *user = self.trackPotentialMatches[0];
-    [self displayMatchNotification:user];
+    PFUser *currentUser = [PFUser currentUser];
+    
+    User *userSwipedOn = self.trackPotentialMatches[0];
+    [self displayMatchNotification:userSwipedOn];
     
     if (direction == MDCSwipeDirectionLeft) {
         NSLog(@"Photo rejected!");
-        [user.rejectedProfiles addObject:user.facebookID];
-        [ParseAPICalls updateParsePotentialMatchesWithFacebookID:user.facebookID withAccepted:NO withCompletion:^(BOOL success) {
+        [self.dataManager.user.rejectedProfiles addObject:userSwipedOn.facebookID];//todo fixed i think
+        [ParseAPICalls updateParsePotentialMatchesWithFacebookID:userSwipedOn.facebookID withAccepted:NO withCompletion:^(BOOL success) {
             
         }];
     } else {
         NSLog(@"Photo liked!");
-        [user.acceptedProfiles addObject:user.facebookID];
-        [ParseAPICalls updateParsePotentialMatchesWithFacebookID:user.facebookID withAccepted:YES withCompletion:^(BOOL success) {
-        }];
-        [ParseAPICalls isSwipeAMatch:user.facebookID withCompletion:^(BOOL success, User *matchedUser) {
-            if(success){
-                //GO to main thread and update the views
-                NSLog(@"MATCHED");
-                [ParseAPICalls updateMatchWithLocalUser:dataManager.user withOtherParseUser:dataManager.potentialMatchArray[0] withCompletion:^(BOOL success) {
+        [self.dataManager.user.acceptedProfiles addObject:userSwipedOn.facebookID]; //todo fixed i think
+        [ParseAPICalls updateParsePotentialMatchesWithFacebookID:userSwipedOn.facebookID withAccepted:YES withCompletion:^(BOOL success) {
+            
+            //done in here to make sure it happens in order.
+            if (success) {
+                [ParseAPICalls isSwipeAMatch:userSwipedOn.facebookID withCompletion:^(BOOL success, User *matchedUser) {
+                    if(success){
+                        //GO to main thread and update the views
+                        
+                        
+                        NSLog(@"MATCHED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                    }
                 }];
+
+            } else {
+                NSLog(@"error");
             }
         }];
         [self.trackPotentialMatches removeObjectAtIndex:0];
     }
+    
+    
     self.frontCardView = self.backCardView;
     if ((self.backCardView = [self popPersonViewWithFrame:[self backCardViewFrame]])) {
         self.backCardView.alpha = 0.0;

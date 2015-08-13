@@ -274,37 +274,48 @@
             self.localUser.friends = [@[] mutableCopy];
             DataStore *dataStore = [DataStore sharedDataStore];
             dataStore.user = self.localUser;
-            
+         
             //SAVES INFORMATION ON PARSE
             [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if(succeeded){
-                    
-                    PFObject *matchesInHeaven = [PFObject objectWithClassName:@"Relationship"];
-                    matchesInHeaven[@"owner"] = user;
-                    [matchesInHeaven saveInBackground];
-                    
-                    NSLog(@"The user's information and relations have been updated");
+                    PFQuery *queryForCurrentUser = [PFQuery queryWithClassName:@"Relationship"];
+                    [queryForCurrentUser whereKey:@"owner" equalTo:user];
+                    [queryForCurrentUser getFirstObjectInBackgroundWithBlock:^(PFObject *userRelationship, NSError *error) {
+    
+                        if (error.code == 101) {
+                            NSLog(@"USERRELATIONSHIP %@",userRelationship);
+                            NSLog(@"RELATIONSHIP DOESNT EXIST");
+                            PFObject *matchesInHeaven = [PFObject objectWithClassName:@"Relationship"];
+                            matchesInHeaven[@"owner"] = user;
+                            [matchesInHeaven saveInBackground];
+                            
+                            NSLog(@"The user's information and relations have been updated");
+                            }
+                        }];
                 } else {
                     NSLog(@"Error updating user information: %@", error.description);
                 }
             }];
-            
-            //CREATE A LOCAL USER
-            //            [self createLocalUserWithFirstName:firstName
-            //                                      lastName:lastName
-            //                                    facebookID:facebookID
-            //                                        gender:gender
-            //                              aboutInformation:aboutInformation
-            //                                         likes:[likes copy]
-            //                                    coverPhoto:coverPhoto];
         }
     }];
 }
 
+//-(BOOL)doesRelationshipExist{
+//     PFUser *currentUser = [PFUser currentUser];
+//    PFQuery *queryForCurrentUser = [PFQuery queryWithClassName:@"Relationship"];
+//    [queryForCurrentUser whereKey:@"owner" equalTo:currentUser];
+//    [queryForCurrentUser getFirstObjectInBackgroundWithBlock:^(PFObject *userRelationship, NSError *error) {
+//        if (!error) {
+//            if (userRelationship != nil){
+//                return YES;
+//            }
+//        }
+//    }];
+//    return NO;
+//}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
     if ([[segue identifier] isEqualToString:@"loginSegue"]) {
-        
         if (self.previouslyLoggedIn) {
             //DO PARSE
             [self.dataStore fetchCurrentUserData];
