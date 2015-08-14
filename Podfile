@@ -11,6 +11,7 @@ pod 'FBSDKShareKit'
 # UI Pods
 pod 'MDCSwipeToChoose'
 pod 'JSQMessagesViewController'
+pod 'MBProgressHUD', '~> 0.9.1'
 
 # Networking Pods
 pod 'Firebase'

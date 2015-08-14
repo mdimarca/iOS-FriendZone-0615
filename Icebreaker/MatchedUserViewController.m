@@ -31,12 +31,15 @@
 {
     self.userProfileImage.layer.cornerRadius = 65;
     self.userProfileImage.clipsToBounds = YES;
-    self.userProfileImage.image = self.matchedUser.profilePhoto;
-    self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", self.matchedUser.firstName, self.matchedUser.lastName];
-    self.userAboutInformationTextView.text = self.matchedUser.aboutInformation;
+     UIImage *profilePhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.matchedUser[@"profile_photo"]]]];
+    self.userProfileImage.image = profilePhoto;
+    
+    
+    self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", self.matchedUser[@"first_name"], self.matchedUser[@"last_name"]];
+    self.userAboutInformationTextView.text = self.matchedUser[@"aboutInformation"];
     NSString *likesString = @"";
-    if (self.matchedUser.likes) {
-        for (NSString *like in self.matchedUser.likes) {
+    if (self.matchedUser[@"likes"]) {
+        for (NSString *like in self.matchedUser[@"likes"]) {
             likesString = [likesString stringByAppendingString:[NSString stringWithFormat:@"%@\n", like]];
         }
     }
@@ -46,7 +49,7 @@
 
 - (void)setUpTitleView
 {
-    self.navigationBar.title = self.matchedUser.firstName;
+    self.navigationBar.title = self.matchedUser[@"first_name"];
 }
 
 /*

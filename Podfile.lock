@@ -22,6 +22,7 @@ PODS:
   - JSQMessagesViewController (7.1.0):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
+  - MBProgressHUD (0.9.1)
   - MDCSwipeToChoose (0.2.3)
   - Parse (1.7.5.3):
     - Bolts/Tasks (>= 1.2.0)
@@ -38,6 +39,7 @@ DEPENDENCIES:
   - FBSDKShareKit
   - Firebase
   - JSQMessagesViewController
+  - MBProgressHUD (~> 0.9.1)
   - MDCSwipeToChoose
   - Parse
   - ParseFacebookUtilsV4
@@ -50,6 +52,7 @@ SPEC CHECKSUMS:
   Firebase: 2db60272f68ce40c7d47e5ae6eddc16977c65d4c
   JSQMessagesViewController: ca11f86fa68ca70835f05e169df9244147c1dc40
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   MDCSwipeToChoose: 56239d98b4558c66e7c3c9069482befd26092270
   Parse: 373adbb1ad2e34d383542c3b28f678c49ebe4881
   ParseFacebookUtilsV4: ea5db22e87b91cbf99b9d156642e2b97a4db7d51

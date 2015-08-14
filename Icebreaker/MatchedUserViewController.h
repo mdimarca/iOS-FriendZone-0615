@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "User.h"
+#import <Parse/Parse.h>
 
 @interface MatchedUserViewController : UIViewController
 
-@property (strong, nonatomic) User *matchedUser;
+@property (strong, nonatomic) PFUser *matchedUser;
 
 @end
