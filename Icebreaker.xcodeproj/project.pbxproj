@@ -14,7 +14,6 @@
 		0774D1241B6806B600F3BCF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0774D1231B6806B600F3BCF5 /* Images.xcassets */; };
 		0774D1271B6806B600F3BCF5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0774D1251B6806B600F3BCF5 /* LaunchScreen.xib */; };
 		0774D1331B6806B600F3BCF5 /* IcebreakerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774D1321B6806B600F3BCF5 /* IcebreakerTests.m */; };
-		0774D1521B69478A00F3BCF5 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774D1511B69478A00F3BCF5 /* TableView.m */; };
 		077A050A1B7920C600592986 /* Game.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 077A05091B7920C600592986 /* Game.storyboard */; };
 		077A050D1B79268400592986 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 077A050C1B79268400592986 /* GameViewController.m */; };
 		077A05101B792A8100592986 /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 077A050F1B792A8100592986 /* ResultViewController.m */; };
@@ -27,13 +26,12 @@
 		34D0C21D1B7D140D00726B05 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D0C21C1B7D140D00726B05 /* Constants.m */; };
 		BD0046511B71019000D68325 /* MatchesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0046501B71019000D68325 /* MatchesTableViewController.m */; };
 		BD0046571B73992D00D68325 /* MessagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0046561B73992D00D68325 /* MessagingViewController.m */; };
-		BD8CF8D81B682452003CCC1F /* friendSwiperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8CF8D71B682452003CCC1F /* friendSwiperViewController.m */; };
-		BD8CF8DB1B694260003CCC1F /* userProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8CF8DA1B694260003CCC1F /* userProfileViewController.m */; };
+		BD8CF8D81B682452003CCC1F /* FriendSwiperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8CF8D71B682452003CCC1F /* FriendSwiperViewController.m */; };
+		BD8CF8DB1B694260003CCC1F /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8CF8DA1B694260003CCC1F /* UserProfileViewController.m */; };
 		BD8CF8DE1B69517B003CCC1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD8CF8DC1B69517B003CCC1F /* Main.storyboard */; };
 		BD8CF8E11B6958B4003CCC1F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8CF8E01B6958B4003CCC1F /* LoginViewController.m */; };
 		BD8CF8E41B69650A003CCC1F /* LinkedStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8CF8E31B69650A003CCC1F /* LinkedStoryboardSegue.m */; };
 		BD8CF8E61B698825003CCC1F /* taylor_swift.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD8CF8E51B698825003CCC1F /* taylor_swift.jpg */; };
-		BD8CF8E91B698ADF003CCC1F /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8CF8E81B698ADF003CCC1F /* ChatViewController.m */; };
 		BD8CF8EB1B698B98003CCC1F /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD8CF8EA1B698B98003CCC1F /* Chat.storyboard */; };
 		BD8CF8EE1B6AC624003CCC1F /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8CF8ED1B6AC624003CCC1F /* DataStore.m */; };
 		BDA3C3FD1B7AE6A500212267 /* IMG_0577.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BDA3C3FC1B7AE6A500212267 /* IMG_0577.jpg */; };
@@ -69,8 +67,6 @@
 		0774D12C1B6806B600F3BCF5 /* IcebreakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IcebreakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0774D1311B6806B600F3BCF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0774D1321B6806B600F3BCF5 /* IcebreakerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IcebreakerTests.m; sourceTree = "<group>"; };
-		0774D1501B69478A00F3BCF5 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
-		0774D1511B69478A00F3BCF5 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
 		077A05091B7920C600592986 /* Game.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Game.storyboard; sourceTree = "<group>"; };
 		077A050B1B79268400592986 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		077A050C1B79268400592986 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
@@ -105,18 +101,16 @@
 		BD0046521B71022D00D68325 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		BD0046551B73992D00D68325 /* MessagingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagingViewController.h; sourceTree = "<group>"; };
 		BD0046561B73992D00D68325 /* MessagingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagingViewController.m; sourceTree = "<group>"; };
-		BD8CF8D61B682452003CCC1F /* friendSwiperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = friendSwiperViewController.h; sourceTree = "<group>"; };
-		BD8CF8D71B682452003CCC1F /* friendSwiperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = friendSwiperViewController.m; sourceTree = "<group>"; };
-		BD8CF8D91B694260003CCC1F /* userProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userProfileViewController.h; sourceTree = "<group>"; };
-		BD8CF8DA1B694260003CCC1F /* userProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = userProfileViewController.m; sourceTree = "<group>"; };
+		BD8CF8D61B682452003CCC1F /* FriendSwiperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendSwiperViewController.h; sourceTree = "<group>"; };
+		BD8CF8D71B682452003CCC1F /* FriendSwiperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendSwiperViewController.m; sourceTree = "<group>"; };
+		BD8CF8D91B694260003CCC1F /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
+		BD8CF8DA1B694260003CCC1F /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		BD8CF8DD1B69517B003CCC1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BD8CF8DF1B6958B4003CCC1F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		BD8CF8E01B6958B4003CCC1F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		BD8CF8E21B69650A003CCC1F /* LinkedStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedStoryboardSegue.h; sourceTree = "<group>"; };
 		BD8CF8E31B69650A003CCC1F /* LinkedStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkedStoryboardSegue.m; sourceTree = "<group>"; };
 		BD8CF8E51B698825003CCC1F /* taylor_swift.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = taylor_swift.jpg; sourceTree = "<group>"; };
-		BD8CF8E71B698ADF003CCC1F /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
-		BD8CF8E81B698ADF003CCC1F /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		BD8CF8EA1B698B98003CCC1F /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		BD8CF8EC1B6AC624003CCC1F /* DataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStore.h; sourceTree = "<group>"; };
 		BD8CF8ED1B6AC624003CCC1F /* DataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStore.m; sourceTree = "<group>"; };
@@ -189,13 +183,9 @@
 		0774D1151B6806B600F3BCF5 /* Icebreaker */ = {
 			isa = PBXGroup;
 			children = (
-				BD8CF8EF1B6AC62E003CCC1F /* Data Store */,
-				3414C0051B692C6100C72689 /* User Classes */,
-				3414C0061B692C7000C72689 /* API Calls */,
-				E12BEA291B6940B20083860B /* Other Classes */,
+				E12BEA031B6910CE0083860B /* Models */,
 				E12BEA061B6912120083860B /* Controller */,
 				E12BEA051B69120B0083860B /* Views */,
-				E12BEA031B6910CE0083860B /* Models */,
 				0774D1161B6806B600F3BCF5 /* Supporting Files */,
 			);
 			path = Icebreaker;
@@ -290,8 +280,10 @@
 		E12BEA031B6910CE0083860B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BD0046521B71022D00D68325 /* Constants.h */,
-				34D0C21C1B7D140D00726B05 /* Constants.m */,
+				E12BEA291B6940B20083860B /* Other Classes */,
+				3414C0061B692C7000C72689 /* API Calls */,
+				BD8CF8EF1B6AC62E003CCC1F /* Data Store */,
+				3414C0051B692C6100C72689 /* User Classes */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -300,8 +292,6 @@
 			isa = PBXGroup;
 			children = (
 				34587A6A1B7261CA001E6BE3 /* Swipe */,
-				0774D1501B69478A00F3BCF5 /* TableView.h */,
-				0774D1511B69478A00F3BCF5 /* TableView.m */,
 				E12BEA1F1B6928810083860B /* MatchesTableViewCell.h */,
 				E12BEA201B6928810083860B /* MatchesTableViewCell.m */,
 				0774D1251B6806B600F3BCF5 /* LaunchScreen.xib */,
@@ -309,10 +299,6 @@
 				0774D1201B6806B600F3BCF5 /* Matches.storyboard */,
 				BD8CF8DC1B69517B003CCC1F /* Main.storyboard */,
 				077A05091B7920C600592986 /* Game.storyboard */,
-				077A050B1B79268400592986 /* GameViewController.h */,
-				077A050C1B79268400592986 /* GameViewController.m */,
-				077A050E1B792A8100592986 /* ResultViewController.h */,
-				077A050F1B792A8100592986 /* ResultViewController.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -320,20 +306,22 @@
 		E12BEA061B6912120083860B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				BD8CF8D61B682452003CCC1F /* friendSwiperViewController.h */,
-				BD8CF8D71B682452003CCC1F /* friendSwiperViewController.m */,
-				BD8CF8E71B698ADF003CCC1F /* ChatViewController.h */,
-				BD8CF8E81B698ADF003CCC1F /* ChatViewController.m */,
+				BD8CF8D61B682452003CCC1F /* FriendSwiperViewController.h */,
+				BD8CF8D71B682452003CCC1F /* FriendSwiperViewController.m */,
 				BD8CF8DF1B6958B4003CCC1F /* LoginViewController.h */,
 				BD8CF8E01B6958B4003CCC1F /* LoginViewController.m */,
 				BD00464F1B71019000D68325 /* MatchesTableViewController.h */,
 				BD0046501B71019000D68325 /* MatchesTableViewController.m */,
 				E12BEA221B692E040083860B /* MatchedUserViewController.h */,
 				E12BEA231B692E040083860B /* MatchedUserViewController.m */,
-				BD8CF8D91B694260003CCC1F /* userProfileViewController.h */,
-				BD8CF8DA1B694260003CCC1F /* userProfileViewController.m */,
+				BD8CF8D91B694260003CCC1F /* UserProfileViewController.h */,
+				BD8CF8DA1B694260003CCC1F /* UserProfileViewController.m */,
 				BD0046551B73992D00D68325 /* MessagingViewController.h */,
 				BD0046561B73992D00D68325 /* MessagingViewController.m */,
+				077A050B1B79268400592986 /* GameViewController.h */,
+				077A050C1B79268400592986 /* GameViewController.m */,
+				077A050E1B792A8100592986 /* ResultViewController.h */,
+				077A050F1B792A8100592986 /* ResultViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -341,6 +329,8 @@
 		E12BEA291B6940B20083860B /* Other Classes */ = {
 			isa = PBXGroup;
 			children = (
+				BD0046521B71022D00D68325 /* Constants.h */,
+				34D0C21C1B7D140D00726B05 /* Constants.m */,
 				E12BEA251B6940A60083860B /* iCarousel.h */,
 				E12BEA261B6940A60083860B /* iCarousel.m */,
 				BD8CF8E21B69650A003CCC1F /* LinkedStoryboardSegue.h */,
@@ -522,7 +512,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0774D1521B69478A00F3BCF5 /* TableView.m in Sources */,
 				077A050D1B79268400592986 /* GameViewController.m in Sources */,
 				3414C0091B692D8700C72689 /* LikedObject.m in Sources */,
 				3414BFFE1B69247A00C72689 /* User.m in Sources */,
@@ -535,13 +524,12 @@
 				BD0046511B71019000D68325 /* MatchesTableViewController.m in Sources */,
 				E12BEA271B6940A60083860B /* iCarousel.m in Sources */,
 				077A05101B792A8100592986 /* ResultViewController.m in Sources */,
-				BD8CF8D81B682452003CCC1F /* friendSwiperViewController.m in Sources */,
+				BD8CF8D81B682452003CCC1F /* FriendSwiperViewController.m in Sources */,
 				BD8CF8E41B69650A003CCC1F /* LinkedStoryboardSegue.m in Sources */,
 				BD0046571B73992D00D68325 /* MessagingViewController.m in Sources */,
-				BD8CF8E91B698ADF003CCC1F /* ChatViewController.m in Sources */,
 				BD8CF8E11B6958B4003CCC1F /* LoginViewController.m in Sources */,
 				34587A6D1B72635D001E6BE3 /* ParseAPICalls.m in Sources */,
-				BD8CF8DB1B694260003CCC1F /* userProfileViewController.m in Sources */,
+				BD8CF8DB1B694260003CCC1F /* UserProfileViewController.m in Sources */,
 				0774D11C1B6806B600F3BCF5 /* AppDelegate.m in Sources */,
 				3414C0011B69270600C72689 /* FacebookAPICalls.m in Sources */,
 				0774D1191B6806B600F3BCF5 /* main.m in Sources */,

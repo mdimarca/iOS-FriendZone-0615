@@ -23,7 +23,6 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
 @property (strong, nonatomic) NSMutableArray *messages;
 @property (strong, nonatomic) Firebase *firebase;
 
-
 @end
 
 @implementation MessagingViewController
@@ -33,7 +32,6 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
     // Do any additional setup after loading the view.
     
     [self setUp];
-    
 }
 
 - (void)setUp
@@ -67,13 +65,11 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
     self.inputToolbar.contentView.leftBarButtonItem = nil; /* custom button or nil to remove */
     self.showLoadEarlierMessagesHeader = NO;
     
-    
     /**
      *  Register custom menu actions for cells.
      */
 //    [JSQMessagesCollectionViewCell registerMenuAction:@selector(customAction:)];
 //    [UIMenuController sharedMenuController].menuItems = @[ [[UIMenuItem alloc] initWithTitle:@"Custom Action" action:@selector(customAction:)] ];
-    
     
     /**
      *  Customize your toolbar buttons
@@ -88,7 +84,6 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
      *  self.inputToolbar.maximumHeight = 150;
      */
     
-    
     // Sets new message location
     BOOL newMessagesOnTop = NO;
     
@@ -96,24 +91,20 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
     // This is so we can batch together the initial messages' reloadData for a pref gain.
     __block BOOL initialAdds = YES;
     
-    
-    
     [[self.firebase childByAppendingPath:@"123456"] observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         
         NSLog(@"snapshot: %@", snapshot.value);
         
-
         JSQMessage *message = [[JSQMessage alloc] initWithSenderId:snapshot.value[@"senderID"]
-                                                     senderDisplayName:snapshot.value[@"name"]
-                                                                  date:[NSDate date]
-                                                                  text:snapshot.value[@"text"]];
-            
-            if (newMessagesOnTop){
-                [self.messages insertObject:message atIndex:0];
-            } else {
-                [self.messages addObject:message];
-            }
-
+                                                 senderDisplayName:snapshot.value[@"name"]
+                                                              date:[NSDate date]
+                                                              text:snapshot.value[@"text"]];
+        
+        if (newMessagesOnTop){
+            [self.messages insertObject:message atIndex:0];
+        } else {
+            [self.messages addObject:message];
+        }
         
         // Reload the tableview
         if (!initialAdds) {
@@ -127,13 +118,6 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
         [self.collectionView reloadData];
         initialAdds = NO;
     }];
-    
-    
-    
-
-    
-    
-    
 }
 
 //+ (void)createGameOnFirebaseWithRef:(Firebase *)ref
@@ -158,9 +142,6 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
 //    }];
 //}
 
-
-
-
 #pragma mark - JSQMessagesViewController method overrides
 
 - (void)didPressSendButton:(UIButton *)button
@@ -176,33 +157,21 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
      *  2. Add new id<JSQMessageData> object to your data source
      *  3. Call `finishSendingMessage`
      */
-    [JSQSystemSoundPlayer jsq_playMessageSentSound];
+    //[JSQSystemSoundPlayer jsq_playMessageSentSound];
     
-    JSQMessage *message = [[JSQMessage alloc] initWithSenderId:senderId
-                                             senderDisplayName:senderDisplayName
-                                                          date:date
-                                                          text:text];
+//    JSQMessage *message = [[JSQMessage alloc] initWithSenderId:senderId
+//                                             senderDisplayName:senderDisplayName
+//                                                          date:date
+//                                                          text:text];
     
+    NSDictionary *newMessage = @{ @"name" : senderDisplayName,
+                                  @"text" : text,
+                                  @"senderID" : senderId };
     
-//    [self.firebase runTransactionBlock:^FTransactionResult *(FMutableData *currentData) {
-//        NSDictionary *newRoom = @{ @"name" : senderDisplayName,
-//                                   @"text" : text,
-//                                   @"senderID" : senderId };
-//        [[[self.firebase childByAppendingPath:@"123456"] childByAutoId] setValue:newRoom];
-//        //[[currentData childDataByAppendingPath:@"123456"] setValue:newRoom];
-//        
-//        return [FTransactionResult successWithValue:currentData]; }];
+    [[[self.firebase childByAppendingPath:@"123456"] childByAutoId] setValue:newMessage];
+    //    [self.messages addObject:message];
     
-    
-    NSDictionary *newRoom = @{ @"name" : senderDisplayName,
-                               @"text" : text,
-                               @"senderID" : senderId };
-    
-    [[[self.firebase childByAppendingPath:@"123456"] childByAutoId] setValue:newRoom];
-//    [self.messages addObject:message];
-    NSLog(@"%@", self.messages);
     [self finishSendingMessageAnimated:YES];
-
 }
 
 //- (void)didPressAccessoryButton:(UIButton *)sender
@@ -272,7 +241,6 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
         
         return self.bubbleImageOutgoing;
     }
-    
     return self.bubbleImageIncoming;
 }
 
@@ -316,8 +284,8 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
     return self.avatar;
 }
 
--   (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView
-attributedTextForCellTopLabelAtIndexPath:(NSIndexPath *)indexPath
+- (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView
+  attributedTextForCellTopLabelAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.item % 3 == 0) {
         JSQMessage *message = [self.messages objectAtIndex:indexPath.item];
@@ -327,8 +295,8 @@ attributedTextForCellTopLabelAtIndexPath:(NSIndexPath *)indexPath
     return nil;
 }
 
--            (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView
-attributedTextForMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath
+- (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView
+  attributedTextForMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath
 {
     JSQMessage *message = [self.messages objectAtIndex:indexPath.item];
     
@@ -346,8 +314,8 @@ attributedTextForMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath
     return [[NSAttributedString alloc] initWithString:message.senderDisplayName];
 }
 
--      (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView
-attributedTextForCellBottomLabelAtIndexPath:(NSIndexPath *)indexPath
+- (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView
+  attributedTextForCellBottomLabelAtIndexPath:(NSIndexPath *)indexPath
 {
     return nil;
 }
@@ -402,45 +370,55 @@ attributedTextForCellBottomLabelAtIndexPath:(NSIndexPath *)indexPath
 #pragma mark - UICollectionView Delegate
 #pragma mark - Custom menu items
 
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
-{
-    if (action == @selector(customAction:)) {
-        return YES;
-    }
-    
-    return [super collectionView:collectionView canPerformAction:action forItemAtIndexPath:indexPath withSender:sender];
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
-{
-    if (action == @selector(customAction:)) {
-        [self customAction:sender];
-        return;
-    }
-    
-    [super collectionView:collectionView performAction:action forItemAtIndexPath:indexPath withSender:sender];
-}
-
-- (void)customAction:(id)sender
-{
-    NSLog(@"Custom action received! Sender: %@", sender);
-    
-    [[[UIAlertView alloc] initWithTitle:@"Custom Action"
-                                message:nil
-                               delegate:nil
-                      cancelButtonTitle:@"OK"
-                      otherButtonTitles:nil]
-     show];
-}
-
-
+//- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action
+//    forItemAtIndexPath:(NSIndexPath *)indexPath
+//            withSender:(id)sender
+//{
+//    if (action == @selector(customAction:)) {
+//        return YES;
+//    }
+//    
+//    return [super collectionView:collectionView
+//                canPerformAction:action
+//              forItemAtIndexPath:indexPath
+//                      withSender:sender];
+//}
+//
+//- (void)collectionView:(UICollectionView *)collectionView
+//         performAction:(SEL)action
+//    forItemAtIndexPath:(NSIndexPath *)indexPath
+//            withSender:(id)sender
+//{
+//    if (action == @selector(customAction:)) {
+//        [self customAction:sender];
+//        return;
+//    }
+//    
+//    [super collectionView:collectionView
+//            performAction:action
+//       forItemAtIndexPath:indexPath
+//               withSender:sender];
+//}
+//
+//- (void)customAction:(id)sender
+//{
+//    NSLog(@"Custom action received! Sender: %@", sender);
+//    
+//    [[[UIAlertView alloc] initWithTitle:@"Custom Action"
+//                                message:nil
+//                               delegate:nil
+//                      cancelButtonTitle:@"OK"
+//                      otherButtonTitles:nil]
+//     show];
+//}
 
 #pragma mark - JSQMessages collection view flow layout delegate
 
 #pragma mark - Adjusting cell label heights
 
 - (CGFloat)collectionView:(JSQMessagesCollectionView *)collectionView
-                   layout:(JSQMessagesCollectionViewFlowLayout *)collectionViewLayout heightForCellTopLabelAtIndexPath:(NSIndexPath *)indexPath
+                   layout:(JSQMessagesCollectionViewFlowLayout *)collectionViewLayout
+  heightForCellTopLabelAtIndexPath:(NSIndexPath *)indexPath
 {
     /**
      *  Each label in a cell has a `height` delegate method that corresponds to its text dataSource method

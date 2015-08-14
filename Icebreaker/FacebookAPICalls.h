@@ -11,7 +11,6 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "User.h"
 
-
 @interface FacebookAPICalls : NSObject
 
 + (void)getUserInformationWithCompletion:(void (^)(User *user))completionBlock;

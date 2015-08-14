@@ -99,7 +99,6 @@
     return self.dataStore.user.matches.count;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     MatchesTableViewCell *cell = (MatchesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"userCell" forIndexPath:indexPath];
@@ -108,7 +107,6 @@
     
     cell.name.text = [NSString stringWithFormat:@"%@ %@", currentMatch.firstName, currentMatch.lastName];
     cell.userProfilePicture.image = currentMatch.profilePhoto;
-    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
@@ -118,7 +116,6 @@
 {
     self.index = indexPath.row;
     [self performSegueWithIdentifier:@"matchProfileSegue" sender:self];
-    
 }
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 //{

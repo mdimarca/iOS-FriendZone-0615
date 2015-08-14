@@ -13,7 +13,7 @@
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 #import "User.h"
 #import "DataStore.h"
-#import "friendSwiperViewController.h"
+#import "FriendSwiperViewController.h"
 
 
 @interface LoginViewController ()

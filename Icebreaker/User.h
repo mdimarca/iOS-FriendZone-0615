@@ -25,22 +25,19 @@
 @property (nonatomic, strong) NSMutableArray *rejectedProfiles;
 @property (nonatomic, strong) NSMutableArray *acceptedProfiles;
 
-//@property (strong, nonatomic) JSQMessages *messages;
-
-+(User *)newUserWithFirstName:(NSString *)firstName
-                        lastName:(NSString *)lastName
-                      facebookID:(NSString *)facebookID
-                          gender:(NSString *)gender
-                    profilePhoto:(UIImage *)profilePhoto
-                      coverPhoto:(UIImage *)coverPhoto
-                        pictures:(NSMutableArray *)pictures
-                aboutInformation:(NSString *)aboutInformation
-                         matches:(NSMutableArray *)matches
-                         friends:(NSMutableArray *)friends
-                        likes:(NSMutableArray *)likes
-             rejectedProfiles:(NSMutableArray *)rejectedProfiles
-             acceptedProfiles:(NSMutableArray *)acceptedProfiles;
-
++ (User *)newUserWithFirstName:(NSString *)firstName
+                      lastName:(NSString *)lastName
+                    facebookID:(NSString *)facebookID
+                        gender:(NSString *)gender
+                  profilePhoto:(UIImage *)profilePhoto
+                    coverPhoto:(UIImage *)coverPhoto
+                      pictures:(NSMutableArray *)pictures
+              aboutInformation:(NSString *)aboutInformation
+                       matches:(NSMutableArray *)matches
+                       friends:(NSMutableArray *)friends
+                         likes:(NSMutableArray *)likes
+              rejectedProfiles:(NSMutableArray *)rejectedProfiles
+              acceptedProfiles:(NSMutableArray *)acceptedProfiles;
 
 + (User *)createUserForMatchWithName:(NSString *)name
                         ProfilePhoto:(UIImage *)photo;

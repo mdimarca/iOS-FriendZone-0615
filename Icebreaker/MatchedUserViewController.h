@@ -8,11 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "User.h"
-//#import "iCarousel.h"
 
 @interface MatchedUserViewController : UIViewController
 
-//@property (weak, nonatomic) IBOutlet iCarousel *iCarousel;
 @property (strong, nonatomic) User *matchedUser;
 
 @end

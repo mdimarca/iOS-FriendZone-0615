@@ -17,7 +17,7 @@
 
 + (void)getUserInformationWithCompletion:(void (^)(User *user))completionBlock {
     
-    NSDictionary *params = @{ @"fields" : @"id, first_name, last_name, gender, picture.width(100).height(100), cover, bio, likes" };
+    NSDictionary *params = @{ @"fields" : @"id, first_name, last_name, gender, picture.width(400).height(400), cover, bio, likes" };
     
     FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:@"/me" parameters:params];
     
@@ -48,7 +48,6 @@
             completionBlock(dataManager.user);
         }
     }];
-
 }
 
 @end

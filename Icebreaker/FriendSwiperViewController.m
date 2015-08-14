@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 ChickenBiscut. All rights reserved.
 //
 
-#import "friendSwiperViewController.h"
+#import "FriendSwiperViewController.h"
 #import <MDCSwipeToChoose/MDCSwipeToChoose.h>
 #import "DataStore.h"
 #import "ChoosePersonViewOurs.h"
@@ -14,7 +14,7 @@
 static const CGFloat ChoosePersonButtonHorizontalPadding = 88.f;
 static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
 
-@interface friendSwiperViewController () < MDCSwipeToChooseDelegate>
+@interface FriendSwiperViewController () < MDCSwipeToChooseDelegate>
 
 @property (strong, nonatomic) DataStore *dataManager;
 @property (strong, nonatomic) NSMutableArray *potentialMatches;
@@ -35,19 +35,19 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
 
 @end
 
-@implementation friendSwiperViewController
+@implementation FriendSwiperViewController
 
 #pragma mark - Creating and Customizing a MDCSwipeToChooseView
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    
     //INITIALIZE THE DATA MANAGER
     self.dataManager = [DataStore sharedDataStore];
+    
     //GET POTENTIAL MATCHES FROM DATA STORE
-    
     self.trackPotentialMatches = [@[]mutableCopy];
-    
-    NSLog(@"LOCAL USER2 %@",self.dataManager.user.facebookID);
     
     [ParseAPICalls getMatchesFromParseWithCompletionBlock:^(BOOL success, NSArray *matches) {
         if (success) {
@@ -57,7 +57,6 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
 
     [self.dataManager fetchMatchesWithCompletionBlock:^(BOOL success) {
         if (success) {
-            
             self.potentialMatches = [self.dataManager.potentialMatchArray mutableCopy];
             NSLog(@"%@ POTENTIAL",self.potentialMatches);
 
@@ -72,10 +71,10 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
             //failure, alert user of failure
         }
     }];
+    
     self.viewProperty.backgroundColor = [UIColor colorWithRed:249/255.0 green:249/255.0 blue:249/255.0 alpha:1.0];
     self.matchView.hidden = YES;
     self.itsAMatchLabel.hidden = YES;
-    
     
     self.leftProfilePictureConstraint.constant -= 160.0;
     self.rightProfilePictureConstraint.constant -= 160.0;
@@ -89,17 +88,20 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
     [self constructLikedButton];
 }
 
--(void)displayMatchNotification:(User *)otherUser{
+- (void)displayMatchNotification:(User *)otherUser
+{
     NSLog(@"GETTING CALLED");
     PFUser *localUser = [PFUser currentUser];
     UIImage *profilePhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:localUser[@"profile_photo"]]]];
     
     self.leftImage.image = profilePhoto;
     self.rightImage.image = otherUser.profilePhoto;
+    
     [self animateMatchPictures];
 }
 
--(void)animateMatchPictures{
+- (void)animateMatchPictures
+{
     UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:blur];
     effectView.frame = self.view.frame;
@@ -134,8 +136,6 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
             self.leftImage.alpha = 0.0;
             self.itsAMatchLabel.alpha = 0.0;
             effectView.alpha = 0.1;
-            
-            NSLog(@"ANIMATE");
         } completion:^(BOOL finished) {
             self.matchView.hidden = YES;
             self.leftProfilePictureConstraint.constant -= 160.0;
@@ -148,8 +148,10 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
     }];
 }
 
--(void)keepOrRemoveLikeAndRejectButton{
+- (void)keepOrRemoveLikeAndRejectButton
+{
     DataStore *dataManager = [DataStore sharedDataStore];
+    
     //hides the like and reject buttons if there isnt anyone to show
     if (dataManager.potentialMatchArray.count == 0 ||
         dataManager.potentialMatchArray == nil) {
@@ -163,57 +165,64 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
 #pragma mark - MDCSwipeToChooseDelegate Callbacks
 
 // This is called when a user didn't fully swipe left or right.
-- (void)viewDidCancelSwipe:(UIView *)view {
+- (void)viewDidCancelSwipe:(UIView *)view
+{
     NSLog(@"Couldn't decide, huh?");
 }
 
 // This is called then a user swipes the view fully left or right.
-- (void)view:(UIView *)view wasChosenWithDirection:(MDCSwipeDirection)direction {
+- (void)view:(UIView *)view wasChosenWithDirection:(MDCSwipeDirection)direction
+{
     DataStore *dataManager = self.dataManager;
-    [self keepOrRemoveLikeAndRejectButton];
-
     PFUser *currentUser = [PFUser currentUser];
-    
     User *userSwipedOn = self.trackPotentialMatches[0];
+    
     [self displayMatchNotification:userSwipedOn];
+    [self keepOrRemoveLikeAndRejectButton];
     
     if (direction == MDCSwipeDirectionLeft) {
         NSLog(@"Photo rejected!");
         [self.dataManager.user.rejectedProfiles addObject:userSwipedOn.facebookID];//todo fixed i think
-        [ParseAPICalls updateParsePotentialMatchesWithFacebookID:userSwipedOn.facebookID withAccepted:NO withCompletion:^(BOOL success) {
-            
-        }];
+        [ParseAPICalls updateParsePotentialMatchesWithFacebookID:userSwipedOn.facebookID
+                                                    withAccepted:NO withCompletion:^(BOOL success) {
+                                                    }];
     } else {
         NSLog(@"Photo liked!");
         [self.dataManager.user.acceptedProfiles addObject:userSwipedOn.facebookID]; //todo fixed i think
-        [ParseAPICalls updateParsePotentialMatchesWithFacebookID:userSwipedOn.facebookID withAccepted:YES withCompletion:^(BOOL success) {
-            
-            //done in here to make sure it happens in order.
-            if (success) {
-                [ParseAPICalls isSwipeAMatch:userSwipedOn.facebookID withCompletion:^(BOOL success, User *matchedUser) {
-                    if(success){
-                        //GO to main thread and update the views
-                        
-                        
-                        NSLog(@"MATCHED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                    }
-                }];
-
-            } else {
-                NSLog(@"error");
-            }
-        }];
+        [ParseAPICalls updateParsePotentialMatchesWithFacebookID:userSwipedOn.facebookID
+                                                    withAccepted:YES withCompletion:^(BOOL success) {
+                                                        
+                                                        //done in here to make sure it happens in order.
+                                                        if (success) {
+                                                            [ParseAPICalls isSwipeAMatch:userSwipedOn.facebookID
+                                                                          withCompletion:^(BOOL success, User *matchedUser) {
+                                                                              if (success) {
+                                                                                  //GO to main thread and update the views
+                                                                                  NSLog(@"MATCHED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                                                                              }
+                                                                          }];
+                                                            
+                                                        } else {
+                                                            NSLog(@"error");
+                                                        }
+                                                    }];
+        
         [self.trackPotentialMatches removeObjectAtIndex:0];
     }
-    
     
     self.frontCardView = self.backCardView;
     if ((self.backCardView = [self popPersonViewWithFrame:[self backCardViewFrame]])) {
         self.backCardView.alpha = 0.0;
-        [self.view insertSubview:self.backCardView belowSubview:self.frontCardView];
-        [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.backCardView.alpha = 1.f;
-        } completion:nil];
+        
+        [self.view insertSubview:self.backCardView
+                    belowSubview:self.frontCardView];
+        
+        [UIView animateWithDuration:0.5
+                              delay:0.0
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             self.backCardView.alpha = 1.f;
+                         } completion:nil];
     }
 }
 
@@ -247,15 +256,14 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
     CGFloat horizontalPadding = 20.f;
     CGFloat topPadding = 90.f;
     CGFloat bottomPadding = 320.f;
+    
     return CGRectMake(horizontalPadding, topPadding, CGRectGetWidth(self.view.frame) - (horizontalPadding *2), CGRectGetHeight(self.view.frame) - bottomPadding);
 }
-
 
 -(CGRect)backCardViewFrame {
     CGRect frontFrame = [self frontCardViewFrame];
     
     return CGRectMake(frontFrame.origin.x, frontFrame.origin.y + 10.f, CGRectGetWidth(frontFrame), CGRectGetHeight(frontFrame));
-    
 }
 
 #pragma mark - button creation
