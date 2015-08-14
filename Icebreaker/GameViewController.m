@@ -9,16 +9,23 @@
 #import "GameViewController.h"
 #import <Parse.h>
 
-@implementation GameViewController 
+
+@interface GameViewController ()
+
+@property (nonatomic, strong) NSArray *arrayOfAnswers;
+@property (nonatomic, strong) NSArray *questions;
+
+@end
 
 
+
+@implementation GameViewController
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    
-    
-
+    self.arrayOfAnswers  = @[self.answerOneTextField, self.answerTwoTextField, self.answerThreeTextField];
+    self.questions = @[@"Crunchy peanut butter or smooth?", @"What's your favorite island?",  @"How many countries have you visited?"];
 }
 
 
@@ -33,15 +40,19 @@
 
 -(void)doneButtonHelperwithCompletion:(void (^)(BOOL success))completionBlock{
     
-    NSString *answerOne = self.answerOneTextField.text;
-    NSString *answerTwo = self.answerTwoTextField.text;
-    NSString *answerThree = self.answerThreeTextField.text;
-
+    NSMutableDictionary *questionsAndAnswers = [@{} mutableCopy];
+    NSInteger trackNum =0;
+    for (UITextField *answerTextField in self.arrayOfAnswers) {
+        NSString *answer = answerTextField.text;
+        if (!([answer isEqual:@"" ] && [answer isEqual:nil])) {
+            [questionsAndAnswers setObject:answer forKey:self.questions[trackNum]];
+        }
+        trackNum++;
+    }
+    
     //SAVE CURRENT USER
     PFUser *user = [PFUser currentUser];
-    user[@"q_a"] = @{self.matchedUser[@"facebookID"]:@{@"Crunchy peanut butter or smooth?":answerOne,
-                                                      @"What's your favorite island?":answerTwo,
-                                                      @"How many countries have you visited?":answerThree}},
+    user[@"q_a"] = @{self.matchedUser[@"facebookID"]:questionsAndAnswers},
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
         if (!error) {
             completionBlock(YES);

@@ -23,7 +23,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *nextQuestionButton;
 
 - (IBAction)doneButtonTapped:(id)sender;
-- (IBAction)nextQuestionButtonTapped:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UIImageView *peanutImage;
 @property (strong, nonatomic) IBOutlet UIImageView *islandImage;

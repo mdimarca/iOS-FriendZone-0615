@@ -7,18 +7,20 @@
 //
 
 #import "ResultViewController.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 
 
 @interface ResultViewController ()
 
-@property (nonatomic, strong) NSDictionary *myQuestionsAndAnswers;
-@property (nonatomic, strong) NSDictionary *matchedUsersQuestionsAndAnswers;
+@property (nonatomic, strong) NSMutableDictionary *myQuestionsAndAnswers;
+@property (nonatomic, strong) NSMutableDictionary *matchedUsersQuestionsAndAnswers;
 
 @property (nonatomic, strong) NSArray *arrayOfMyAnswers;
 @property (nonatomic, strong) NSArray *arrayOfOtherUsersAnswers;
 @property (nonatomic, strong) NSArray *arrayOfQuestions;
 
+@property (nonatomic) BOOL brokenIce;
 
 
 @end
@@ -27,21 +29,38 @@
 
 -(void) viewDidLoad
 {
+    self.brokenIce = NO;
+    
     self.arrayOfMyAnswers = @[self.answerOneLabel,self.answerTwoLabel,self.answerThreeLabel];
     self.arrayOfOtherUsersAnswers= @[self.otherUserAnswerLblone,self.otherUserAnswerLabelTwo,self.otherUserAnwerLabelThree];
     self.arrayOfQuestions= @[self.questionOneLabel,self.questionTwoLabel,self.questionThreeLabel];
-
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self getQuestionsAndAnswersWithCompletion:^(BOOL success) {
         if (success) {
-              [self setupUI];
+            [self setupUI];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
         }
     }];
+    
+}
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self checkAllQuestionsAreAnsweredWithCompletion:^(BOOL success) {
+        if (success) {
+            self.brokenIce = YES;
+            self.navigationItem.rightBarButtonItem.enabled = YES;
+        }
+        else{
+            self.navigationItem.rightBarButtonItem.enabled = NO;
+        }
+    }];
 }
 
 - (void)setupUI
 {
-
+    
     NSInteger trackNum = 0;
     for (NSString *key in self.myQuestionsAndAnswers) {
         UILabel *labelQuestion = self.arrayOfQuestions[trackNum];
@@ -56,12 +75,18 @@
         labelQuestion.text = self.matchedUsersQuestionsAndAnswers[key];
         trackNum++;
     }
-  
+    
     UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Chat"
                                                                style:UIBarButtonItemStylePlain
                                                               target:self
                                                               action:@selector(chatPressed)];
     self.navigationItem.rightBarButtonItem = button;
+    if (self.brokenIce == YES) {
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+    }
+    else{
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }
 }
 
 - (void)chatPressed {
@@ -82,16 +107,36 @@
             self.matchedUsersQuestionsAndAnswers = matchedUser[@"q_a"][currentUser[@"facebookID"]];
             self.myQuestionsAndAnswers = currentUser[@"q_a"][self.matchedUser[@"facebookID"]];
             completionBlock(YES);
+            [self checkAllQuestionsAreAnsweredWithCompletion:^(BOOL success) {
+                if (success) {
+                    //MAKE CHAT BUTTON ENABLE
+                }
+            }];
         }
         else{
             NSLog(@"ERROR %@",error);
         }
         
     }];
-
-    
 }
-    
 
+-(void)checkAllQuestionsAreAnsweredWithCompletion:(void (^)(BOOL success))completionBlock{
     
+    PFUser *currentUser = [PFUser currentUser];
+    NSMutableArray *iceBrokenArray = currentUser[@"ice_broken"];
+    if (self.matchedUsersQuestionsAndAnswers.count == 3 && self.myQuestionsAndAnswers.count == 3) {
+        //UPDDATE ICEBROKEN FOR MYSELF
+        //Check if broken the ice before
+        if (![iceBrokenArray containsObject:self.matchedUser[@"facebookID"]]) {
+            //ADD broken the ice
+            [iceBrokenArray addObject:self.matchedUser[@"facebookID"]];
+        }
+    }
+    if ([iceBrokenArray containsObject:self.matchedUser[@"facebookID"]]) {
+        completionBlock(YES);
+    }
+    else{
+        completionBlock(NO);
+    }
+}
 @end
