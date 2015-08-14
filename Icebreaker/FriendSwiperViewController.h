@@ -10,11 +10,10 @@
 #import "ChoosePersonViewOurs.h"
 #import "User.h"
 
-@interface friendSwiperViewController : UIViewController
+@interface FriendSwiperViewController : UIViewController
 
 @property (strong, nonatomic) User *user;
 @property (strong, nonatomic) ChoosePersonViewOurs *frontCardView;
 @property (strong, nonatomic) ChoosePersonViewOurs *backCardView;
-
 
 @end

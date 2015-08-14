@@ -24,20 +24,20 @@
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
+         annotation:(id)annotation
+{
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                                           openURL:url
                                                 sourceApplication:sourceApplication
                                                        annotation:annotation];
 }
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     
-        [Parse setApplicationId:PARSE_APP_ID
-                      clientKey:PARSE_CLIENT_KEY];
-        
+    [Parse setApplicationId:PARSE_APP_ID
+                  clientKey:PARSE_CLIENT_KEY];
+    
     [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
-    
     
 //    [PFFacebookUtils logInInBackgroundWithReadPermissions:@[ @"publish_actions" ] block:^(PFUser *user, NSError *error) {
 //        if (!user) {
@@ -48,12 +48,6 @@
 //            NSLog(@"User logged in through Facebook!");
 //        }
 //    }];
-    
-    
-    
-    
-    
-    
     
 //    [FBSDKLoginButton class];
 //    

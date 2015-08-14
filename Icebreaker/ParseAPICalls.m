@@ -11,17 +11,13 @@
 
 @interface ParseAPICalls ()
 
-
 @end
 
 @implementation ParseAPICalls
 
-
-
-+ (void)getPotentialMatchesWithCompletionBlock:(void (^)(NSArray *matches, BOOL success))completionBlock {
-    
++ (void)getPotentialMatchesWithCompletionBlock:(void (^)(NSArray *matches, BOOL success))completionBlock
+{
     NSMutableArray *potentialMatchesArray = [NSMutableArray new];
-    PFUser *currentUserHere = [PFUser currentUser];
     
     PFQuery *userQuery = [PFUser query];
     
@@ -56,12 +52,12 @@
              }
              completionBlock(potentialMatchesArray, YES);
          }
-         
          completionBlock(nil, NO);
      }];
 }
 
-+(BOOL)isUserAlreadySwipedOrSelf:(PFUser *)unfilteredPotentialMatch{
++ (BOOL)isUserAlreadySwipedOrSelf:(PFUser *)unfilteredPotentialMatch
+{
     DataStore *dataManager = [DataStore sharedDataStore];
     User *localUser = dataManager.user;
     NSString *otherUserFacebookID = unfilteredPotentialMatch[@"facebookID"];
@@ -69,11 +65,14 @@
     NSLog(@"This is the facebook ID from the method: %@", otherUserFacebookID);
     
     return [localUser.acceptedProfiles containsObject:otherUserFacebookID] ||
-    [localUser.rejectedProfiles containsObject:otherUserFacebookID] ||
-    [localUser.facebookID isEqualToString:otherUserFacebookID];
+           [localUser.rejectedProfiles containsObject:otherUserFacebookID] ||
+           [localUser.facebookID isEqualToString:otherUserFacebookID];
 }
 
-+(void)updateParsePotentialMatchesWithFacebookID:(NSString *)facebookID withAccepted:(BOOL)accepted withCompletion:(void (^)(BOOL success))completionBlock {
++ (void)updateParsePotentialMatchesWithFacebookID:(NSString *)facebookID
+                                     withAccepted:(BOOL)accepted
+                                   withCompletion:(void (^)(BOOL success))completionBlock {
+    
     PFUser *currentUser = [PFUser currentUser];
     
     if (accepted) {
@@ -94,7 +93,9 @@
     }];
 }
 
-+(void)isSwipeAMatch:(NSString *)facebookID withCompletion:(void (^)(BOOL success, User *matchedUser))completionBlock {
++ (void)isSwipeAMatch:(NSString *)facebookID
+       withCompletion:(void (^)(BOOL success, User *matchedUser))completionBlock {
+    
     PFUser *currentUser = [PFUser currentUser];
     PFQuery *query = [PFUser query];
     [query whereKey:@"facebookID" equalTo:facebookID];
@@ -131,25 +132,18 @@
             }];
         } else {
             completionBlock(NO,nil);
-            
         }
     }];
 }
-
-
-
-
 
 //        UIImage *profilePhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:userWeJustLiked[@"profile_photo"]]]];
 //
 //        NSString *name = userWeJustLiked[@"first_name"];
 
-
-
-
-
-
-//+(void)updateMatchWithLocalUser:(User *)currentLocalUser withOtherParseUser:(PFUser *)otherUser withCompletion:(void (^)(BOOL success))completionBlock {
++ (void)updateMatchWithLocalUser:(User *)currentLocalUser
+              withOtherParseUser:(PFUser *)otherUser
+                  withCompletion:(void (^)(BOOL success))completionBlock {
+//
 //    PFUser *currentUser = [PFUser currentUser];
 //    PFUser *otherUserHere = otherUser;
 //    //    [otherUserHere[@"matches"] addObject:currentLocalUser.facebookID];
@@ -177,14 +171,11 @@
 //            completionBlock(NO);
 //        }
 //    }];
-//}
+}
 
 + (void)getMatchesFromParseWithCompletionBlock:(void (^)(BOOL success, NSArray *matches))completionBlock
 {
-    
     //**** PF Relation gets created *********
- 
-
     
 //    [[relation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 //        if (!error) {
@@ -197,6 +188,7 @@
 //    }];
     
     // set up our query for a User object
+    
     PFQuery *userQuery = [PFUser query];
     
     // configure any constraints on your query...
@@ -211,8 +203,6 @@
         
     // objects contains all of the User objects, and their associated Weapon objects, too
     }];
-    
-    
     
 //    //convert pfuser to a local instance
 //    NSString *profilephotoURLString = user[@"profilePhoto"];
@@ -239,8 +229,6 @@
 //    
 //    NSLog(@"ARRAY ARRAY ARAY:::??? :%@", matchUser.matches);
 //    
-//    
-//    
 //    NSArray *matches = user[@"matches"];
 //    
 //    NSLog(@"Is this actually WORKING!!!! _ %@", matches);
@@ -248,7 +236,6 @@
 //    completionBlock(YES, matches);
 //    
 //} else {
-//    
 //    completionBlock(NO, nil);
 //}
 //}];
