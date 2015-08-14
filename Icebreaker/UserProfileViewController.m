@@ -40,7 +40,7 @@
     self.coverPhotoImageView.image = dataStore.user.coverPhoto;
     self.coverPhotoImageView.clipsToBounds = YES;
     
-    self.profilePhotoImageView.layer.cornerRadius = 40;
+    self.profilePhotoImageView.layer.cornerRadius = 50;
     self.profilePhotoImageView.layer.borderWidth = 2;
     self.profilePhotoImageView.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.profilePhotoImageView.clipsToBounds = YES;
@@ -58,19 +58,21 @@
     self.likesTextView.text = likesString;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)logOutButtonTapped:(id)sender {
+- (IBAction)logOutButtonTapped:(id)sender
+{
     [PFUser logOut];
     
-    [self dismissViewControllerAnimated:YES completion:^{
-        NSLog(@"User logged out, and going to login screen");
+    [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"User logged out");
     }];
 }
 
+- (IBAction)closeButtonTapped:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"Dismissing profile view controller");
+    }];
+}
 
 /*
 #pragma mark - Navigation

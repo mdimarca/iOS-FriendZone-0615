@@ -25,12 +25,6 @@
     
     [self setupInformation];
     [self setUpTitleView];
-   
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)setupInformation
@@ -54,7 +48,6 @@
 {
     self.navigationBar.title = self.matchedUser.firstName;
 }
-
 
 /*
 #pragma mark - Navigation
