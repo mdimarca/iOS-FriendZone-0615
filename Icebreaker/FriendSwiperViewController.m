@@ -10,7 +10,7 @@
 #import <MDCSwipeToChoose/MDCSwipeToChoose.h>
 #import "DataStore.h"
 #import "ChoosePersonViewOurs.h"
-
+#import <MBProgressHUD/MBProgressHUD.h>
 static const CGFloat ChoosePersonButtonHorizontalPadding = 88.f;
 static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
 
@@ -49,12 +49,7 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
     //GET POTENTIAL MATCHES FROM DATA STORE
     self.trackPotentialMatches = [@[]mutableCopy];
     
-    [ParseAPICalls getMatchesFromParseWithCompletionBlock:^(BOOL success, NSArray *matches) {
-        if (success) {
-            NSLog(@"WWOWOWOOWOWOWOWOWOWOWOWO!!! : %@", matches);
-        }
-    }];
-
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self.dataManager fetchMatchesWithCompletionBlock:^(BOOL success) {
         if (success) {
             self.potentialMatches = [self.dataManager.potentialMatchArray mutableCopy];
@@ -65,8 +60,8 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
             
             self.backCardView = [self popPersonViewWithFrame:[self backCardViewFrame]];
             [self.view insertSubview:self.backCardView belowSubview:self.frontCardView];
-            
             //update UI stuff
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
         } else {
             //failure, alert user of failure
         }
@@ -177,7 +172,6 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
     PFUser *currentUser = [PFUser currentUser];
     User *userSwipedOn = self.trackPotentialMatches[0];
     
-    [self displayMatchNotification:userSwipedOn];
     [self keepOrRemoveLikeAndRejectButton];
     
     if (direction == MDCSwipeDirectionLeft) {
@@ -188,8 +182,8 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
                                                     }];
     } else {
         NSLog(@"Photo liked!");
-        [self.dataManager.user.acceptedProfiles addObject:userSwipedOn.facebookID]; //todo fixed i think
-        [ParseAPICalls updateParsePotentialMatchesWithFacebookID:userSwipedOn.facebookID
+        NSLog(@"%@ SWIPED ON FACEBOOK ID",userSwipedOn.facebookID);
+              [ParseAPICalls updateParsePotentialMatchesWithFacebookID:userSwipedOn.facebookID
                                                     withAccepted:YES withCompletion:^(BOOL success) {
                                                         
                                                         //done in here to make sure it happens in order.
@@ -197,6 +191,7 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
                                                             [ParseAPICalls isSwipeAMatch:userSwipedOn.facebookID
                                                                           withCompletion:^(BOOL success, User *matchedUser) {
                                                                               if (success) {
+                                                                                  [self displayMatchNotification:userSwipedOn];
                                                                                   //GO to main thread and update the views
                                                                                   NSLog(@"MATCHED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                                                                               }

@@ -32,7 +32,7 @@
                      NSLog(@"%@",profilePhoto);
                      
                      User *localUser = [User newUserWithFirstName:user[@"first_name"]
-                                                         lastName: user[@"last_name"]
+                                                         lastName:user[@"last_name"]
                                                        facebookID:user[@"facebookID"]
                                                            gender:user[@"gender"]
                                                      profilePhoto:profilePhoto
@@ -65,8 +65,8 @@
     NSLog(@"This is the facebook ID from the method: %@", otherUserFacebookID);
     
     return [localUser.acceptedProfiles containsObject:otherUserFacebookID] ||
-           [localUser.rejectedProfiles containsObject:otherUserFacebookID] ||
-           [localUser.facebookID isEqualToString:otherUserFacebookID];
+    [localUser.rejectedProfiles containsObject:otherUserFacebookID] ||
+    [localUser.facebookID isEqualToString:otherUserFacebookID];
 }
 
 + (void)updateParsePotentialMatchesWithFacebookID:(NSString *)facebookID
@@ -98,15 +98,18 @@
     
     PFUser *currentUser = [PFUser currentUser];
     PFQuery *query = [PFUser query];
+    
     [query whereKey:@"facebookID" equalTo:facebookID];
+    
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *userHere, NSError *error) {
         PFUser *userWeJustLiked = (PFUser *)userHere;
         NSArray *likesMadeFromUserWeJustLiked = userWeJustLiked[@"accepted_profiles"];
         NSString *currentUserFBID = currentUser[@"facebookID"];
-
+        
         if ([likesMadeFromUserWeJustLiked containsObject:currentUserFBID]) {
             //This is saving OURSELF (the currentUser) to the user we just liked.
             PFQuery *newQuery = [PFQuery queryWithClassName:@"Relationship"];
+            
             [newQuery whereKey:@"owner" equalTo:userWeJustLiked];
             [newQuery getFirstObjectInBackgroundWithBlock:^(PFObject *userRelationship, NSError *error) {
                 if (!error) {
@@ -119,7 +122,8 @@
             }];
             //This is saving the person we just liked to OUR (currentUser) matchesMade relationship in parse
             PFQuery *queryForCurrentUser = [PFQuery queryWithClassName:@"Relationship"];
-            [queryForCurrentUser whereKey:@"owner" equalTo:currentUser];
+            [
+             queryForCurrentUser whereKey:@"owner" equalTo:currentUser];
             [queryForCurrentUser getFirstObjectInBackgroundWithBlock:^(PFObject *userRelationship, NSError *error) {
                 if (!error) {
                     PFRelation *relation = userRelationship[@"matchesMade"];
@@ -143,108 +147,63 @@
 + (void)updateMatchWithLocalUser:(User *)currentLocalUser
               withOtherParseUser:(PFUser *)otherUser
                   withCompletion:(void (^)(BOOL success))completionBlock {
-//
-//    PFUser *currentUser = [PFUser currentUser];
-//    PFUser *otherUserHere = otherUser;
-//    //    [otherUserHere[@"matches"] addObject:currentLocalUser.facebookID];
-//    [currentUser addObject:otherUserHere[@"facebookID"] forKey:@"matches"];
-//    [otherUserHere addObject:currentLocalUser.facebookID forKey:@"matches"];
-//    
-//    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//        if (!error) {
-//            // The currentUser saved successfully.
-//            completionBlock(YES);
-//        } else {
-//            // There was an error saving the currentUser.
-//            NSLog(@"error");
-//            completionBlock(NO);
-//        }
-//    }];
-//    
-//    [otherUserHere saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//        if (!error) {
-//            // The currentUser saved successfully.
-//            completionBlock(YES);
-//        } else {
-//            // There was an error saving the currentUser.
-//            NSLog(@"error");
-//            completionBlock(NO);
-//        }
-//    }];
+    //
+    //    PFUser *currentUser = [PFUser currentUser];
+    //    PFUser *otherUserHere = otherUser;
+    //    //    [otherUserHere[@"matches"] addObject:currentLocalUser.facebookID];
+    //    [currentUser addObject:otherUserHere[@"facebookID"] forKey:@"matches"];
+    //    [otherUserHere addObject:currentLocalUser.facebookID forKey:@"matches"];
+    //
+    //    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    //        if (!error) {
+    //            // The currentUser saved successfully.
+    //            completionBlock(YES);
+    //        } else {
+    //            // There was an error saving the currentUser.
+    //            NSLog(@"error");
+    //            completionBlock(NO);
+    //        }
+    //    }];
+    //
+    //    [otherUserHere saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    //        if (!error) {
+    //            // The currentUser saved successfully.
+    //            completionBlock(YES);
+    //        } else {
+    //            // There was an error saving the currentUser.
+    //            NSLog(@"error");
+    //            completionBlock(NO);
+    //        }
+    //    }];
 }
 
 + (void)getMatchesFromParseWithCompletionBlock:(void (^)(BOOL success, NSArray *matches))completionBlock
 {
-    //**** PF Relation gets created *********
+    PFQuery *newQuery = [PFQuery queryWithClassName:@"Relationship"];
     
-//    [[relation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if (!error) {
-//            // There was an error
-//            NSLog(@"WHAT IS THIS?????    ______--------> %@", objects);
-//
-//        } else {
-//            // objects has all the Posts the current user liked.
-//        }
-//    }];
+    [newQuery whereKey:@"owner" equalTo:[PFUser currentUser]];
     
-    // set up our query for a User object
-    
-    PFQuery *userQuery = [PFUser query];
-    
-    // configure any constraints on your query...
-    // for example, you may want users who are also playing with or against you
-    // tell the query to fetch all of the Weapon objects along with the user
-    // get the "many" at the same time that you're getting the "one"
-    
-    [userQuery includeKey:@"matches"];
-    
-    // execute the query
-    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
-    // objects contains all of the User objects, and their associated Weapon objects, too
+    [newQuery getFirstObjectInBackgroundWithBlock:^(PFObject *userRelationship, NSError *error) {
+        if (!error) {
+            PFRelation *otherUserRelation = userRelationship[@"matchesMade"];
+            NSLog(@"GETTING MATCHES %@",otherUserRelation);
+            PFQuery *query = [otherUserRelation query];
+            [query findObjectsInBackgroundWithBlock:^(NSArray *object, NSError *error){
+                if (!error) {
+                        completionBlock(YES,object);
+                }
+                else{
+                    NSLog(@"error %@",error);
+                }
+            }];
+        }
+        else{
+            completionBlock(NO,nil);
+            NSLog(@"error");
+        }
     }];
-    
-//    //convert pfuser to a local instance
-//    NSString *profilephotoURLString = user[@"profilePhoto"];
-//    UIImage *profilePhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:profilephotoURLString]]];
-//    UIImage *coverPhotograph = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:user[@"coverPhotoURLString"]]]];
-//    
-//    User *matchUser = [User newUserWithFirstName:user[@"first_name"]
-//                                        lastName: user[@"last_name"]
-//                                      facebookID:user[@"facebookID"]
-//                                          gender:user[@"gender"]
-//                                    profilePhoto:profilePhoto
-//                                      coverPhoto:coverPhotograph
-//                                        pictures:[@[] mutableCopy]
-//                                aboutInformation:user[@"aboutInformation"]
-//                                         matches:user[@"matches"]
-//                                         friends:[@[] mutableCopy]
-//                                           likes:user[@"likes"]
-//                                rejectedProfiles:user[@"rejected_profiles"]
-//                                acceptedProfiles:user[@"accepted_profiles"]];
-//    
-//    
-//    NSLog(@"What are you: %@", user);
-//    NSLog(@"My god, this would be cooL: %@", matchUser.firstName);
-//    
-//    NSLog(@"ARRAY ARRAY ARAY:::??? :%@", matchUser.matches);
-//    
-//    NSArray *matches = user[@"matches"];
-//    
-//    NSLog(@"Is this actually WORKING!!!! _ %@", matches);
-//    
-//    completionBlock(YES, matches);
-//    
-//} else {
-//    completionBlock(NO, nil);
-//}
-//}];
-
-
-
-
-
 }
+
 
 
 @end
