@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ResultViewController.h"
+#import <Parse/Parse.h>
 
 @interface GameViewController : UIViewController
 
@@ -27,5 +28,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *peanutImage;
 @property (strong, nonatomic) IBOutlet UIImageView *islandImage;
 @property (strong, nonatomic) IBOutlet UIImageView *cityImage;
+
+@property (nonatomic, strong) PFUser *matchedUser;
 
 @end

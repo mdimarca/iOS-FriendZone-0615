@@ -30,5 +30,4 @@
 + (void)getMatchesFromParseWithCompletionBlock:(void (^)(BOOL success, NSArray *matches))completionBlock;
 
 
-
 @end

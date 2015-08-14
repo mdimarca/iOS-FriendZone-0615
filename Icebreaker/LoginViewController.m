@@ -238,15 +238,8 @@
             user[@"profile_photo"] = profilePhotoURLString;
             user[@"rejected_profiles"] = [@[] mutableCopy];
             user[@"accepted_profiles"] = [@[] mutableCopy];
-            
-            //Parse search for users
-            PFQuery *userQuery = [PFUser query];
-            [userQuery findObjectsInBackgroundWithBlock:^(NSArray *object, NSError *error)
-             {
-                 for (PFUser *user in object) {
-                     NSLog(@"Query result: %@", user[@"first_name"]);
-                 }
-             }];
+            user[@"ice_broken"] = @{};
+            user[@"q_a"] = @{};
             
             //SHARED LOCAL USER
             self.localUser = [[User alloc] init];
