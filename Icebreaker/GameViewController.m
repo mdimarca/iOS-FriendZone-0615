@@ -12,11 +12,23 @@
 @implementation GameViewController 
 
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    
+    
+
+}
+
+
+
+
 - (IBAction)doneButtonTapped:(id)sender {
   
     [self doneButtonHelperwithCompletion:^(BOOL success) {
-
     }];
+    
 }
 
 -(void)doneButtonHelperwithCompletion:(void (^)(BOOL success))completionBlock{
@@ -25,9 +37,11 @@
     NSString *answerTwo = self.answerTwoTextField.text;
     NSString *answerThree = self.answerThreeTextField.text;
 
+    //SAVE CURRENT USER
     PFUser *user = [PFUser currentUser];
-    user[@"answers"] = @[answerOne, answerTwo, answerThree];
-    
+    user[@"q_a"] = @{self.matchedUser[@"facebookID"]:@{@"Crunchy peanut butter or smooth?":answerOne,
+                                                      @"What's your favorite island?":answerTwo,
+                                                      @"How many countries have you visited?":answerThree}},
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
         if (!error) {
             completionBlock(YES);
@@ -42,9 +56,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     ResultViewController *destinationVC = segue.destinationViewController;
-    destinationVC.answerOne = self.answerOneTextField.text;
-    destinationVC.answerTwo = self.answerTwoTextField.text;
-    destinationVC.answerThree = self.answerThreeTextField.text;
+    destinationVC.matchedUser = self.matchedUser;
 }
 
 @end

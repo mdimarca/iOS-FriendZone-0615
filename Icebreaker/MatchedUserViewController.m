@@ -7,6 +7,7 @@
 //
 
 #import "MatchedUserViewController.h"
+#import "GameViewController.h"
 
 @interface MatchedUserViewController ()
 
@@ -52,14 +53,19 @@
     self.navigationBar.title = self.matchedUser[@"first_name"];
 }
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"@Game"]) {
+        GameViewController *gameVC = segue.destinationViewController;
+        gameVC.matchedUser = self.matchedUser;
+        
+    }
+   
+
+
 }
-*/
+
 
 @end
