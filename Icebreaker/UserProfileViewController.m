@@ -17,7 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *coverPhotoImageView;
-@property (weak, nonatomic) IBOutlet FBSDKProfilePictureView *profilePhotoImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *profilePhotoImageView;
 @property (weak, nonatomic) IBOutlet UITextView *aboutTextView;
 @property (weak, nonatomic) IBOutlet UITextView *likesTextView;
 @property (weak, nonatomic) IBOutlet UILabel *aboutLabel;
@@ -40,6 +40,7 @@
     self.coverPhotoImageView.image = dataStore.user.coverPhoto;
     self.coverPhotoImageView.clipsToBounds = YES;
     
+    self.profilePhotoImageView.image = dataStore.user.profilePhoto;
     self.profilePhotoImageView.layer.cornerRadius = 50;
     self.profilePhotoImageView.layer.borderWidth = 2;
     self.profilePhotoImageView.layer.borderColor = [[UIColor whiteColor] CGColor];
