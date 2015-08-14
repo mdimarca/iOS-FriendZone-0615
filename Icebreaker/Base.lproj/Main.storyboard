@@ -90,7 +90,7 @@
         <!--User Profile View Controller-->
         <scene sceneID="Vpa-vj-LAo">
             <objects>
-                <viewController id="ES5-bu-BHX" customClass="userProfileViewController" sceneMemberID="viewController">
+                <viewController id="ES5-bu-BHX" customClass="UserProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pfM-oE-ycN"/>
                         <viewControllerLayoutGuide type="bottom" id="mHt-09-8Xo"/>
@@ -113,7 +113,7 @@
                                     <constraint firstAttribute="width" constant="80" id="oNb-7Z-c9k"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KtB-ab-erq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KtB-ab-erq">
                                 <rect key="frame" x="16" y="212" width="343" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="VEZ-8t-62Z"/>
@@ -233,7 +233,7 @@
         <!--Friend Swiper View Controller-->
         <scene sceneID="SBa-QM-LZe">
             <objects>
-                <viewController id="Q2Q-6m-0rd" customClass="friendSwiperViewController" sceneMemberID="viewController">
+                <viewController id="Q2Q-6m-0rd" customClass="FriendSwiperViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VVt-bN-NnH"/>
                         <viewControllerLayoutGuide type="bottom" id="CNg-a3-UX5"/>

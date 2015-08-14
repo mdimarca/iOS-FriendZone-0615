@@ -16,9 +16,17 @@
 
 + (void)getPotentialMatchesWithCompletionBlock:(void (^)(NSArray *matches, BOOL success))completionBlock;
 
-+(void)updateParsePotentialMatchesWithFacebookID:(NSString *)facebookID withAccepted:(BOOL)accepted withCompletion:(void (^)(BOOL success))completionBlock ;
-+(void)isSwipeAMatch:(NSString *)facebookID withCompletion:(void (^)(BOOL success, User *matchedUser))completionBlock;
-+(void)updateMatchWithLocalUser:(User *)currentLocalUser withOtherParseUser:(PFUser *)otherUser withCompletion:(void (^)(BOOL success))completionBlock;
++ (void)updateParsePotentialMatchesWithFacebookID:(NSString *)facebookID
+                                     withAccepted:(BOOL)accepted
+                                   withCompletion:(void (^)(BOOL success))completionBlock;
+
++ (void)isSwipeAMatch:(NSString *)facebookID
+       withCompletion:(void (^)(BOOL success, User *matchedUser))completionBlock;
+
++ (void)updateMatchWithLocalUser:(User *)currentLocalUser
+              withOtherParseUser:(PFUser *)otherUser
+                  withCompletion:(void (^)(BOOL success))completionBlock;
+
 + (void)getMatchesFromParseWithCompletionBlock:(void (^)(BOOL success, NSArray *matches))completionBlock;
 
 

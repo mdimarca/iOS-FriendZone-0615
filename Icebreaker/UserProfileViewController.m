@@ -6,14 +6,14 @@
 //  Copyright (c) 2015 ChickenBiscut. All rights reserved.
 //
 
-#import "userProfileViewController.h"
+#import "UserProfileViewController.h"
 #import "LoginViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <Parse/Parse.h>
 #import "DataStore.h"
 
-@interface userProfileViewController ()
+@interface UserProfileViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *coverPhotoImageView;
@@ -24,26 +24,24 @@
 
 @end
 
-@implementation userProfileViewController
+@implementation UserProfileViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     [self updateData];
-
 }
 
 - (void)updateData
 {
     DataStore *dataStore = [DataStore sharedDataStore];
-//    NSLog(@"COVER PHOTO ISSUE: %@", self);
+
     self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", dataStore.user.firstName, dataStore.user.lastName];
     self.coverPhotoImageView.image = dataStore.user.coverPhoto;
     self.coverPhotoImageView.clipsToBounds = YES;
     
     self.profilePhotoImageView.layer.cornerRadius = 40;
-    self.profilePhotoImageView.layer.borderWidth = 1;
+    self.profilePhotoImageView.layer.borderWidth = 2;
     self.profilePhotoImageView.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.profilePhotoImageView.clipsToBounds = YES;
     
@@ -58,7 +56,6 @@
     }
 
     self.likesTextView.text = likesString;
-
 }
 
 - (void)didReceiveMemoryWarning {
