@@ -173,9 +173,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LCJ-mp-EHO">
-                                <rect key="frame" x="308" y="128" width="51" height="32"/>
+                                <rect key="frame" x="308" y="128" width="51" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="glA-9f-7Wp"/>
+                                    <constraint firstAttribute="height" constant="44" id="glA-9f-7Wp"/>
                                     <constraint firstAttribute="width" constant="51" id="iFX-Iv-xvu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -228,7 +228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tlp-7w-kmy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3422.5" y="-143.5"/>
+            <point key="canvasLocation" x="3431.5" y="-23.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3D6-Fw-QNk">
@@ -329,7 +329,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oNA-wk-rnZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2939.5" y="463.5"/>
+            <point key="canvasLocation" x="2853.5" y="463.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="HjI-MT-meN">

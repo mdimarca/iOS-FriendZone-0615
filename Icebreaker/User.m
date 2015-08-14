@@ -10,7 +10,7 @@
 
 @implementation User
 
--(instancetype)init
+- (instancetype)init
 {
     self = [super init];
     
@@ -19,10 +19,10 @@
         _lastName = @"";
         _facebookID = @"";
         _gender = @"";
-        _profilePhoto = [UIImage new];
-        _coverPhoto = [UIImage new];
+        _profilePhoto = [UIImage imageNamed:@"PlaceHolder"];
+        _coverPhoto = [UIImage imageNamed:@"cold"];
         _pictures = [@[] mutableCopy];
-        _aboutInformation = @"";
+        _aboutInformation = @"I ❤︎ the Flatiron School";
         _matches = [@[] mutableCopy];
         _friends = [@[] mutableCopy];
         _likes = [@[] mutableCopy];

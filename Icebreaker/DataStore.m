@@ -43,7 +43,6 @@
                 NSLog(@"====== INSIDE FETCH ==== Name: %@", person.firstName);
             }
 
-            
             completion(YES);
         } else {
             

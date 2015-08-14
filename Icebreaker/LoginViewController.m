@@ -62,21 +62,21 @@
     }];
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     self.dataStore = [DataStore sharedDataStore];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-
     [super viewWillAppear:animated];
     [self imageReset];
     [self facebookLoginButtonAnimation];
 }
 
-- (void)facebookLoginButtonAnimation {
+- (void)facebookLoginButtonAnimation
+{
     [UIView animateWithDuration:.5
                           delay:0
                         options:UIViewAnimationOptionCurveEaseOut
@@ -99,7 +99,7 @@
                                                                    self.facebookButtonBottomConstraint.constant = 30;
                                                                    [self.view layoutIfNeeded];
                                                                } completion:^(BOOL finished) {
-                                                                   
+                                                                   NSLog(@"Finished animating Log In Button");
                                                                }];
                                           }];
                      }];
@@ -155,44 +155,33 @@
                                                                 }];
                               }
                               completion:^(BOOL finished) {
-                                  NSLog(@"Animation completed.");
+                                  NSLog(@"Log In View Animation completed.");
                               }];
 }
 
--(void)viewDidAppear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
-    
     [self animateImages];
     
     self.previouslyLoggedIn = NO;
+    
     if ([PFUser currentUser] ||
         [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
         self.previouslyLoggedIn = YES;
-//        self.hackView.hidden = NO;
-        
-        
     }
 
-    
     if (self.previouslyLoggedIn) {
         [self performSegueWithIdentifier:@"loginSegue" sender:self];
     }
-    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
--(void)createLocalUserWithFirstName:(NSString *)firstName lastName:(NSString *)lastName facebookID:(NSString *)facebookID gender:(NSString *)gender aboutInformation:(NSString *)aboutInformation likes:(NSArray *)likes coverPhoto:(UIImage *)coverPhoto {
-    
-}
-
--(void)getFacebookUserDataAndPutInParse{
+- (void)getFacebookUserDataAndPutInParse
+{
     //FACEBOOK DATA CALL
     
-    //NSDictionary *friendsParam = @{ @"fields" : @"data"};
     FBSDKGraphRequest *friendsRequest = [[FBSDKGraphRequest alloc] initWithGraphPath:@"/me/friends" parameters:nil];
+    
     [friendsRequest startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
         if (!error) {
             NSLog(@"friends of user: %@", result);
@@ -201,9 +190,9 @@
         }
     }];
     
-    
     NSDictionary *params = @{ @"fields" : @"id, first_name, last_name, gender, picture.width(400).height(400), cover, bio, likes" };
     FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:@"/me" parameters:params];
+    
     [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
         if (!error) {
             NSLog(@"fetched user:%@", result);
@@ -216,6 +205,7 @@
             NSString *aboutInformation = result[@"bio"];
             NSArray *likesData = result[@"likes"][@"data"];
             NSMutableArray *likes = [@[] mutableCopy];
+            
             NSString *coverPhotoURLString = result[@"cover"][@"source"];
             UIImage *coverPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:coverPhotoURLString]]];
             
@@ -238,15 +228,13 @@
             user[@"last_name"] = lastName;
             user[@"facebookID"] = facebookID;
             user[@"gender"] = gender;
+            
             if (aboutInformation != nil) {
                 user[@"aboutInformation"] = aboutInformation;
             }
-            else{
-                user[@"aboutInformation"] = @"";
-            }
+            
             user[@"coverPhotoURLString"] = coverPhotoURLString;
             user[@"likes"] = [likes copy];
-            user[@"matches"] = [@[] mutableCopy];
             user[@"profile_photo"] = profilePhotoURLString;
             user[@"rejected_profiles"] = [@[] mutableCopy];
             user[@"accepted_profiles"] = [@[] mutableCopy];
