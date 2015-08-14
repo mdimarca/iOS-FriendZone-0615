@@ -238,7 +238,7 @@
             user[@"profile_photo"] = profilePhotoURLString;
             user[@"rejected_profiles"] = [@[] mutableCopy];
             user[@"accepted_profiles"] = [@[] mutableCopy];
-            user[@"ice_broken"] = @{};
+            user[@"ice_broken"] = [@[]mutableCopy];
             user[@"q_a"] = @{};
             
             //SHARED LOCAL USER
@@ -280,20 +280,6 @@
         }
     }];
 }
-
-//-(BOOL)doesRelationshipExist{
-//     PFUser *currentUser = [PFUser currentUser];
-//    PFQuery *queryForCurrentUser = [PFQuery queryWithClassName:@"Relationship"];
-//    [queryForCurrentUser whereKey:@"owner" equalTo:currentUser];
-//    [queryForCurrentUser getFirstObjectInBackgroundWithBlock:^(PFObject *userRelationship, NSError *error) {
-//        if (!error) {
-//            if (userRelationship != nil){
-//                return YES;
-//            }
-//        }
-//    }];
-//    return NO;
-//}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"loginSegue"]) {
