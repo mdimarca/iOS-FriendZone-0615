@@ -100,7 +100,7 @@
                                 </state>
                                 <connections>
                                     <action selector="doneButtonTapped:" destination="7YZ-cs-5gM" eventType="touchUpInside" id="9cl-gY-uZy"/>
-                                    <segue destination="fhb-Mk-4t2" kind="show" id="sTz-dp-hdy"/>
+                                    <segue destination="fhb-Mk-4t2" kind="show" identifier="resultViewSegue" id="sTz-dp-hdy"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -173,7 +173,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nig-MS-Loi">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nig-MS-Loi">
                                 <rect key="frame" x="59" y="194" width="256" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="IzM-S0-Gpd"/>
@@ -191,7 +191,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gtn-nL-HII">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gtn-nL-HII">
                                 <rect key="frame" x="59" y="308" width="256" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="SHF-eZ-dhW"/>
@@ -209,7 +209,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSb-fl-XkI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSb-fl-XkI">
                                 <rect key="frame" x="59" y="80" width="256" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="7zb-4f-ugw"/>

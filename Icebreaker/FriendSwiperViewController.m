@@ -11,6 +11,11 @@
 #import "DataStore.h"
 #import "ChoosePersonViewOurs.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+
+
 static const CGFloat ChoosePersonButtonHorizontalPadding = 88.f;
 static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
 
@@ -81,7 +86,17 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
     
     [self constructNopeButton];
     [self constructLikedButton];
+    
+//    if (self.trackPotentialMatches.count == 0) {
+//        self.likeButton.hidden = YES;
+//        self.rejectButton.hidden = YES;
+//    }
+    self.navigationItem.title = @"Ice Breaker";
+    
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+
 }
+
 
 - (void)displayMatchNotification:(User *)otherUser
 {
@@ -145,17 +160,24 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
 
 - (void)keepOrRemoveLikeAndRejectButton
 {
-    DataStore *dataManager = [DataStore sharedDataStore];
-    
-    //hides the like and reject buttons if there isnt anyone to show
-    if (dataManager.potentialMatchArray.count == 0 ||
-        dataManager.potentialMatchArray == nil) {
-        //        self.rejectButton.hidden = YES;
-        //        self.likeButton.hidden = YES;
-        [self.rejectButton removeFromSuperview];
-        [self.likeButton removeFromSuperview];
+    //ANIMATE BUTTONS AWAY
+    if (self.trackPotentialMatches.count == 0) {
+        [UIView animateWithDuration:0.6 animations:^{
+            self.rejectButton.alpha = 0.0;
+            self.likeButton.alpha = 0.0;
+            self.rejectButton.hidden = YES;
+            self.rejectButton.hidden = YES;
+            } completion:^(BOOL finished) {
+        }];
     }
 }
+
+-(void)showPlaceHolderProfilePicture{
+    
+}
+
+
+
 
 #pragma mark - MDCSwipeToChooseDelegate Callbacks
 
@@ -219,6 +241,7 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
                              self.backCardView.alpha = 1.f;
                          } completion:nil];
     }
+    [self keepOrRemoveLikeAndRejectButton];
 }
 
 -(ChoosePersonViewOurs *)popPersonViewWithFrame:(CGRect)frame{
@@ -249,8 +272,8 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
 
 -(CGRect)frontCardViewFrame{
     CGFloat horizontalPadding = 20.f;
-    CGFloat topPadding = 90.f;
-    CGFloat bottomPadding = 320.f;
+    CGFloat topPadding = 60.f;
+    CGFloat bottomPadding = 280.f;
     
     return CGRectMake(horizontalPadding, topPadding, CGRectGetWidth(self.view.frame) - (horizontalPadding *2), CGRectGetHeight(self.view.frame) - bottomPadding);
 }

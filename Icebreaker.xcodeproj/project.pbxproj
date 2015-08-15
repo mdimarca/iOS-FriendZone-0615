@@ -43,6 +43,7 @@
 		E12BEA241B692E040083860B /* MatchedUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E12BEA231B692E040083860B /* MatchedUserViewController.m */; };
 		E12BEA271B6940A60083860B /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = E12BEA261B6940A60083860B /* iCarousel.m */; };
 		E12BEA2B1B6941C60083860B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E12BEA2A1B6941C60083860B /* QuartzCore.framework */; };
+		E16C603D1B7F08480002549B /* LikesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E16C603C1B7F08480002549B /* LikesCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,8 @@
 		E12BEA341B6941CD0083860B /* libPods-Icebreaker-MDCSwipeToChoose.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Icebreaker-MDCSwipeToChoose.a"; path = "Pods/../build/Debug-iphoneos/libPods-Icebreaker-MDCSwipeToChoose.a"; sourceTree = "<group>"; };
 		E12BEA351B6941CD0083860B /* libPods-Icebreaker-MJRefresh.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Icebreaker-MJRefresh.a"; path = "Pods/../build/Debug-iphoneos/libPods-Icebreaker-MJRefresh.a"; sourceTree = "<group>"; };
 		E12BEA361B6941CD0083860B /* libPods-Icebreaker-SSKeychain.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Icebreaker-SSKeychain.a"; path = "Pods/../build/Debug-iphoneos/libPods-Icebreaker-SSKeychain.a"; sourceTree = "<group>"; };
+		E16C603B1B7F08480002549B /* LikesCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikesCollectionViewCell.h; sourceTree = "<group>"; };
+		E16C603C1B7F08480002549B /* LikesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikesCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,6 +325,8 @@
 				077A050C1B79268400592986 /* GameViewController.m */,
 				077A050E1B792A8100592986 /* ResultViewController.h */,
 				077A050F1B792A8100592986 /* ResultViewController.m */,
+				E16C603B1B7F08480002549B /* LikesCollectionViewCell.h */,
+				E16C603C1B7F08480002549B /* LikesCollectionViewCell.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -529,6 +534,7 @@
 				BD0046571B73992D00D68325 /* MessagingViewController.m in Sources */,
 				BD8CF8E11B6958B4003CCC1F /* LoginViewController.m in Sources */,
 				34587A6D1B72635D001E6BE3 /* ParseAPICalls.m in Sources */,
+				E16C603D1B7F08480002549B /* LikesCollectionViewCell.m in Sources */,
 				BD8CF8DB1B694260003CCC1F /* UserProfileViewController.m in Sources */,
 				0774D11C1B6806B600F3BCF5 /* AppDelegate.m in Sources */,
 				3414C0011B69270600C72689 /* FacebookAPICalls.m in Sources */,
