@@ -88,7 +88,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFi-xR-5YK">
-                                <rect key="frame" x="16" y="178" width="343" height="42"/>
+                                <rect key="frame" x="16" y="200" width="343" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="YHT-xh-ZCJ"/>
                                 </constraints>
@@ -97,7 +97,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWL-yp-eoC">
-                                <rect key="frame" x="16" y="257" width="343" height="112"/>
+                                <rect key="frame" x="16" y="266" width="343" height="112"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="bub-ne-Ozm"/>
@@ -105,7 +105,7 @@
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXW-ar-aOL">
@@ -126,13 +126,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JF9-jP-TaC">
-                                <rect key="frame" x="16" y="228" width="343" height="21"/>
+                                <rect key="frame" x="16" y="241" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7bS-UC-HUg">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="192"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="Fsq-28-5RU"/>
+                                    <constraint firstAttribute="height" constant="192" id="egd-NR-Ab2"/>
+                                </constraints>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zpf-nP-Ltv">
-                                <rect key="frame" x="122" y="40" width="130" height="130"/>
+                                <rect key="frame" x="122" y="31" width="130" height="130"/>
                                 <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="36B-1o-8tM"/>
@@ -144,29 +151,48 @@
                         <constraints>
                             <constraint firstItem="UUC-2P-Etv" firstAttribute="top" secondItem="4gu-Ey-exn" secondAttribute="bottom" constant="20" id="2E2-MI-6sL"/>
                             <constraint firstItem="TWL-yp-eoC" firstAttribute="leading" secondItem="l6v-tJ-svH" secondAttribute="leadingMargin" id="3bz-wO-Exu"/>
-                            <constraint firstItem="xbV-Ud-4Er" firstAttribute="top" secondItem="TWL-yp-eoC" secondAttribute="bottom" constant="21" id="6jx-2Q-9vy"/>
+                            <constraint firstAttribute="trailing" secondItem="7bS-UC-HUg" secondAttribute="trailing" id="44K-WW-jwd"/>
+                            <constraint firstItem="xbV-Ud-4Er" firstAttribute="top" secondItem="TWL-yp-eoC" secondAttribute="bottom" constant="12" id="6jx-2Q-9vy"/>
                             <constraint firstItem="tFi-xR-5YK" firstAttribute="trailing" secondItem="l6v-tJ-svH" secondAttribute="trailingMargin" id="6oa-NX-YJP"/>
                             <constraint firstAttribute="centerX" secondItem="4gu-Ey-exn" secondAttribute="centerX" constant="0.5" id="98Z-aw-tZw"/>
+                            <constraint firstItem="7bS-UC-HUg" firstAttribute="leading" secondItem="l6v-tJ-svH" secondAttribute="leading" id="FXO-gX-lOx"/>
                             <constraint firstItem="EXW-ar-aOL" firstAttribute="top" secondItem="xbV-Ud-4Er" secondAttribute="bottom" constant="8" id="GSz-pn-XwJ"/>
+                            <constraint firstItem="7bS-UC-HUg" firstAttribute="top" secondItem="l6v-tJ-svH" secondAttribute="top" id="IIe-2Q-You"/>
                             <constraint firstItem="JF9-jP-TaC" firstAttribute="trailing" secondItem="l6v-tJ-svH" secondAttribute="trailingMargin" id="Ivk-oe-Z8U"/>
+                            <constraint firstItem="7bS-UC-HUg" firstAttribute="leading" secondItem="l6v-tJ-svH" secondAttribute="leading" id="Jn6-DJ-7ny"/>
                             <constraint firstItem="xbV-Ud-4Er" firstAttribute="trailing" secondItem="l6v-tJ-svH" secondAttribute="trailingMargin" id="K3I-Ki-uto"/>
                             <constraint firstItem="JF9-jP-TaC" firstAttribute="leading" secondItem="l6v-tJ-svH" secondAttribute="leadingMargin" id="KYL-Rr-f8a"/>
                             <constraint firstItem="tFi-xR-5YK" firstAttribute="leading" secondItem="l6v-tJ-svH" secondAttribute="leadingMargin" id="MZT-an-VfQ"/>
                             <constraint firstItem="4gu-Ey-exn" firstAttribute="leading" secondItem="l6v-tJ-svH" secondAttribute="leadingMargin" id="N5d-HU-8LU"/>
-                            <constraint firstItem="JF9-jP-TaC" firstAttribute="top" secondItem="tFi-xR-5YK" secondAttribute="bottom" constant="8" id="Qae-9K-dgp"/>
-                            <constraint firstAttribute="centerX" secondItem="zpf-nP-Ltv" secondAttribute="centerX" constant="0.5" id="SuO-vQ-TmP"/>
-                            <constraint firstItem="zpf-nP-Ltv" firstAttribute="top" secondItem="ih7-Mg-kvZ" secondAttribute="bottom" constant="20" id="UmO-lv-gJN"/>
+                            <constraint firstItem="JF9-jP-TaC" firstAttribute="top" secondItem="tFi-xR-5YK" secondAttribute="bottom" constant="-1" id="Qae-9K-dgp"/>
+                            <constraint firstItem="7bS-UC-HUg" firstAttribute="top" secondItem="l6v-tJ-svH" secondAttribute="top" id="SLe-4P-zsg"/>
+                            <constraint firstAttribute="centerX" secondItem="zpf-nP-Ltv" secondAttribute="centerX" id="SuO-vQ-TmP"/>
+                            <constraint firstItem="zpf-nP-Ltv" firstAttribute="top" secondItem="ih7-Mg-kvZ" secondAttribute="bottom" constant="11" id="UmO-lv-gJN"/>
+                            <constraint firstAttribute="trailing" secondItem="7bS-UC-HUg" secondAttribute="trailing" id="WwQ-qZ-zan"/>
+                            <constraint firstItem="7bS-UC-HUg" firstAttribute="centerY" secondItem="zpf-nP-Ltv" secondAttribute="centerY" id="asi-EQ-Wfv"/>
                             <constraint firstItem="EXW-ar-aOL" firstAttribute="leading" secondItem="l6v-tJ-svH" secondAttribute="leadingMargin" id="cqA-r4-rV3"/>
-                            <constraint firstItem="tFi-xR-5YK" firstAttribute="top" secondItem="zpf-nP-Ltv" secondAttribute="bottom" constant="8" id="gAK-O5-kcH"/>
-                            <constraint firstItem="TWL-yp-eoC" firstAttribute="top" secondItem="JF9-jP-TaC" secondAttribute="bottom" constant="8" id="kYG-Va-tCW"/>
+                            <constraint firstAttribute="trailing" secondItem="7bS-UC-HUg" secondAttribute="trailing" id="dXI-XS-C62"/>
+                            <constraint firstItem="tFi-xR-5YK" firstAttribute="top" secondItem="zpf-nP-Ltv" secondAttribute="bottom" constant="39" id="gAK-O5-kcH"/>
+                            <constraint firstItem="7bS-UC-HUg" firstAttribute="leading" secondItem="l6v-tJ-svH" secondAttribute="leading" id="hGM-2B-Y2J"/>
+                            <constraint firstItem="TWL-yp-eoC" firstAttribute="top" secondItem="JF9-jP-TaC" secondAttribute="bottom" constant="4" id="kYG-Va-tCW"/>
+                            <constraint firstItem="7bS-UC-HUg" firstAttribute="top" secondItem="l6v-tJ-svH" secondAttribute="top" id="llc-dh-MhH"/>
                             <constraint firstItem="xbV-Ud-4Er" firstAttribute="leading" secondItem="l6v-tJ-svH" secondAttribute="leadingMargin" id="pHo-5C-4FP"/>
                             <constraint firstItem="4gu-Ey-exn" firstAttribute="bottom" secondItem="UUC-2P-Etv" secondAttribute="top" constant="20" id="rx6-8z-fMy"/>
                             <constraint firstItem="EXW-ar-aOL" firstAttribute="trailing" secondItem="l6v-tJ-svH" secondAttribute="trailingMargin" id="sSi-d6-OVU"/>
+                            <constraint firstItem="7bS-UC-HUg" firstAttribute="centerX" secondItem="zpf-nP-Ltv" secondAttribute="centerX" constant="0.5" id="soO-dx-GUa"/>
                             <constraint firstItem="TWL-yp-eoC" firstAttribute="trailing" secondItem="l6v-tJ-svH" secondAttribute="trailingMargin" id="tvR-ax-CSk"/>
                             <constraint firstItem="4gu-Ey-exn" firstAttribute="trailing" secondItem="l6v-tJ-svH" secondAttribute="trailingMargin" id="yVR-tQ-KvO"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="44K-WW-jwd"/>
+                                <exclude reference="IIe-2Q-You"/>
+                                <exclude reference="Jn6-DJ-7ny"/>
+                                <exclude reference="dXI-XS-C62"/>
+                                <exclude reference="hGM-2B-Y2J"/>
+                                <exclude reference="llc-dh-MhH"/>
+                                <exclude reference="SuO-vQ-TmP"/>
+                                <exclude reference="UmO-lv-gJN"/>
                                 <exclude reference="98Z-aw-tZw"/>
                                 <exclude reference="rx6-8z-fMy"/>
                             </mask>
@@ -175,7 +201,9 @@
                     <navigationItem key="navigationItem" id="fSp-IW-8wJ"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="breakTheIceButton" destination="4gu-Ey-exn" id="ea4-zW-cb3"/>
                         <outlet property="navigationBar" destination="fSp-IW-8wJ" id="ddU-pF-9MX"/>
+                        <outlet property="profileCoverPhoto" destination="7bS-UC-HUg" id="hKZ-rw-Jo8"/>
                         <outlet property="userAboutInformationTextView" destination="TWL-yp-eoC" id="bbz-gq-oar"/>
                         <outlet property="userLikesTextView" destination="EXW-ar-aOL" id="s5Q-Qj-Vy2"/>
                         <outlet property="userNameLabel" destination="tFi-xR-5YK" id="4Jl-NA-fT0"/>

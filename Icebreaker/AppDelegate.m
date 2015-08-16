@@ -1,4 +1,4 @@
-//
+
 //  AppDelegate.m
 //  Icebreaker
 //
@@ -14,6 +14,7 @@
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 #import <Parse.h>
 #import "Constants.h"
+#import "LoginViewController.h"
 
 @interface AppDelegate ()
 
@@ -38,35 +39,30 @@
                   clientKey:PARSE_CLIENT_KEY];
     
     [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
+ 
     
-//    [PFFacebookUtils logInInBackgroundWithReadPermissions:@[ @"publish_actions" ] block:^(PFUser *user, NSError *error) {
-//        if (!user) {
-//            NSLog(@"Uh oh. The user cancelled the Facebook login.");
-//        } else if (user.isNew) {
-//            NSLog(@"User signed up and logged in through Facebook!");
-//        } else {
-//            NSLog(@"User logged in through Facebook!");
-//        }
-//    }];
     
-//    [FBSDKLoginButton class];
-//    
-//    BOOL shouldReturn =  [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
-//    
-//    if ([FBSDKAccessToken currentAccessToken]) {
-//
-//        [FacebookAPICalls getUserInformationWithCompletion:^(User *user) {
-//            NSLog(@"Got user info: %@", user.firstName);
-//        }];
-//        
-//        self.window.hidden = NO;
-//        [self.window.rootViewController performSegueWithIdentifier:@"loginSegue" sender:self.window.rootViewController];
-//        [self.window makeKeyWindow];
-//        
-//        return shouldReturn;
-//    }
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:129.0/225.0 green:221.0/250.0 blue:253.0/225.0 alpha:1.0]];
+    [[UINavigationBar appearance] setTranslucent:NO];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor whiteColor],
+                                                          NSForegroundColorAttributeName,
+                                                        [UIFont fontWithName:@"Helvetica" size:24.0], NSFontAttributeName, nil]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
+    UIPageControl *pageControl = [UIPageControl appearance];
+    pageControl.pageIndicatorTintColor = [UIColor colorWithRed:249.0/250.0 green:249.0/250.0  blue:249.0/250.0  alpha:1.0];
+    
+//    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
+//    pageControl.backgroundColor = [UIColor blueColor];
+//   
     return YES;
+}
+
+
+
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

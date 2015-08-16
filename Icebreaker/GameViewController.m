@@ -26,8 +26,18 @@
     
     self.arrayOfAnswers  = @[self.answerOneTextField, self.answerTwoTextField, self.answerThreeTextField];
     self.questions = @[@"Crunchy peanut butter or smooth?", @"What's your favorite island?",  @"How many countries have you visited?"];
+    if (self.isIceBroken) {
+        [self performSegueWithIdentifier:@"resultViewSegue" sender:self];
+        
+    }
+
 }
 
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+
+}
 
 
 
@@ -65,7 +75,6 @@
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
     ResultViewController *destinationVC = segue.destinationViewController;
     destinationVC.matchedUser = self.matchedUser;
 }

@@ -50,6 +50,15 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    [self checkIfBrokenIce];
+    
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.5f target:self selector:@selector(checkIfBrokenIce) userInfo:nil repeats:YES];
+
+    [timer fire];
+}
+
+-(void)checkIfBrokenIce
+{
     [self checkAllQuestionsAreAnsweredWithCompletion:^(BOOL success) {
         if (success) {
             self.brokenIce = YES;
@@ -148,6 +157,10 @@
         if (![iceBrokenArray containsObject:self.matchedUser[@"facebookID"]]) {
             //ADD broken the ice
             [iceBrokenArray addObject:self.matchedUser[@"facebookID"]];
+            //SAVE THE ARRAY
+            currentUser[@"ice_broken"] = iceBrokenArray;
+            [currentUser saveInBackground];
+            NSLog(@"ICEBROKEN USERS%@",iceBrokenArray);
         }
     }
     if ([iceBrokenArray containsObject:self.matchedUser[@"facebookID"]]) {

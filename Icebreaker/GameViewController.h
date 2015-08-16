@@ -20,7 +20,7 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *questionThreeLabel;
 @property (strong, nonatomic) IBOutlet UITextField *answerThreeTextField;
-@property (strong, nonatomic) IBOutlet UIButton *nextQuestionButton;
+
 
 - (IBAction)doneButtonTapped:(id)sender;
 
@@ -29,5 +29,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *cityImage;
 
 @property (nonatomic, strong) PFUser *matchedUser;
+@property (nonatomic) BOOL isIceBroken;
 
 @end
