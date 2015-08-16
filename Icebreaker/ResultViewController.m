@@ -104,12 +104,18 @@
     UIImage *myPhoto = self.dataStore.user.profilePhoto;
     
     for (UIImageView *otherImage in self.otherProfilePhoto) {
+        otherImage.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+        otherImage.layer.borderWidth = 2;
+        
         otherImage.layer.cornerRadius = 25;
         otherImage.clipsToBounds = YES;
         otherImage.image = matchedPhoto;
     }
 
     for (UIImageView *myImage in self.myProfilePhoto) {
+        myImage.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+        myImage.layer.borderWidth = 2;
+        
         myImage.layer.cornerRadius = 25;
         myImage.clipsToBounds = YES;
         myImage.image = myPhoto;

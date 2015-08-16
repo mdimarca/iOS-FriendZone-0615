@@ -43,7 +43,7 @@
     }
     [self setUpCoverPhotoBlurView];
     
-    self.breakTheIceButton.layer.cornerRadius = 2.0;
+    self.breakTheIceButton.layer.cornerRadius = 4;
 }
 
 - (void)setupInformation
