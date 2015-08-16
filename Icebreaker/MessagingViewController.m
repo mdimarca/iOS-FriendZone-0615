@@ -30,7 +30,6 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     [self setUp];
 }
