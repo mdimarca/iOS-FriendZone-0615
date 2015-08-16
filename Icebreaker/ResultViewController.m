@@ -8,7 +8,7 @@
 
 #import "ResultViewController.h"
 #import <MBProgressHUD/MBProgressHUD.h>
-
+#import "DataStore.h"
 
 
 @interface ResultViewController ()
@@ -21,7 +21,9 @@
 @property (nonatomic, strong) NSArray *arrayOfQuestions;
 
 @property (nonatomic) BOOL brokenIce;
-
+@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *otherProfilePhoto;
+@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *myProfilePhoto;
+@property (strong, nonatomic) DataStore *dataStore;
 
 @end
 
@@ -29,6 +31,7 @@
 
 -(void) viewDidLoad
 {
+    self.dataStore = [DataStore sharedDataStore];
     self.brokenIce = NO;
     
     self.arrayOfMyAnswers = @[self.answerOneLabel,self.answerTwoLabel,self.answerThreeLabel];
@@ -95,6 +98,21 @@
     }
     else{
         self.navigationItem.rightBarButtonItem.enabled = NO;
+    }
+    
+    UIImage *matchedPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.matchedUser[@"profile_photo"]]]];
+    UIImage *myPhoto = self.dataStore.user.profilePhoto;
+    
+    for (UIImageView *otherImage in self.otherProfilePhoto) {
+        otherImage.layer.cornerRadius = 25;
+        otherImage.clipsToBounds = YES;
+        otherImage.image = matchedPhoto;
+    }
+
+    for (UIImageView *myImage in self.myProfilePhoto) {
+        myImage.layer.cornerRadius = 25;
+        myImage.clipsToBounds = YES;
+        myImage.image = myPhoto;
     }
 }
 

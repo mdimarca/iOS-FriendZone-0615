@@ -12,6 +12,7 @@
 #import <Firebase/Firebase.h>
 #import <Parse/Parse.h>
 #import "DataStore.h"
+#import "MatchedUserViewController.h"
 
 NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
 
@@ -59,6 +60,12 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
     JSQMessagesBubbleImageFactory *bubbleFactory = [[JSQMessagesBubbleImageFactory alloc] init];
     self.bubbleImageOutgoing = [bubbleFactory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleBlueColor]];
     self.bubbleImageIncoming = [bubbleFactory incomingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
+    
+//    JSQMessagesAvatarImage *myImage = [JSQMessagesAvatarImageFactory avatarImageWithImage:dataStore.user.profilePhoto
+//                                                                                   diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
+    
+//    self.avatars = @{ myAvatar : myImage,
+//                      otherAvatar : otherImage };
     
     self.avatar = [JSQMessagesAvatarImageFactory avatarImageWithImage:dataStore.user.profilePhoto
                                                              diameter:30];

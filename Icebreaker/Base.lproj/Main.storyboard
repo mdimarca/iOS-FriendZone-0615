@@ -42,8 +42,8 @@
                                     <action selector="facebookLoginTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="gAf-IO-gPf"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ice Breaker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uC5-yX-cy2">
-                                <rect key="frame" x="16" y="112" width="343" height="65"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ice Breaker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uC5-yX-cy2">
+                                <rect key="frame" x="16" y="110" width="343" height="65"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="55"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -51,8 +51,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="uC5-yX-cy2" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="90" id="9cd-e6-PqI"/>
+                            <constraint firstItem="uC5-yX-cy2" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="Axq-6R-DjP"/>
                             <constraint firstItem="eZA-rY-hQE" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="top" id="BMH-o1-LjE"/>
                             <constraint firstItem="eZA-rY-hQE" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="DSr-vF-pJE"/>
+                            <constraint firstItem="uC5-yX-cy2" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="H6L-a5-QQ5"/>
                             <constraint firstItem="eZA-rY-hQE" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="Iqs-FZ-NPN"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="a7U-vf-1BB" secondAttribute="bottom" id="JIb-2d-OEo"/>
                             <constraint firstItem="eZA-rY-hQE" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailing" id="Jdl-aH-18w"/>
