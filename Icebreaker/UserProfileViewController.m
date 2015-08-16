@@ -41,6 +41,7 @@ static NSString * const reuseIdentifier = @"likesView";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
   
     [self setUpCoverPhotoBlurView];

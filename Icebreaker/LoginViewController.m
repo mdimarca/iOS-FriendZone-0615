@@ -65,7 +65,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.dataStore = [DataStore sharedDataStore];
+    [self initialSetup];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -73,6 +73,12 @@
     [super viewWillAppear:animated];
     [self imageReset];
     [self facebookLoginButtonAnimation];
+}
+
+- (void)initialSetup
+{
+    self.dataStore = [DataStore sharedDataStore];
+    self.facebookButton.layer.cornerRadius = 4;
 }
 
 - (void)facebookLoginButtonAnimation

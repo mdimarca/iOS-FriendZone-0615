@@ -90,7 +90,7 @@
     GameViewController *gameVC = [segue destinationViewController];
     gameVC.matchedUser = self.matchedUser;
     gameVC.isIceBroken = self.iceBroken;
-    NSLog(@"ICEBROKEN %d",self.iceBroken);
+    NSLog(@"ICEBROKEN USERS %d",self.iceBroken);
 }
 
 

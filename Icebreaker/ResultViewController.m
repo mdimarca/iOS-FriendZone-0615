@@ -24,6 +24,12 @@
 @property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *otherProfilePhoto;
 @property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *myProfilePhoto;
 @property (strong, nonatomic) DataStore *dataStore;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *myPhoto1RightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *myPhoto2RightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *myPhoto3RightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *otherPhoto1LeftConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *otherPhoto2LeftConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *otherPhoto3LeftConstraint;
 
 @end
 
@@ -31,14 +37,23 @@
 
 -(void) viewDidLoad
 {
+    self.view.clipsToBounds = YES;
+    self.navigationItem.title = @"Answers";
+    
     self.dataStore = [DataStore sharedDataStore];
     self.brokenIce = NO;
     
     self.arrayOfMyAnswers = @[self.answerOneLabel,self.answerTwoLabel,self.answerThreeLabel];
     self.arrayOfOtherUsersAnswers= @[self.otherUserAnswerLblone,self.otherUserAnswerLabelTwo,self.otherUserAnwerLabelThree];
     self.arrayOfQuestions= @[self.questionOneLabel,self.questionTwoLabel,self.questionThreeLabel];
-    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
     [self getQuestionsAndAnswersWithCompletion:^(BOOL success) {
         if (success) {
             [self setupUI];
@@ -46,15 +61,49 @@
         }
     }];
     
-}
-
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
+    [self animateViews];
     [self checkIfBrokenIce];
     
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.5f target:self selector:@selector(checkIfBrokenIce) userInfo:nil repeats:YES];
 
     [timer fire];
+}
+
+- (void)animateViews
+{
+    [UIView animateKeyframesWithDuration:1.5
+                                   delay:0
+                                 options:UIViewKeyframeAnimationOptionCalculationModeLinear
+                              animations:^{
+                                  [UIView addKeyframeWithRelativeStartTime:0
+                                                          relativeDuration:0.33
+                                                                animations:^{
+                                                                    self.questionOneLabel.alpha = 1;
+                                                                    self.myPhoto1RightConstraint.constant = 0;
+                                                                    self.otherPhoto1LeftConstraint.constant = 0;
+                                                                    [self.view layoutIfNeeded];
+                                                                }];
+                                  [UIView addKeyframeWithRelativeStartTime:0.33
+                                                          relativeDuration:0.34
+                                                                animations:^{
+                                                                    self.questionTwoLabel.alpha = 1;
+                                                                    self.myPhoto2RightConstraint.constant = 0;
+                                                                    self.otherPhoto2LeftConstraint.constant = 0;
+                                                                    [self.view layoutIfNeeded];
+                                                                }];
+                                  [UIView addKeyframeWithRelativeStartTime:.67
+                                                          relativeDuration:0.33
+                                                                animations:^{
+                                                                    self.questionThreeLabel.alpha = 1;
+                                                                    self.myPhoto3RightConstraint.constant = 0;
+                                                                    self.otherPhoto3LeftConstraint.constant = 0;
+                                                                    [self.view layoutIfNeeded];
+                                                                }];
+                              } completion:^(BOOL finished) {
+                                  NSLog(@"Finished animating Questions");
+                              }];
+    
+    
 }
 
 -(void)checkIfBrokenIce
@@ -72,7 +121,6 @@
 
 - (void)setupUI
 {
-    
     NSInteger trackNum = 0;
     for (NSString *key in self.myQuestionsAndAnswers) {
         UILabel *labelQuestion = self.arrayOfQuestions[trackNum];
@@ -104,21 +152,17 @@
     UIImage *myPhoto = self.dataStore.user.profilePhoto;
     
     for (UIImageView *otherImage in self.otherProfilePhoto) {
-        otherImage.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-        otherImage.layer.borderWidth = 2;
-        
         otherImage.layer.cornerRadius = 25;
         otherImage.clipsToBounds = YES;
         otherImage.image = matchedPhoto;
+        otherImage.hidden = NO;
     }
 
     for (UIImageView *myImage in self.myProfilePhoto) {
-        myImage.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-        myImage.layer.borderWidth = 2;
-        
         myImage.layer.cornerRadius = 25;
         myImage.clipsToBounds = YES;
         myImage.image = myPhoto;
+        myImage.hidden = NO;
     }
 }
 
@@ -176,4 +220,5 @@
         completionBlock(NO);
     }
 }
+
 @end
