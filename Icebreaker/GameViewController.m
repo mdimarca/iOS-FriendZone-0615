@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) NSArray *arrayOfAnswers;
 @property (nonatomic, strong) NSArray *questions;
+@property (weak, nonatomic) IBOutlet UIButton *doneButton;
 
 @end
 
@@ -24,13 +25,19 @@
 {
     [super viewDidLoad];
     
+    [self setupUI];
+
+}
+
+- (void)setupUI
+{
+    self.doneButton.layer.cornerRadius = 4;
+    
     self.arrayOfAnswers  = @[self.answerOneTextField, self.answerTwoTextField, self.answerThreeTextField];
     self.questions = @[@"Crunchy peanut butter or smooth?", @"What's your favorite island?",  @"How many countries have you visited?"];
     if (self.isIceBroken) {
         [self performSegueWithIdentifier:@"resultViewSegue" sender:self];
-        
     }
-
 }
 
 

@@ -29,7 +29,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *likesCollectionView;
 
 @property (nonatomic, strong) NSMutableArray *pageLikesUrls;
-@property (nonatomic, strong) NSMutableArray *pargeLikesText;
+@property (nonatomic, strong) NSMutableArray *pageLikesText;
 @property (nonatomic, strong) NSMutableArray *pictures;
 
 @end
@@ -45,7 +45,7 @@ static NSString * const reuseIdentifier = @"likesView";
   
     [self setUpCoverPhotoBlurView];
     self.pictures = [[NSMutableArray alloc]init];
-    self.pargeLikesText = [[NSMutableArray alloc]init];
+    self.pageLikesText = [[NSMutableArray alloc]init];
     
     self.likesCollectionView.delegate = self;
     self.likesCollectionView.dataSource = self;
@@ -53,8 +53,8 @@ static NSString * const reuseIdentifier = @"likesView";
     self.logOutButton.layer.cornerRadius = 2.0;
     self.logOutButton.clipsToBounds = YES;
     
-      DataStore *dataStore = [DataStore sharedDataStore];
-    self.pargeLikesText = dataStore.user.likes;
+    DataStore *dataStore = [DataStore sharedDataStore];
+    self.pageLikesText = dataStore.user.likes;
     [self.likesCollectionView setShowsHorizontalScrollIndicator:NO];
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
@@ -176,7 +176,7 @@ static NSString * const reuseIdentifier = @"likesView";
   
     LikesCollectionViewCell *likesViewCell = (LikesCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"likesView" forIndexPath:indexPath];
 //    NSLog(@"%@ TEXT",self.pargeLikesText[indexPath.row]);
-    likesViewCell.likeText.text = self.pargeLikesText[indexPath.row];
+    likesViewCell.likeText.text = self.pageLikesText[indexPath.row];
     likesViewCell.pageLikeImage.image = self.pictures[indexPath.row];
     likesViewCell.pageLikeImage.layer.cornerRadius = likesViewCell.pageLikeImage.frame.size.width / 2;
     likesViewCell.pageLikeImage.layer.masksToBounds = YES;
