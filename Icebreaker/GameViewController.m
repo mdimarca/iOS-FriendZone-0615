@@ -44,7 +44,7 @@
     NSInteger trackNum =0;
     for (UITextField *answerTextField in self.arrayOfAnswers) {
         NSString *answer = answerTextField.text;
-        if (!([answer isEqual:@"" ] && [answer isEqual:nil])) {
+        if (!([answer isEqual:@"" ] || [answer isEqual:nil])) {
             [questionsAndAnswers setObject:answer forKey:self.questions[trackNum]];
         }
         trackNum++;
