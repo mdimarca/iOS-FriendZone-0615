@@ -20,7 +20,8 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
 
 @property (strong, nonatomic) JSQMessagesBubbleImage *bubbleImageOutgoing;
 @property (strong, nonatomic) JSQMessagesBubbleImage *bubbleImageIncoming;
-@property (strong, nonatomic) JSQMessagesAvatarImage *avatar;
+//@property (strong, nonatomic) JSQMessagesAvatarImage *avatar;
+@property (strong, nonatomic) NSDictionary *avatars;
 @property (strong, nonatomic) NSMutableArray *messages;
 @property (strong, nonatomic) Firebase *firebase;
 
@@ -36,6 +37,8 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
 
 - (void)setUp
 {
+    NSLog(@"---------------------------%@", self.chatNumber);
+        
     self.firebase = [[Firebase alloc] initWithUrl:FIREBASE_CHAT_URL];
     
     DataStore *dataStore = [DataStore sharedDataStore];
@@ -50,7 +53,7 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
      *  Look at the properties on `JSQMessagesCollectionViewFlowLayout` to see what is possible.
      */
     
-    self.title = dataStore.user.firstName;
+    self.title = self.matchedUserName;
     self.senderId = dataStore.user.facebookID;//[PFUser currentUser][@"facebookId"];
     self.senderDisplayName = dataStore.user.firstName;//[PFUser currentUser][@"first_name"];
     
@@ -60,14 +63,14 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
     self.bubbleImageOutgoing = [bubbleFactory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleBlueColor]];
     self.bubbleImageIncoming = [bubbleFactory incomingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
     
-//    JSQMessagesAvatarImage *myImage = [JSQMessagesAvatarImageFactory avatarImageWithImage:dataStore.user.profilePhoto
-//                                                                                   diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
+    JSQMessagesAvatarImage *myAvatar = [JSQMessagesAvatarImageFactory avatarImageWithImage:dataStore.user.profilePhoto
+                                                                        diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
+    JSQMessagesAvatarImage *otherAvatar = [JSQMessagesAvatarImageFactory avatarImageWithImage:self.matchedUserImage
+                                                                                   diameter:kJSQMessagesCollectionViewAvatarSizeDefault];
     
-//    self.avatars = @{ myAvatar : myImage,
-//                      otherAvatar : otherImage };
+    self.avatars = @{ @"myAvatar" : myAvatar,
+                      @"otherAvatar" : otherAvatar };
     
-    self.avatar = [JSQMessagesAvatarImageFactory avatarImageWithImage:dataStore.user.profilePhoto
-                                                             diameter:30];
     self.inputToolbar.contentView.leftBarButtonItem = nil; /* custom button or nil to remove */
     self.showLoadEarlierMessagesHeader = NO;
     
@@ -97,10 +100,8 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
     // This is so we can batch together the initial messages' reloadData for a pref gain.
     __block BOOL initialAdds = YES;
     
-    [[self.firebase childByAppendingPath:@"123456"] observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
-        
-        NSLog(@"snapshot: %@", snapshot.value);
-        
+    [[self.firebase childByAppendingPath:self.chatNumber] observeEventType:FEventTypeChildAdded
+                                                                 withBlock:^(FDataSnapshot *snapshot) {
         JSQMessage *message = [[JSQMessage alloc] initWithSenderId:snapshot.value[@"senderID"]
                                                  senderDisplayName:snapshot.value[@"name"]
                                                               date:[NSDate date]
@@ -115,15 +116,19 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
         // Reload the tableview
         if (!initialAdds) {
             [self.collectionView reloadData];
+            [self finishSendingMessageAnimated:YES];
         }
-        NSLog(@"%@", snapshot.value);
     }];
     
     [self.firebase observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         // Reload the table view so that the intial messages show up
         [self.collectionView reloadData];
+        [self scrollToBottomAnimated:YES];
+
         initialAdds = NO;
     }];
+    
+
 }
 
 //+ (void)createGameOnFirebaseWithRef:(Firebase *)ref
@@ -174,10 +179,8 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
                                   @"text" : text,
                                   @"senderID" : senderId };
     
-    [[[self.firebase childByAppendingPath:@"123456"] childByAutoId] setValue:newMessage];
-    //    [self.messages addObject:message];
-    
-    [self finishSendingMessageAnimated:YES];
+    [[[self.firebase childByAppendingPath:self.chatNumber] childByAutoId] setValue:newMessage];
+//        [self.messages addObject:message];
 }
 
 //- (void)didPressAccessoryButton:(UIButton *)sender
@@ -243,8 +246,6 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
     JSQMessage *message = [self.messages objectAtIndex:indexPath.item];
     
     if ([message.senderId isEqualToString:self.senderId]) {
-        NSLog(@"returning bubble image outgoing");
-        
         return self.bubbleImageOutgoing;
     }
     return self.bubbleImageIncoming;
@@ -273,21 +274,12 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
      *
      *  Override the defaults in `viewDidLoad`
      */
-//    JSQMessage *message = [self.messages objectAtIndex:indexPath.item];
+    JSQMessage *message = [self.messages objectAtIndex:indexPath.item];
     
-//    if ([message.senderId isEqualToString:self.senderId]) {
-//        if (![NSUserDefaults outgoingAvatarSetting]) {
-//            return nil;
-//        }
-//    }
-//    else {
-//        if (![NSUserDefaults incomingAvatarSetting]) {
-//            return nil;
-//        }
-//    }
-//    
-//    
-    return self.avatar;
+    if ([message.senderId isEqualToString:self.senderId]) {
+        return self.avatars[@"myAvatar"];
+    }
+    return self.avatars[@"otherAvatar"];
 }
 
 - (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView

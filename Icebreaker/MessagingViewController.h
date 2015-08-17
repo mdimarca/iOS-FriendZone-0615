@@ -7,7 +7,13 @@
 //
 
 #import "JSQMessagesViewController.h"
+#import <Parse/Parse.h>
 
 @interface MessagingViewController : JSQMessagesViewController
+
+@property (nonatomic, strong) NSString *chatNumber;
+@property (nonatomic, strong) UIImage *matchedUserImage;
+@property (nonatomic, strong) NSString *matchedUserID;
+@property (nonatomic, strong) NSString *matchedUserName;
 
 @end
