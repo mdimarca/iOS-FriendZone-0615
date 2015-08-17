@@ -3,7 +3,7 @@
 //  Icebreaker
 //
 //  Created by Nicholas Ang on 7/29/15.
-//  Copyright (c) 2015 ChickenBiscut. All rights reserved.
+//  Copyright (c) 2015 ChickenBiscuit. All rights reserved.
 //
 
 #import "MatchesTableViewCell.h"

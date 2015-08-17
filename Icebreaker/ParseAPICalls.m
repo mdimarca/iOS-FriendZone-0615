@@ -3,7 +3,7 @@
 //  Icebreaker
 //
 //  Created by Josette DiMarcantonio on 8/5/15.
-//  Copyright (c) 2015 ChickenBiscut. All rights reserved.
+//  Copyright (c) 2015 ChickenBiscuit. All rights reserved.
 //
 
 #import "ParseAPICalls.h"
