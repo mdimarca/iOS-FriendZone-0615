@@ -26,6 +26,7 @@
 		34D0C21D1B7D140D00726B05 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D0C21C1B7D140D00726B05 /* Constants.m */; };
 		BD0046511B71019000D68325 /* MatchesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0046501B71019000D68325 /* MatchesTableViewController.m */; };
 		BD0046571B73992D00D68325 /* MessagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0046561B73992D00D68325 /* MessagingViewController.m */; };
+		BD5541A31B821E1F00D868AE /* defaultcoverphoto.png in Resources */ = {isa = PBXBuildFile; fileRef = BD5541A21B821E1F00D868AE /* defaultcoverphoto.png */; };
 		BD8CF8D81B682452003CCC1F /* FriendSwiperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8CF8D71B682452003CCC1F /* FriendSwiperViewController.m */; };
 		BD8CF8DB1B694260003CCC1F /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8CF8DA1B694260003CCC1F /* UserProfileViewController.m */; };
 		BD8CF8DE1B69517B003CCC1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD8CF8DC1B69517B003CCC1F /* Main.storyboard */; };
@@ -102,6 +103,7 @@
 		BD0046521B71022D00D68325 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		BD0046551B73992D00D68325 /* MessagingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagingViewController.h; sourceTree = "<group>"; };
 		BD0046561B73992D00D68325 /* MessagingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagingViewController.m; sourceTree = "<group>"; };
+		BD5541A21B821E1F00D868AE /* defaultcoverphoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = defaultcoverphoto.png; path = Images.xcassets/defaultcoverphoto.png; sourceTree = "<group>"; };
 		BD8CF8D61B682452003CCC1F /* FriendSwiperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendSwiperViewController.h; sourceTree = "<group>"; };
 		BD8CF8D71B682452003CCC1F /* FriendSwiperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendSwiperViewController.m; sourceTree = "<group>"; };
 		BD8CF8D91B694260003CCC1F /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				0774D1231B6806B600F3BCF5 /* Images.xcassets */,
+				BD5541A21B821E1F00D868AE /* defaultcoverphoto.png */,
 				BD8CF8E51B698825003CCC1F /* taylor_swift.jpg */,
 				BDA3C4041B7CF9E900212267 /* liked_2x.png */,
 				BDA3C4061B7CF9F000212267 /* nope_2x.png */,
@@ -462,6 +465,7 @@
 				BDA3C3FD1B7AE6A500212267 /* IMG_0577.jpg in Resources */,
 				BDA3C4071B7CF9F000212267 /* nope_2x.png in Resources */,
 				0774D1221B6806B600F3BCF5 /* Matches.storyboard in Resources */,
+				BD5541A31B821E1F00D868AE /* defaultcoverphoto.png in Resources */,
 				0774D1271B6806B600F3BCF5 /* LaunchScreen.xib in Resources */,
 				0774D1241B6806B600F3BCF5 /* Images.xcassets in Resources */,
 				077A050A1B7920C600592986 /* Game.storyboard in Resources */,

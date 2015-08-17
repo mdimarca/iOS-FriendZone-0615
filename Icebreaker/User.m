@@ -19,8 +19,8 @@
         _lastName = @"";
         _facebookID = @"";
         _gender = @"";
-        _profilePhoto = [UIImage imageNamed:@"PlaceHolder"];
-        _coverPhoto = [UIImage imageNamed:@"cold"];
+        _profilePhoto = nil;
+        _coverPhoto = nil;
         _pictures = [@[] mutableCopy];
         _aboutInformation = @"I ❤︎ the Flatiron School";
         _matches = [@[] mutableCopy];

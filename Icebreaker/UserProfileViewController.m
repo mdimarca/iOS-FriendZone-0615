@@ -32,6 +32,8 @@
 @property (nonatomic, strong) NSMutableArray *pageLikesText;
 @property (nonatomic, strong) NSMutableArray *pictures;
 
+@property (nonatomic, strong) DataStore *dataStore;
+
 @end
 
 static NSString * const reuseIdentifier = @"likesView";
@@ -54,8 +56,9 @@ static NSString * const reuseIdentifier = @"likesView";
     self.logOutButton.layer.cornerRadius = 2.0;
     self.logOutButton.clipsToBounds = YES;
     
-    DataStore *dataStore = [DataStore sharedDataStore];
-    self.pageLikesText = dataStore.user.likes;
+    self.dataStore = [DataStore sharedDataStore];
+    
+    self.pageLikesText = self.dataStore.user.likes;
     [self.likesCollectionView setShowsHorizontalScrollIndicator:NO];
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
@@ -89,21 +92,20 @@ static NSString * const reuseIdentifier = @"likesView";
 
 - (void)updateData
 {
-    DataStore *dataStore = [DataStore sharedDataStore];
-
-    self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", dataStore.user.firstName, dataStore.user.lastName];
-    self.coverPhotoImageView.image = dataStore.user.coverPhoto;
+    
+    self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", self.dataStore.user.firstName, self.dataStore.user.lastName];
+    self.coverPhotoImageView.image = self.dataStore.user.coverPhoto;
     self.coverPhotoImageView.clipsToBounds = YES;
     self.coverPhotoImageView.layer.masksToBounds = YES;
     
-    self.profilePhotoImageView.image = dataStore.user.profilePhoto;
+    self.profilePhotoImageView.image = self.dataStore.user.profilePhoto;
     self.profilePhotoImageView.layer.cornerRadius = 50;
     self.profilePhotoImageView.layer.borderWidth = 2;
     self.profilePhotoImageView.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.profilePhotoImageView.clipsToBounds = YES;
     
-    self.aboutLabel.text = [NSString stringWithFormat:@"About %@", dataStore.user.firstName];
-    self.aboutTextView.text = dataStore.user.aboutInformation;
+    self.aboutLabel.text = [NSString stringWithFormat:@"About %@", self.dataStore.user.firstName];
+    self.aboutTextView.text = self.dataStore.user.aboutInformation;
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self getLikesCoverPhotoFromParseWithCompletionBlock:^(BOOL success) {
