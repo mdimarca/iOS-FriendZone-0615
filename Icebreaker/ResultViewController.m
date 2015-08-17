@@ -30,6 +30,12 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *otherPhoto1LeftConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *otherPhoto2LeftConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *otherPhoto3LeftConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *answer1CenterConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *answer2CenterConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *answer3CenterConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *otherAnswer1CenterConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *otherAnswer2CenterConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *otherAnswer3CenterConstraint;
 
 @end
 
@@ -44,7 +50,7 @@
     self.brokenIce = NO;
     
     self.arrayOfMyAnswers = @[self.answerOneLabel,self.answerTwoLabel,self.answerThreeLabel];
-    self.arrayOfOtherUsersAnswers= @[self.otherUserAnswerLblone,self.otherUserAnswerLabelTwo,self.otherUserAnwerLabelThree];
+    self.arrayOfOtherUsersAnswers= @[self.otherUserAnswerLabelOne,self.otherUserAnswerLabelTwo,self.otherUserAnwerLabelThree];
     self.arrayOfQuestions= @[self.questionOneLabel,self.questionTwoLabel,self.questionThreeLabel];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
@@ -102,8 +108,48 @@
                               } completion:^(BOOL finished) {
                                   NSLog(@"Finished animating Questions");
                               }];
-    
-    
+    [UIView animateWithDuration:0.2
+                          delay:0.5
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         self.answer1CenterConstraint.constant = 10;
+                         self.otherAnswer1CenterConstraint.constant = -10;
+                         [self.view layoutIfNeeded];
+                     } completion:^(BOOL finished) {
+                         [UIView animateWithDuration:0.2 animations:^{
+                             self.answer1CenterConstraint.constant = 0;
+                             self.otherAnswer1CenterConstraint.constant = 0;
+                             [self.view layoutIfNeeded];
+                         }];
+                     }];
+    [UIView animateWithDuration:0.2
+                          delay:0.9
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         self.answer2CenterConstraint.constant = 10;
+                         self.otherAnswer2CenterConstraint.constant = -10;
+                         [self.view layoutIfNeeded];
+                     } completion:^(BOOL finished) {
+                         [UIView animateWithDuration:0.2 animations:^{
+                             self.answer2CenterConstraint.constant = 0;
+                             self.otherAnswer2CenterConstraint.constant = 0;
+                             [self.view layoutIfNeeded];
+                         }];
+                     }];
+    [UIView animateWithDuration:0.2
+                          delay:1.3
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         self.answer3CenterConstraint.constant = 10;
+                         self.otherAnswer3CenterConstraint.constant = -10;
+                         [self.view layoutIfNeeded];
+                     } completion:^(BOOL finished) {
+                         [UIView animateWithDuration:0.2 animations:^{
+                             self.answer3CenterConstraint.constant = 0;
+                             self.otherAnswer3CenterConstraint.constant = 0;
+                             [self.view layoutIfNeeded];
+                         }];
+                     }];
 }
 
 -(void)checkIfBrokenIce

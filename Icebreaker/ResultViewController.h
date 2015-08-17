@@ -17,7 +17,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *answerTwoLabel;
 @property (strong, nonatomic) IBOutlet UILabel *answerThreeLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *otherUserAnswerLblone;
+@property (weak, nonatomic) IBOutlet UILabel *otherUserAnswerLabelOne;
 
 @property (weak, nonatomic) IBOutlet UILabel *otherUserAnswerLabelTwo;
 
