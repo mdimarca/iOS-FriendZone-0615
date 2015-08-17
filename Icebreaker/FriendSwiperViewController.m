@@ -165,8 +165,8 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
         [UIView animateWithDuration:0.6 animations:^{
             self.rejectButton.alpha = 0.0;
             self.likeButton.alpha = 0.0;
-            self.rejectButton.hidden = YES;
-            self.rejectButton.hidden = YES;
+//            self.rejectButton.hidden = YES;
+//            self.rejectButton.hidden = YES;
             } completion:^(BOOL finished) {
         }];
     }
@@ -190,8 +190,6 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
 // This is called then a user swipes the view fully left or right.
 - (void)view:(UIView *)view wasChosenWithDirection:(MDCSwipeDirection)direction
 {
-    DataStore *dataManager = self.dataManager;
-    PFUser *currentUser = [PFUser currentUser];
     User *userSwipedOn = self.trackPotentialMatches[0];
     
     [self keepOrRemoveLikeAndRejectButton];
@@ -290,8 +288,12 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
 - (void)constructNopeButton {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     UIImage *image = [UIImage imageNamed:@"nope_2x"];
+//    button.frame = CGRectMake(ChoosePersonButtonHorizontalPadding - 30,
+//                              CGRectGetMaxY(self.backCardView.frame) + ChoosePersonButtonVerticalPadding + 450.f,
+//                              image.size.width,
+//                              image.size.height);
     button.frame = CGRectMake(ChoosePersonButtonHorizontalPadding - 30,
-                              CGRectGetMaxY(self.backCardView.frame) + ChoosePersonButtonVerticalPadding + 450.f,
+                              self.view.frame.size.height - 200,
                               image.size.width,
                               image.size.height);
     [button setImage:image forState:UIControlStateNormal];
@@ -312,8 +314,12 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
 - (void)constructLikedButton {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     UIImage *image = [UIImage imageNamed:@"liked_2x"];
+//    button.frame = CGRectMake(CGRectGetMaxX(self.view.frame) - image.size.width - ChoosePersonButtonHorizontalPadding + 30,
+//                              CGRectGetMaxY(self.backCardView.frame) + ChoosePersonButtonVerticalPadding + 450.f,
+//                              image.size.width,
+//                              image.size.height);
     button.frame = CGRectMake(CGRectGetMaxX(self.view.frame) - image.size.width - ChoosePersonButtonHorizontalPadding + 30,
-                              CGRectGetMaxY(self.backCardView.frame) + ChoosePersonButtonVerticalPadding + 450.f,
+                              self.view.frame.size.height - 200,
                               image.size.width,
                               image.size.height);
     [button setImage:image forState:UIControlStateNormal];
