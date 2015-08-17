@@ -22,7 +22,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *coverPhotoImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePhotoImageView;
 @property (weak, nonatomic) IBOutlet UITextView *aboutTextView;
-@property (weak, nonatomic) IBOutlet UITextView *likesTextView;
 @property (weak, nonatomic) IBOutlet UILabel *aboutLabel;
 
 @property (weak, nonatomic) IBOutlet UIButton *logOutButton;
