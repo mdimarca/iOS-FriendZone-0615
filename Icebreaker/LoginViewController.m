@@ -15,6 +15,8 @@
 #import "DataStore.h"
 #import "FriendSwiperViewController.h"
 
+NSString *const COVER_URL = @"http://www.yurtopic.com/travel/locations/images/beautiful-cities/paris-at-night2.jpg";
+NSString *const PROFILE_URL = @"https://d1ld1je540hac5.cloudfront.net/assets/img/default_avatar.png";
 
 @interface LoginViewController ()
 
@@ -213,12 +215,10 @@
             NSLog(@"%@ LIKES DATA",likesData);
             NSMutableArray *likes = [@[] mutableCopy];
             NSMutableArray *likedPageID = [@[] mutableCopy];
-            
+    
             NSString *coverPhotoURLString = result[@"cover"][@"source"];
-            UIImage *coverPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:coverPhotoURLString]]];
             
             NSString *profilePhotoURLString = result[@"picture"][@"data"][@"url"];
-            UIImage *profilePhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:profilePhotoURLString]]];
             
             for (NSDictionary *likesDictionary in likesData) {
                 NSString *like = likesDictionary[@"name"];
@@ -238,13 +238,35 @@
             user[@"facebookID"] = facebookID;
             user[@"gender"] = gender;
             
+            // check for nil values
             if (aboutInformation != nil) {
                 user[@"aboutInformation"] = aboutInformation;
             }
             
-            user[@"coverPhotoURLString"] = coverPhotoURLString;
+            //initialize shared local user
+            self.localUser = [[User alloc] init];
+            if (coverPhotoURLString != nil) {
+                user[@"coverPhotoURLString"] = coverPhotoURLString;
+                UIImage *coverPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:coverPhotoURLString]]];
+                self.localUser.coverPhoto = coverPhoto;
+            } else {
+                user[@"coverPhotoURLString"] = COVER_URL;
+                UIImage *coverPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:COVER_URL]]];
+
+                self.localUser.coverPhoto = coverPhoto;
+            }
+            
+            if (profilePhotoURLString != nil) {
+                user[@"profile_photo"] = profilePhotoURLString;
+                UIImage *profilePhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:profilePhotoURLString]]];
+                self.localUser.profilePhoto = profilePhoto;
+            } else {
+                user[@"profile_photo"] = PROFILE_URL;
+                UIImage *profilePhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:PROFILE_URL]]];
+                self.localUser.profilePhoto = profilePhoto;
+            }
+            
             user[@"likes"] = [likes copy];
-            user[@"profile_photo"] = profilePhotoURLString;
             user[@"rejected_profiles"] = [@[] mutableCopy];
             user[@"accepted_profiles"] = [@[] mutableCopy];
             user[@"ice_broken"] = [@[]mutableCopy];
@@ -253,19 +275,19 @@
             user[@"likedPagesPhotoUrl"] = [@[]mutableCopy];
             
             //SHARED LOCAL USER
-            self.localUser = [[User alloc] init];
             self.localUser.firstName = firstName;
             self.localUser.lastName = lastName;
-            self.localUser.coverPhoto = coverPhoto;
-            self.localUser.profilePhoto = profilePhoto;
             self.localUser.gender = gender;
             self.localUser.aboutInformation = aboutInformation;
             self.localUser.likes = likes;
             self.localUser.facebookID = facebookID;
             self.localUser.pictures = [@[] mutableCopy];
             self.localUser.friends = [@[] mutableCopy];
-            DataStore *dataStore = [DataStore sharedDataStore];
-            dataStore.user = self.localUser;
+        
+            
+            //////----------------something funky with the photos being not saved-----------------------
+            
+            self.dataStore.user = self.localUser;
          
             //SAVES INFORMATION ON PARSE
             [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
