@@ -9,13 +9,14 @@
 #import "ResultViewController.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "DataStore.h"
+#import "MessagingViewController.h"
 
 
 @interface ResultViewController ()
 
 @property (nonatomic, strong) NSMutableDictionary *myQuestionsAndAnswers;
 @property (nonatomic, strong) NSMutableDictionary *matchedUsersQuestionsAndAnswers;
-
+@property (nonatomic, strong) UIImage *matchedPhoto;
 @property (nonatomic, strong) NSArray *arrayOfMyAnswers;
 @property (nonatomic, strong) NSArray *arrayOfOtherUsersAnswers;
 @property (nonatomic, strong) NSArray *arrayOfQuestions;
@@ -48,6 +49,7 @@
     
     self.dataStore = [DataStore sharedDataStore];
     self.brokenIce = NO;
+    self.matchedPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.matchedUser[@"profile_photo"]]]];
     
     self.arrayOfMyAnswers = @[self.answerOneLabel,self.answerTwoLabel,self.answerThreeLabel];
     self.arrayOfOtherUsersAnswers= @[self.otherUserAnswerLabelOne,self.otherUserAnswerLabelTwo,self.otherUserAnwerLabelThree];
@@ -77,6 +79,7 @@
 
 - (void)animateViews
 {
+    // slide in animation for images and fading in questions
     [UIView animateKeyframesWithDuration:1.5
                                    delay:0
                                  options:UIViewKeyframeAnimationOptionCalculationModeLinear
@@ -108,6 +111,8 @@
                               } completion:^(BOOL finished) {
                                   NSLog(@"Finished animating Questions");
                               }];
+    
+    // bounce effect for first row
     [UIView animateWithDuration:0.2
                           delay:0.5
                         options:UIViewAnimationOptionCurveEaseInOut
@@ -122,6 +127,8 @@
                              [self.view layoutIfNeeded];
                          }];
                      }];
+    
+    // bounce effect for second row
     [UIView animateWithDuration:0.2
                           delay:0.9
                         options:UIViewAnimationOptionCurveEaseInOut
@@ -136,6 +143,8 @@
                              [self.view layoutIfNeeded];
                          }];
                      }];
+    
+    // bounce effect for third row
     [UIView animateWithDuration:0.2
                           delay:1.3
                         options:UIViewAnimationOptionCurveEaseInOut
@@ -194,13 +203,13 @@
         self.navigationItem.rightBarButtonItem.enabled = NO;
     }
     
-    UIImage *matchedPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.matchedUser[@"profile_photo"]]]];
+
     UIImage *myPhoto = self.dataStore.user.profilePhoto;
     
     for (UIImageView *otherImage in self.otherProfilePhoto) {
         otherImage.layer.cornerRadius = 25;
         otherImage.clipsToBounds = YES;
-        otherImage.image = matchedPhoto;
+        otherImage.image = self.matchedPhoto;
         otherImage.hidden = NO;
     }
 
@@ -215,6 +224,7 @@
 - (void)chatPressed {
     
     NSLog(@"Chat was pressed!");
+    
     [self performSegueWithIdentifier:@"@Chat" sender:self];
 }
 
@@ -265,6 +275,26 @@
     else{
         completionBlock(NO);
     }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // create a chat room number by combining the two facebook user ID together with the largest sum first"
+    NSString *string1 = self.matchedUser[@"facebookID"];
+    NSString *string2 = self.dataStore.user.facebookID;
+    NSString *chatNumber = @"";
+    
+    if ([string1 integerValue] > [string2 integerValue]) {
+        chatNumber = [string1 stringByAppendingString:string2];
+    } else {
+        chatNumber = [string2 stringByAppendingString:string1];
+    }
+    
+    MessagingViewController *destinationVC = segue.destinationViewController;
+    destinationVC.chatNumber = chatNumber;
+    destinationVC.matchedUserImage = self.matchedPhoto;
+    destinationVC.matchedUserID = self.matchedUser[@"facebookID"];
+    destinationVC.matchedUserName = self.matchedUser[@"first_name"];
 }
 
 @end
