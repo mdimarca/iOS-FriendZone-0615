@@ -284,9 +284,6 @@ NSString *const PROFILE_URL = @"https://d1ld1je540hac5.cloudfront.net/assets/img
             self.localUser.pictures = [@[] mutableCopy];
             self.localUser.friends = [@[] mutableCopy];
         
-            
-            //////----------------something funky with the photos being not saved-----------------------
-            
             self.dataStore.user = self.localUser;
          
             //SAVES INFORMATION ON PARSE

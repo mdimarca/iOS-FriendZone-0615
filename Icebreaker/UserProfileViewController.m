@@ -43,7 +43,7 @@ static NSString * const reuseIdentifier = @"likesView";
 {
     [super viewDidLoad];
     
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
   
     [self setUpCoverPhotoBlurView];
     self.pictures = [[NSMutableArray alloc]init];
@@ -61,7 +61,7 @@ static NSString * const reuseIdentifier = @"likesView";
     [self.likesCollectionView setShowsHorizontalScrollIndicator:NO];
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-    [flowLayout setItemSize:CGSizeMake(100.0, 100.0)];
+    [flowLayout setItemSize:CGSizeMake(100.0, 124.0)];
     [self.likesCollectionView setCollectionViewLayout:flowLayout];
 
     self.likesCollectionView.decelerationRate = UIScrollViewDecelerationRateNormal;

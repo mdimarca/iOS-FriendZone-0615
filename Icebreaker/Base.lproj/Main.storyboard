@@ -110,7 +110,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G3K-WS-U2g" customClass="UIImageView">
-                                <rect key="frame" x="137" y="46" width="100" height="100"/>
+                                <rect key="frame" x="138" y="46" width="100" height="100"/>
                                 <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="G3K-WS-U2g" secondAttribute="height" multiplier="1:1" id="DLF-6l-xOs"/>
@@ -179,8 +179,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="124"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="the school flatiron" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DOF-P3-a3L">
-                                                    <rect key="frame" x="8" y="76" width="84" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="the school flatiron" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DOF-P3-a3L">
+                                                    <rect key="frame" x="8" y="76" width="84" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="84" id="Imh-ff-NzD"/>
                                                     </constraints>
