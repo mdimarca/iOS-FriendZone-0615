@@ -29,5 +29,7 @@
 
 + (void)getMatchesFromParseWithCompletionBlock:(void (^)(BOOL success, NSArray *matches))completionBlock;
 
++ (void)getLikesImagesWithUser:(PFUser *)user
+                    Completion:(void (^)(BOOL success, NSMutableArray *likesImages, NSMutableArray *likesTexts))completionBlock;
 
 @end
