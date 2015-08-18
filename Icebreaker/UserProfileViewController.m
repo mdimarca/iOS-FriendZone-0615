@@ -15,6 +15,7 @@
 #import "LikesViewController.h"
 #import "LikesCollectionViewCell.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import "ParseAPICalls.h"
 
 @interface UserProfileViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -27,7 +28,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *logOutButton;
 @property (weak, nonatomic) IBOutlet UICollectionView *likesCollectionView;
 
-@property (nonatomic, strong) NSMutableDictionary *likesDictionary;
 @property (nonatomic, strong) NSMutableArray *pageLikesText;
 @property (nonatomic, strong) NSMutableArray *pictures;
 
@@ -43,8 +43,6 @@ static NSString * const reuseIdentifier = @"likesView";
 {
     [super viewDidLoad];
     
-//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-  
     [self setUpCoverPhotoBlurView];
     self.pictures = [[NSMutableArray alloc]init];
     self.pageLikesText = [[NSMutableArray alloc]init];
@@ -57,7 +55,6 @@ static NSString * const reuseIdentifier = @"likesView";
     
     self.dataStore = [DataStore sharedDataStore];
     
-//    self.pageLikesText = self.dataStore.user.likes;
     [self.likesCollectionView setShowsHorizontalScrollIndicator:NO];
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
@@ -65,8 +62,6 @@ static NSString * const reuseIdentifier = @"likesView";
     [self.likesCollectionView setCollectionViewLayout:flowLayout];
 
     self.likesCollectionView.decelerationRate = UIScrollViewDecelerationRateNormal;
-    
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -107,33 +102,25 @@ static NSString * const reuseIdentifier = @"likesView";
     self.aboutTextView.text = self.dataStore.user.aboutInformation;
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [self getLikesCoverPhotoFromParseWithCompletionBlock:^(BOOL success) {
-        if (success) {
-              [self.likesCollectionView reloadData];
-        }
-         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        
-    }];
-
-  
+    
+    [self getLikesPhotosForCurrentUser];
 }
 
--(void)getLikesCoverPhotoFromParseWithCompletionBlock:(void (^)(BOOL success))completionBlock{
+- (void)getLikesPhotosForCurrentUser
+{
     PFUser *user = [PFUser currentUser];
-    self.likesDictionary = user[@"likes"];
-    if (self.likesDictionary.count > 0) {
-        for (NSString *like in self.likesDictionary){
-            UIImage *profilePhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.likesDictionary[like]]]];
-            [self.pictures addObject:profilePhoto];
-            [self.pageLikesText addObject:like];
-        }
-        completionBlock(YES);
-    }
-    else{
-        completionBlock(NO);
-    }
+    [ParseAPICalls getLikesImagesWithUser:user
+                               Completion:^(BOOL success, NSMutableArray *likesImages, NSMutableArray *likesTexts) {
+                                   if (success) {
+                                       self.pictures = likesImages;
+                                       self.pageLikesText = likesTexts;
+                                       [self.likesCollectionView reloadData];
+                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                   } else {
+                                       NSLog(@"Unable to get user's likes.");
+                                   }
+                               }];
 }
-
 
 - (IBAction)logOutButtonTapped:(id)sender
 {
@@ -172,13 +159,12 @@ static NSString * const reuseIdentifier = @"likesView";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 
-    return [self.likesDictionary count];
+    return self.pageLikesText.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   
     LikesCollectionViewCell *likesViewCell = (LikesCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"likesView" forIndexPath:indexPath];
-//    NSLog(@"%@ TEXT",self.pargeLikesText[indexPath.row]);
     likesViewCell.likeText.text = self.pageLikesText[indexPath.row];
     likesViewCell.pageLikeImage.image = self.pictures[indexPath.row];
     likesViewCell.pageLikeImage.layer.cornerRadius = likesViewCell.pageLikeImage.frame.size.width / 2;
@@ -190,10 +176,6 @@ static NSString * const reuseIdentifier = @"likesView";
     } completion:^(BOOL finished) {
         
     }];
-
-  
-    
-    // Configure the cell
     
     return likesViewCell;
 }

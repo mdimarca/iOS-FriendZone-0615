@@ -204,6 +204,24 @@
     }];
 }
 
-
++ (void)getLikesImagesWithUser:(PFUser *)user Completion:(void (^)(BOOL success, NSMutableArray *likesImages, NSMutableArray *likesTexts))completionBlock
+{
+    NSDictionary *likesDictionary = user[@"likes"];
+    NSMutableArray *likesImages = [@[] mutableCopy];
+    NSMutableArray *likesTexts = [@[] mutableCopy];
+    
+    if (likesDictionary.count > 0) {
+        for (NSString *like in likesDictionary) {
+            
+            UIImage *profilePhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:likesDictionary[like]]]];
+            [likesImages addObject:profilePhoto];
+            [likesTexts addObject:like];
+        }
+        completionBlock(YES, likesImages, likesTexts);
+    }
+    else{
+        completionBlock(NO, nil, nil);
+    }
+}
 
 @end
