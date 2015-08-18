@@ -233,8 +233,8 @@
 		3414C0051B692C6100C72689 /* User Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0774D11A1B6806B600F3BCF5 /* AppDelegate.h */,
 				0774D11B1B6806B600F3BCF5 /* AppDelegate.m */,
+				0774D11A1B6806B600F3BCF5 /* AppDelegate.h */,
 				3414BFFC1B69247A00C72689 /* User.h */,
 				3414BFFD1B69247A00C72689 /* User.m */,
 				3414C0021B692C5100C72689 /* Friend.h */,

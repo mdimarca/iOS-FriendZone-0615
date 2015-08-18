@@ -27,7 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *logOutButton;
 @property (weak, nonatomic) IBOutlet UICollectionView *likesCollectionView;
 
-@property (nonatomic, strong) NSMutableArray *pageLikesUrls;
+@property (nonatomic, strong) NSMutableDictionary *likesDictionary;
 @property (nonatomic, strong) NSMutableArray *pageLikesText;
 @property (nonatomic, strong) NSMutableArray *pictures;
 
@@ -57,7 +57,7 @@ static NSString * const reuseIdentifier = @"likesView";
     
     self.dataStore = [DataStore sharedDataStore];
     
-    self.pageLikesText = self.dataStore.user.likes;
+//    self.pageLikesText = self.dataStore.user.likes;
     [self.likesCollectionView setShowsHorizontalScrollIndicator:NO];
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
@@ -120,11 +120,12 @@ static NSString * const reuseIdentifier = @"likesView";
 
 -(void)getLikesCoverPhotoFromParseWithCompletionBlock:(void (^)(BOOL success))completionBlock{
     PFUser *user = [PFUser currentUser];
-    self.pageLikesUrls = user[@"likedPagesPhotoUrl"];
-    if (self.pageLikesUrls.count > 0) {
-        for (NSString *url in self.pageLikesUrls){
-            UIImage *profilePhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
+    self.likesDictionary = user[@"likes"];
+    if (self.likesDictionary.count > 0) {
+        for (NSString *like in self.likesDictionary){
+            UIImage *profilePhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.likesDictionary[like]]]];
             [self.pictures addObject:profilePhoto];
+            [self.pageLikesText addObject:like];
         }
         completionBlock(YES);
     }
@@ -171,7 +172,7 @@ static NSString * const reuseIdentifier = @"likesView";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 
-    return [self.pageLikesUrls count];
+    return [self.likesDictionary count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
