@@ -145,7 +145,7 @@
     
     //SAVE CURRENT USER
     PFUser *user = [PFUser currentUser];
-    user[@"q_a"] = @{self.matchedUser[@"facebookID"]:questionsAndAnswers},
+    user[@"q_a"] = @{self.matchedUser[@"facebookID"] : questionsAndAnswers},
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
         if (!error) {
             completionBlock(YES);

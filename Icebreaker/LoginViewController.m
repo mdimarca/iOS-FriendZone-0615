@@ -213,8 +213,8 @@ NSString *const PROFILE_URL = @"https://d1ld1je540hac5.cloudfront.net/assets/img
             NSString *aboutInformation = result[@"bio"];
             NSArray *likesData = result[@"likes"][@"data"];
             NSLog(@"%@ LIKES DATA",likesData);
-            NSMutableArray *likes = [@[] mutableCopy];
-            NSMutableArray *likedPageID = [@[] mutableCopy];
+            
+            NSMutableDictionary *likes = [@{} mutableCopy];
     
             NSString *coverPhotoURLString = result[@"cover"][@"source"];
             
@@ -223,10 +223,8 @@ NSString *const PROFILE_URL = @"https://d1ld1je540hac5.cloudfront.net/assets/img
             for (NSDictionary *likesDictionary in likesData) {
                 NSString *like = likesDictionary[@"name"];
                 NSString *pageID = likesDictionary[@"id"];
-                [likes addObject:like];
-                [likedPageID addObject:pageID];
+                [likes setObject:like forKey:pageID];
             }
-                
             
             //SET THE LOCAL PROPERTY EQUAL TO THE FACEBOOK ID SINCE IT IS UNIQUE
             self.facebookIDLocal = facebookID;
@@ -266,56 +264,46 @@ NSString *const PROFILE_URL = @"https://d1ld1je540hac5.cloudfront.net/assets/img
                 self.localUser.profilePhoto = profilePhoto;
             }
             
-            user[@"likes"] = [likes copy];
             user[@"rejected_profiles"] = [@[] mutableCopy];
             user[@"accepted_profiles"] = [@[] mutableCopy];
             user[@"ice_broken"] = [@[]mutableCopy];
             user[@"q_a"] = @{};
-            user[@"likedPagesID"] = likedPageID;
-            user[@"likedPagesPhotoUrl"] = [@[]mutableCopy];
             
-            //SHARED LOCAL USER
             self.localUser.firstName = firstName;
             self.localUser.lastName = lastName;
             self.localUser.gender = gender;
             self.localUser.aboutInformation = aboutInformation;
-            self.localUser.likes = likes;
             self.localUser.facebookID = facebookID;
-            self.localUser.pictures = [@[] mutableCopy];
-            self.localUser.friends = [@[] mutableCopy];
         
-            
-            //////----------------something funky with the photos being not saved-----------------------
-            
             self.dataStore.user = self.localUser;
+            
+            NSDictionary *param = @{@"fields":@"picture.width(400).height(400)"};
+            NSMutableDictionary *likesUrlDictionary = [@{} mutableCopy];
+            for (NSString *likeID in likes) {
+                NSLog(@"%@ PAGE ID", likeID);
+                FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
+                                              initWithGraphPath:[NSString stringWithFormat:@"/%@",likeID]
+                                              parameters:param
+                                              HTTPMethod:@"GET"];
+                [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection,
+                                                      id result,
+                                                      NSError *error) {
+                    if (!error) {
+                        NSLog(@"COVER PHOTO RESULT %@",result);
+                        NSString *pageLikedPhotoURLSring = result[@"picture"][@"data"][@"url"];
+                        NSLog(@"%@ PAGEURL",pageLikedPhotoURLSring);
+                        likesUrlDictionary[likes[likeID]] = pageLikedPhotoURLSring;
+                        user[@"likes"] = likesUrlDictionary;
+                        [user saveInBackground];
+                    }
+                }];
+            }
+
          
             //SAVES INFORMATION ON PARSE
             [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if(succeeded){
-                    PFUser *currentUser = [PFUser currentUser];
-                    NSArray *arrayOfPageID = currentUser[@"likedPagesID"];
-                    NSDictionary *param = @{@"fields":@"picture.width(400).height(400)"};
-                    NSMutableArray *arrayOfPagePhotoUrl = [@[]mutableCopy];
-                    for (NSString *ID in arrayOfPageID) {
-                        NSLog(@"%@ PAGE ID",ID);
-                        FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
-                                                      initWithGraphPath:[NSString stringWithFormat:@"/%@",ID]
-                                                      parameters:param
-                                                      HTTPMethod:@"GET"];
-                        [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection,
-                                                              id result,
-                                                              NSError *error) {
-                            NSLog(@"COVER PHOTO RESULT %@",result);
-                            NSString *pageLikedPhotoURLSring = result[@"picture"][@"data"][@"url"];
-                            NSLog(@"%@ PAGEURL",pageLikedPhotoURLSring);
-                            [arrayOfPagePhotoUrl addObject:pageLikedPhotoURLSring];
-                        }];
-                        currentUser[@"likedPagesPhotoUrl"] = arrayOfPagePhotoUrl;
-                        [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                            if(succeeded){
-                            }
-                        }];
-                    }
+                    
                     PFQuery *queryForCurrentUser = [PFQuery queryWithClassName:@"Relationship"];
                     [queryForCurrentUser whereKey:@"owner" equalTo:user];
                     [queryForCurrentUser getFirstObjectInBackgroundWithBlock:^(PFObject *userRelationship, NSError *error) {
