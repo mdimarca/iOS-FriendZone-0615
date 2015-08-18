@@ -34,6 +34,22 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     [self setupData];
+    [self setupTableView];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    // this UIViewController is about to re-appear, make sure we remove the current selection in our table view
+    NSIndexPath *tableSelection = [self.tableView indexPathForSelectedRow];
+    [self.tableView deselectRowAtIndexPath:tableSelection animated:YES];
+    
+    // some over view controller could have changed our nav bar tint color, so reset it here
+    //self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+}
+
+- (void)setupTableView
+{
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)setupData
@@ -76,7 +92,6 @@
     cell.name.text = [NSString stringWithFormat:@"%@ %@", currentMatch[@"first_name"], currentMatch[@"last_name"]];
     UIImage *profilePhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:currentMatch[@"profile_photo"]]]];
     cell.userProfilePicture.image = profilePhoto;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
