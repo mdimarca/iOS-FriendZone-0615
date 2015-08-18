@@ -156,7 +156,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="logOutButtonTapped:" destination="ES5-bu-BHX" eventType="touchUpInside" id="5Fo-xj-6ef"/>
+                                    <action selector="logOutButtonTapped:" destination="ES5-bu-BHX" eventType="touchUpInside" id="gZK-XX-4wi"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QXL-9p-Qg6">
