@@ -32,10 +32,27 @@ NSString *const FIREBASE_CHAT_URL = @"https://ice-breaker-ios.firebaseIO.com";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setUp];
+    [self setupBackButton];
+    [self setUpChat];
 }
 
-- (void)setUp
+- (void)setupBackButton
+{
+    self.navigationItem.leftBarButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                     style:UIBarButtonItemStylePlain
+                                    target:self
+                                    action:@selector(goBackToMatchedUserProfile:)];
+    
+}
+
+- (IBAction)goBackToMatchedUserProfile:(id)sender
+{
+    NSLog(@"About to go back to the matched User screen.");
+       [self performSegueWithIdentifier:@"unwindToMatchedProfile" sender:self];
+}
+
+- (void)setUpChat
 {
     NSLog(@"---------------------------%@", self.chatNumber);
         
