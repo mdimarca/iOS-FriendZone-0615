@@ -33,6 +33,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
     [self setupData];
     [self setupTableView];
 }
@@ -50,15 +51,23 @@
 - (void)setupTableView
 {
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    // pull to refresh data
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = [UIColor colorWithRed:216.0/255.0 green:216.0/255.0 blue:216.0/255.0 alpha:1];
+    self.refreshControl.tintColor = [UIColor colorWithRed:1 green:0 blue:128.0/255.0 alpha:1];
+    [self.refreshControl addTarget:self
+                            action:@selector(setupData)
+                  forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)setupData
 {
-    [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
     [ParseAPICalls getMatchesFromParseWithCompletionBlock:^(BOOL success, NSArray *matches) {
         if (success) {
             self.matches = matches;
             [self.tableView reloadData];
+            [self.refreshControl endRefreshing];  // end refresh animation
             dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
                 // Do something...
                 dispatch_async(dispatch_get_main_queue(), ^{
